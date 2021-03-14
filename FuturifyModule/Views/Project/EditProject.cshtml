@@ -1,0 +1,27 @@
+﻿@using FuturifyModule.Models
+@model ProjectModel
+
+<form asp-action="CreateNewProject" asp-controller="Project" method="post">
+    <div class="form-group">
+        <label for="code"> Code:</label>
+        <input type="text" value="@Model.Code" name="code" class="form-control" id="code">
+    </div>
+    <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" value="@Model.Name" name="name" class="form-control" id="name">
+    </div>
+    <div class="form-group">
+        <label for="tech">Tech:</label>
+        <input type="text" value="@Model.Tech" name="tech" class="form-control" id="tech">
+    </div>
+    <div class="form-group">
+        <label for="deadline">Deadline:</label>
+        <input type="datetime-local" value="@Model.Deadline" name="deadline" class="form-control" id="deadline">
+    </div>
+    <div class="form-group">
+        <label for="leader">Lead by:</label>
+        <input type="text" value="@Model.Leader" name="leader" class="form-control" id="leader">
+    </div>
+    @Html.HiddenFor(m => m.Id)
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

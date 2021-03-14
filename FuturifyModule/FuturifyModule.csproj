@@ -6,16 +6,23 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <EmbeddedResource Remove="_ViewImports.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="_ViewImports.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="OrchardCore.ContentManagement" Version="1.0.0-rc2-13450" />
     <PackageReference Include="OrchardCore.Module.Targets" Version="1.0.0-rc2-13450" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Indexes\" />
   </ItemGroup>
 
 </Project>

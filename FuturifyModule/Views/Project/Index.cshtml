@@ -1,0 +1,48 @@
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using FuturifyModule.Models
+@model IEnumerable<ProjectModel>
+
+<div style="margin-top:50px">
+    <div>
+        <a asp-action="CreateNewProject" asp-controller="Project" class="btn btn-success">
+            Create new project
+        </a>
+    </div>
+
+    <div class="info" style="padding-top:30px">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <td>Code</td>
+                    <td>Name</td>
+                    <td>Tech</td>
+                    <td>Deadline</td>
+                    <td>Lead by</td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    if (Model != null && Model.Count() != 0)
+                    {
+                        foreach (var project in Model)
+                        {
+                            <tr>
+                                <td>@project.Code</td>
+                                <td>@project.Name</td>
+                                <td>@project.Tech</td>
+                                <td>@project.Deadline.ToUniversalTime()</td>
+                                <td>@project.Leader</td>
+                                <td>
+                                    <a href="/EditProject/@project.Id">Edit</a> |
+                                    <a href="/DeleteProject/@project.Id">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>
