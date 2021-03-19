@@ -1,0 +1,61 @@
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using OrchardCore.ContentManagement
+@model IEnumerable<ContentItem>
+
+<div style="margin-top:50px">
+    <div>
+        <a asp-action="Index" asp-controller="Project">
+            Project List |
+        </a>
+        <a asp-action="Index" asp-controller="Leader">
+            Leader List
+        </a>
+    </div>
+
+    @*<div>
+        <a asp-action="CreateNewLeader" asp-controller="Leader" class="btn btn-success" style="margin-top:10px">
+            Create new leader
+        </a>
+    </div>*@
+
+    <div class="info" style="padding-top:30px">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <td>ContentItemId</td>
+                    <td>Content</td>
+                    <td>ContentType</td>
+                    <td>DisplayText</td>
+                    <td>ModifiedUtc</td>
+                    <td>CreatedUtc</td>
+                    <td>PublishedUtc</td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    if (Model != null && Model.Count() != 0)
+                    {
+                        foreach (var contenItem in Model)
+                        {
+                            <tr>
+                                <td>@contenItem.ContentItemId</td>
+                                <td>@contenItem.Content</td>
+                                <td>@contenItem.ContentType</td>
+                                <td>@contenItem.DisplayText</td>
+                                <td>@contenItem.ModifiedUtc</td>
+                                <td>@contenItem.CreatedUtc</td>
+                                <td>@contenItem.PublishedUtc</td>
+                                <td>
+                                    <a href="/EditLeader/@contenItem.Id">Edit</a> |
+                                    <a href="/DeleteLeader/@contenItem.Id">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>

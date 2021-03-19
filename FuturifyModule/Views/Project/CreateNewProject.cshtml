@@ -1,23 +1,11 @@
 ﻿<form asp-action="CreateNewProject" asp-controller="Project" method="post">
     <div class="form-group">
-        <label for="code"> Code:</label>
-        <input type="text" name="code" class="form-control" id="code">
-    </div>
-    <div class="form-group">
         <label for="name">Name:</label>
         <input type="text" name="name" class="form-control" id="name">
     </div>
     <div class="form-group">
-        <label for="tech">Tech:</label>
-        <input type="text" name="tech" class="form-control" id="tech">
-    </div>
-    <div class="form-group">
-        <label for="deadline">Deadline:</label>
-        <input type="datetime-local" name="deadline" class="form-control" id="deadline">
-    </div>
-    <div class="form-group">
-        <label for="leader">Lead by:</label>
-        <input type="text" name="leader" class="form-control" id="leader">
+        <label for="leaderid">LeadId:</label>
+        <input type="text" name="leaderid" class="form-control" id="leaderid">
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>

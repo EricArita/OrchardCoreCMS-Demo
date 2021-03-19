@@ -1,3 +1,4 @@
+using OrchardCore.Modules;
 using OrchardCore.Modules.Manifest;
 
 [assembly: Module(
@@ -6,5 +7,11 @@ using OrchardCore.Modules.Manifest;
     Website = "https://futurify.io",
     Version = "1.0.0-rc2",
     Description = "Futurify Module",
-    Category = "Content Management"
+    Category = "Content Management",
+    Dependencies = new[]
+    {
+        "OrchardCore.Contents",
+        "OrchardCore.ContentTypes",
+        "OrchardCore.ContentFields",
+    }
 )]

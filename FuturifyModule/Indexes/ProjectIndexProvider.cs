@@ -10,11 +10,23 @@ namespace FuturifyModule.Indexes
     {
         public override void Describe(DescribeContext<ProjectModel> context)
         {
-            // for each BlogPost, create a BlogPostByAuthor index
             context.For<ProjectIndex>().Map(project => new ProjectIndex { 
                 Code = project.Code,
                 Name = project.Name,
                 IsDeleted = project.IsDeleted
+            });
+        }
+    }
+
+    public class ApiProjectIndexProvider : IndexProvider<ApiProjectModel>
+    {
+        public override void Describe(DescribeContext<ApiProjectModel> context)
+        {
+            context.For<ApiProjectIndex>().Map(project => new ApiProjectIndex
+            {
+                Name = project.Name,
+                IsDeleted = project.IsDeleted,
+                LeaderId = project.LeaderId
             });
         }
     }

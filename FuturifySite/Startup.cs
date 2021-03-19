@@ -1,8 +1,12 @@
 using FuturifyModule.Indexes;
+using FuturifyModule.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using OrchardCore.ContentManagement;
+using System;
 using YesSql;
+using YesSql.Indexes;
 using YesSql.Provider.MySql;
 using YesSql.Sql;
 
@@ -12,27 +16,34 @@ namespace FuturifySite
     {
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddOrchardCms().AddMvc();
-            services.AddSingleton(serviceProvider =>
-               StoreFactory.CreateAsync(
-                   new Configuration().UseMySql(@"Server=localhost;Database=futurifyorchard;Uid=root;Pwd=admin")
-                                      .SetTablePrefix("futurify_")
-                    ).Result
-            );
+            services.AddOrchardCms();
+            services.AddSingleton<IIndexProvider, OrderContentItemIndexProvider>();
+            services.AddSingleton<IIndexProvider, OrderDetailContentItemIndexProvider>();
+
+            #region Use this code only when calling InitialDb method in Configure. Because DI will generate an instance of IStore that will be passed as an argument into Configure to initalize Db
+            //services.AddSingleton(serviceProvider =>
+            //   StoreFactory.CreateAsync(
+            //       new Configuration().UseMySql(@"Server=127.0.0.1;Database=yessql_db;Uid=root;Pwd=futurify@2021")
+            //                          .SetTablePrefix("yessql_")
+            //        ).Result
+            //);
+            #endregion
         }
 
-        public void Configure(IApplicationBuilder app, IHostEnvironment env, IStore store)
+        public void Configure(IApplicationBuilder app, IHostEnvironment env/*, IStore store*/)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseStaticFiles();
             app.UseOrchardCore();
+
+            app.UseStaticFiles();
 
             //InitialDb(store);
         }
+
 
         private static void InitialDb(IStore store)
         {
@@ -43,15 +54,12 @@ namespace FuturifySite
                 using (var transaction = connection.BeginTransaction(store.Configuration.IsolationLevel))
                 {
                     new SchemaBuilder(store.Configuration, transaction)
-                        .CreateMapIndexTable("ProjectIndex", table => table
-                            .Column<string>("Code")
-                            .Column<string>("Name")
-                            .Column<bool>("IsDeleted")
+                        .CreateMapIndexTable("OrderContentItemIndex", table => table
+                            .Column<DateTime>("Date")
                         )
-                        .CreateReduceIndexTable("ProjectDeadlineIndex", table => table
-                            .Column<int>("Count")
-                            .Column<int>("Deadline")
-                    );
+                        .CreateMapIndexTable("OrderDetailContentItemIndex", table => table
+                            .Column<string>("OrderContentItemId")
+                        );
 
                     transaction.Commit();
                 }

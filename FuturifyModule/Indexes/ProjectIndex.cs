@@ -11,4 +11,11 @@ namespace FuturifyModule.Indexes
         public string Name { get; set; }
         public byte IsDeleted { get; set; }
     }
+
+    public class ApiProjectIndex : MapIndex
+    {
+        public string Name { get; set; }
+        public byte IsDeleted { get; set; }
+        public int LeaderId { get; set; }
+    }
 }

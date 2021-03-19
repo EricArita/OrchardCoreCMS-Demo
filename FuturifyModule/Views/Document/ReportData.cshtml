@@ -1,0 +1,19 @@
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using FuturifyModule.Models
+@model ReportModel
+
+<div style="margin-top:50px">
+    <div>
+        <h3>Report product categories that have the most products: </h3>
+        <div>
+            <h4>Name</h4>
+            @Model.ProductCategoryHasTheMostProducts.ProductCategoryName
+
+            <h4>Amount</h4>
+            @Model.ProductCategoryHasTheMostProducts.Amount
+
+            <h4>Excution time: </h4>
+            @Model.ProductCategoryHasTheMostProducts.ElapseTime ms
+        </div>
+    </div>
+</div>
