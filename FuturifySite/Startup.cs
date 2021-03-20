@@ -17,14 +17,19 @@ namespace FuturifySite
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddOrchardCms();
+
             services.AddSingleton<IIndexProvider, OrderContentItemIndexProvider>();
             services.AddSingleton<IIndexProvider, OrderDetailContentItemIndexProvider>();
 
+            services.AddContentPart<OrderPart>();
+            services.AddContentPart<AnotherOrderDetailPart>();
+
             #region Use this code only when calling InitialDb method in Configure. Because DI will generate an instance of IStore that will be passed as an argument into Configure to initalize Db
+            //@"Server=127.0.0.1;Database=yessql_db;Uid=root;Pwd=futurify@2021"
             //services.AddSingleton(serviceProvider =>
             //   StoreFactory.CreateAsync(
-            //       new Configuration().UseMySql(@"Server=127.0.0.1;Database=yessql_db;Uid=root;Pwd=futurify@2021")
-            //                          .SetTablePrefix("yessql_")
+            //       new Configuration().UseMySql(@"Server=127.0.0.1;Database=yessql_crud;Uid=root;Pwd=admin")
+            //                          .SetTablePrefix("futurify_")
             //        ).Result
             //);
             #endregion
@@ -54,6 +59,10 @@ namespace FuturifySite
                 using (var transaction = connection.BeginTransaction(store.Configuration.IsolationLevel))
                 {
                     new SchemaBuilder(store.Configuration, transaction)
+                       .AlterTable("OrderDetailContentItemIndex", table => {
+                           table.AddColumn<double>("Quantity");
+                           table.AddColumn<string>("ProductContentItemId");
+                        })
                         .CreateMapIndexTable("OrderContentItemIndex", table => table
                             .Column<DateTime>("Date")
                         )

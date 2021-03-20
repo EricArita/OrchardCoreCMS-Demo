@@ -5,6 +5,7 @@ using OrchardCore.ContentManagement.Records;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using YesSql;
+using YesSql.Services;
 using System.Linq;
 using OrchardCore.Content;
 using FuturifyModule.Models;
@@ -19,12 +20,14 @@ namespace FuturifyModule.Controllers
     public class DocumentController : Controller
     {
         private readonly IStore _store;
+        private readonly ISession _session;
         private readonly IContentManager _contentManager;
         private readonly IOrchardHelper _orchardHelper;
 
-        public DocumentController(IStore store, IContentManager contentManager, IOrchardHelper orchardHelper)
+        public DocumentController(IStore store, ISession session, IContentManager contentManager, IOrchardHelper orchardHelper)
         {
             _store = store;
+            _session = session;
             _contentManager = contentManager;
             _orchardHelper = orchardHelper;
         }
@@ -33,12 +36,9 @@ namespace FuturifyModule.Controllers
         {
             IEnumerable<ContentItem> contentItems = null;
 
-            using (var session = _store.CreateSession())
-            {
-                contentItems = await session.Query<ContentItem>()
+            contentItems = await _session.Query<ContentItem>()
                                .With<ContentItemIndex>().Where(x => x.ContentType == contentType)
                                .ListAsync();
-            }
             return View(contentItems);
         }
 
@@ -78,37 +78,40 @@ namespace FuturifyModule.Controllers
 
             #region Report the best selling product of last month
             sw.Start();
-            _store.RegisterIndexes<OrderContentItemIndexProvider>();
 
-            using (var session = _store.CreateSession())
+            var firstDayOfCurrentMonth = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1);
+            var firstDayOfLastMonth = firstDayOfCurrentMonth.AddMonths(-1);
+
+            var ordersInLastMonth = _session.Query<ContentItem, ContentItemIndex>(x => x.ContentType == "Order")
+                                                  .With<OrderContentItemIndex>(x => x.Date >= firstDayOfLastMonth && x.Date < firstDayOfCurrentMonth)
+                                                  .ListAsync()
+                                                  .Result
+                                                  .Select(x => x.ContentItemId);
+                                                  
+
+            var orderDetailInLastMonth = await _session
+                                                 .Query<ContentItem, ContentItemIndex>(x => x.ContentType == "OrderDetail")
+                                                 .With<OrderDetailContentItemIndex>(x => x.OrderContentItemId.IsIn(ordersInLastMonth))
+                                                 .ListAsync();
+
+            var bestSellingProductItem = orderDetailInLastMonth
+                                            .GroupBy(x => x.As<AnotherOrderDetailPart>().ProductContentField.ContentItemIds[0])
+                                            .Select(group => new
+                                            {
+                                                ProductContentItemId = (string)group.Key,
+                                                ListOrderDetailContentItem = group.AsEnumerable()
+                                            })
+                                            .OrderByDescending(x => x.ListOrderDetailContentItem.Sum(y => y.As<AnotherOrderDetailPart>().QuantityContentField.Value))
+                                            .FirstOrDefault();
+
+            res.TheBestSellingOfLastMonth = new TheBestSellingProductOfLastMonth
             {
-                var ordersInLastMonth = await session.Query<ContentItem>()
-                                                     .With<ContentItemIndex>()
-                                                     .Where(x => x.ContentType == "Order")
-                                                     .With<OrderContentItemIndex>()
-                                                     .Where(x => x.Date.HasValue && x.Date.Value.Month == DateTime.Now.Month - 1)
-                                                     .ListAsync();
-
-                var orderDetailInLastMonth = await session.Query<ContentItem>()
-                                                       .With<ContentItemIndex>()
-                                                       .Where(x => x.ContentType == "OrderDetail")
-                                                       .With<OrderDetailContentItemIndex>()
-                                                       .Where(x => ordersInLastMonth.Any(y => y.ContentItemId == x.OrderContentItemId))
-                                                       .ListAsync();
-
-                var bestSellingProductItem = orderDetailInLastMonth.GroupBy(x => x.Content.ProductList.ProductContentItems.ContentItemIds.ToObject<string[]>()[0])
-                                                .Select(group => new
-                                                {
-                                                    ProductContentItemId = (string)group.Key,
-                                                    ListOrderDetailContentItem = group.AsEnumerable()
-                                                })
-                                                .OrderByDescending(x => x.ListOrderDetailContentItem.Sum(y => y.Content.OrderDetail.Quantity.Value))
-                                                .FirstOrDefault();
-            }
-
+                ProductName = (await _orchardHelper.GetContentItemByIdAsync(bestSellingProductItem.ProductContentItemId)).DisplayText,
+                Amount = bestSellingProductItem.ListOrderDetailContentItem.Sum(x => x.As<AnotherOrderDetailPart>().QuantityContentField.Value),
+            };
             sw.Stop();
+            res.TheBestSellingOfLastMonth.ElapseTime = sw.Elapsed.TotalMilliseconds;
             #endregion
-
 
             return View(res);
         }

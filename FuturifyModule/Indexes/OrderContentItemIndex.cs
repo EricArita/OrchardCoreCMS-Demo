@@ -1,4 +1,5 @@
-﻿using OrchardCore.ContentManagement;
+﻿using FuturifyModule.Models;
+using OrchardCore.ContentManagement;
 using System;
 using YesSql.Indexes;
 
@@ -13,9 +14,14 @@ namespace FuturifyModule.Indexes
     {
         public override void Describe(DescribeContext<ContentItem> context)
         {
-            context.For<OrderContentItemIndex>().Map(item => new OrderContentItemIndex
+            context.For<OrderContentItemIndex>().Map(contentItem =>
             {
-                Date = (DateTime?)item.Content.Order.Date.Value
+                var orderContent = contentItem.As<OrderPart>();
+
+                return orderContent == null ? null : new OrderContentItemIndex
+                {
+                    Date = orderContent.OrderDateContentField.Value
+                };
             });
         }
     }
