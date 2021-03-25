@@ -5,7 +5,7 @@ using System.Text;
 
 namespace FuturifyModule.Models
 {
-    public class AnotherOrderDetailPart : ContentPart
+    public class OrderDetailPart : ContentPart
     {
         public ProductContentField ProductContentField { get; set; }
         public OrderContentField OrderContentField { get; set; }

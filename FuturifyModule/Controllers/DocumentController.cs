@@ -7,16 +7,15 @@ using System.Threading.Tasks;
 using YesSql;
 using YesSql.Services;
 using System.Linq;
-using OrchardCore.Content;
 using FuturifyModule.Models;
-using Newtonsoft.Json;
 using System;
 using System.Diagnostics;
 using FuturifyModule.Indexes;
 
 namespace FuturifyModule.Controllers
 {
-
+    [Produces("application/json")]
+    [Route("api/document")]
     public class DocumentController : Controller
     {
         private readonly IStore _store;
@@ -32,6 +31,8 @@ namespace FuturifyModule.Controllers
             _orchardHelper = orchardHelper;
         }
 
+        [HttpGet]
+        [Route("list-contentitems/{contentType}")]
         public async Task<IActionResult> Index(string contentType)
         {
             IEnumerable<ContentItem> contentItems = null;
@@ -39,41 +40,44 @@ namespace FuturifyModule.Controllers
             contentItems = await _session.Query<ContentItem>()
                                .With<ContentItemIndex>().Where(x => x.ContentType == contentType)
                                .ListAsync();
-            return View(contentItems);
+            //return View(contentItems);
+            return Ok(contentItems);
         }
 
+        [HttpGet]
+        [Route("report")]
         public async Task<IActionResult> ReportData()
         {
             var res = new ReportModel();
             var sw = new Stopwatch();
 
             #region Report product category that has the most products
-            sw.Start();
+            //sw.Start();
 
-            using (var session = _store.CreateSession())
-            {
-                var productContentItems = await session.Query<ContentItem>()
-                               .With<ContentItemIndex>().Where(x => x.ContentType == "Product")
-                               .ListAsync();
+            //using (var session = _store.CreateSession())
+            //{
+            //    var productContentItems = await session.Query<ContentItem>()
+            //                   .With<ContentItemIndex>().Where(x => x.ContentType == "Product")
+            //                   .ListAsync();
 
-                var productCategoryIdWithCount = productContentItems.Select(x => x.Content.ContentMenuItemPart.SelectedContentItem.ContentItemIds.ToObject<string[]>()[0])
-                                                        .GroupBy(e => e)
-                                                        .Select(group => new
-                                                        {
-                                                            productCategoryId = (string)group.Key,
-                                                            Count = group.Count()
-                                                        })
-                                                        .OrderByDescending(x => x.Count).FirstOrDefault();
+            //    var productCategoryIdWithCount = productContentItems.Select(x => x.Content.ContentMenuItemPart.SelectedContentItem.ContentItemIds.ToObject<string[]>()[0])
+            //                                            .GroupBy(e => e)
+            //                                            .Select(group => new
+            //                                            {
+            //                                                productCategoryId = (string)group.Key,
+            //                                                Count = group.Count()
+            //                                            })
+            //                                            .OrderByDescending(x => x.Count).FirstOrDefault();
 
-                res.ProductCategoryHasTheMostProducts = new ProductCategoryHasTheMostProducts
-                {
-                    ProductCategoryName = (await _orchardHelper.GetContentItemByIdAsync(productCategoryIdWithCount.productCategoryId)).DisplayText,
-                    Amount = productCategoryIdWithCount.Count,
-                };
-            }
+            //    res.ProductCategoryHasTheMostProducts = new ProductCategoryHasTheMostProducts
+            //    {
+            //        ProductCategoryName = (await _orchardHelper.GetContentItemByIdAsync(productCategoryIdWithCount.productCategoryId)).DisplayText,
+            //        Amount = productCategoryIdWithCount.Count,
+            //    };
+            //}
 
-            sw.Stop();
-            res.ProductCategoryHasTheMostProducts.ElapseTime = sw.Elapsed.TotalMilliseconds;
+            //sw.Stop();
+            //res.ProductCategoryHasTheMostProducts.ElapseTime = sw.Elapsed.TotalMilliseconds;
             #endregion
 
             #region Report the best selling product of last month
@@ -88,32 +92,32 @@ namespace FuturifyModule.Controllers
                                                   .Result
                                                   .Select(x => x.ContentItemId);
                                                   
-
             var orderDetailInLastMonth = await _session
                                                  .Query<ContentItem, ContentItemIndex>(x => x.ContentType == "OrderDetail")
                                                  .With<OrderDetailContentItemIndex>(x => x.OrderContentItemId.IsIn(ordersInLastMonth))
                                                  .ListAsync();
 
             var bestSellingProductItem = orderDetailInLastMonth
-                                            .GroupBy(x => x.As<AnotherOrderDetailPart>().ProductContentField.ContentItemIds[0])
+                                            .GroupBy(x => x.As<OrderDetailPart>().ProductContentField.ContentItemIds[0])
                                             .Select(group => new
                                             {
                                                 ProductContentItemId = (string)group.Key,
                                                 ListOrderDetailContentItem = group.AsEnumerable()
                                             })
-                                            .OrderByDescending(x => x.ListOrderDetailContentItem.Sum(y => y.As<AnotherOrderDetailPart>().QuantityContentField.Value))
+                                            .OrderByDescending(x => x.ListOrderDetailContentItem.Sum(y => y.As<OrderDetailPart>().QuantityContentField.Value))
                                             .FirstOrDefault();
 
             res.TheBestSellingOfLastMonth = new TheBestSellingProductOfLastMonth
             {
                 ProductName = (await _orchardHelper.GetContentItemByIdAsync(bestSellingProductItem.ProductContentItemId)).DisplayText,
-                Amount = bestSellingProductItem.ListOrderDetailContentItem.Sum(x => x.As<AnotherOrderDetailPart>().QuantityContentField.Value),
+                Amount = bestSellingProductItem.ListOrderDetailContentItem.Sum(x => x.As<OrderDetailPart>().QuantityContentField.Value),
             };
             sw.Stop();
             res.TheBestSellingOfLastMonth.ElapseTime = sw.Elapsed.TotalMilliseconds;
             #endregion
 
-            return View(res);
+            //return View(res);
+            return Ok(res);
         }
     }
 }

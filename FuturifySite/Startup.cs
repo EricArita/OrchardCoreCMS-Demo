@@ -21,14 +21,15 @@ namespace FuturifySite
             services.AddSingleton<IIndexProvider, OrderContentItemIndexProvider>();
             services.AddSingleton<IIndexProvider, OrderDetailContentItemIndexProvider>();
 
-            services.AddContentPart<OrderPart>();
-            services.AddContentPart<AnotherOrderDetailPart>();
+            services.AddContentPart<OrdersPart>();
+            services.AddContentPart<OrderDetailPart>();
 
             #region Use this code only when calling InitialDb method in Configure. Because DI will generate an instance of IStore that will be passed as an argument into Configure to initalize Db
-            //@"Server=127.0.0.1;Database=yessql_db;Uid=root;Pwd=futurify@2021"
+            //@"Server=127.0.0.1;Database=futurify_db;Uid=root;Pwd=futurify@2021"
+            //@"Server=127.0.0.1;Database=futurify_db;Uid=root;Pwd=admin"
             //services.AddSingleton(serviceProvider =>
             //   StoreFactory.CreateAsync(
-            //       new Configuration().UseMySql(@"Server=127.0.0.1;Database=yessql_crud;Uid=root;Pwd=admin")
+            //       new Configuration().UseMySql(@"Server=127.0.0.1;Database=futurify_db;Uid=root;Pwd=futurify@2021")
             //                          .SetTablePrefix("futurify_")
             //        ).Result
             //);
@@ -59,16 +60,23 @@ namespace FuturifySite
                 using (var transaction = connection.BeginTransaction(store.Configuration.IsolationLevel))
                 {
                     new SchemaBuilder(store.Configuration, transaction)
-                       .AlterTable("OrderDetailContentItemIndex", table => {
-                           table.AddColumn<double>("Quantity");
-                           table.AddColumn<string>("ProductContentItemId");
-                        })
-                        .CreateMapIndexTable("OrderContentItemIndex", table => table
-                            .Column<DateTime>("Date")
-                        )
-                        .CreateMapIndexTable("OrderDetailContentItemIndex", table => table
-                            .Column<string>("OrderContentItemId")
-                        );
+                       .AlterTable("OrderContentItemIndex", table =>
+                       {
+                           table.AddColumn<string>("OrderContentItemId");
+                       });
+                       //.AlterTable("OrderDetailContentItemIndex", table =>
+                       //{
+                       //    table.AddColumn<double>("Quantity");
+                       //    table.AddColumn<string>("ProductContentItemId");
+                       //})
+                       //.CreateMapIndexTable("OrderContentItemIndex", table => table
+                       //     .Column<DateTime>("Date")
+                       //)
+                       //.CreateMapIndexTable("OrderDetailContentItemIndex", table => table
+                       //     .Column<string>("OrderContentItemId")
+                       //     .Column<double>("Quantity")
+                       //     .Column<string>("ProductContentItemId")
+                       //);
 
                     transaction.Commit();
                 }

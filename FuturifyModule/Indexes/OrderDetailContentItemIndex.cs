@@ -9,6 +9,7 @@ namespace FuturifyModule.Indexes
     {
         public string OrderContentItemId { get; set; }
         public string ProductContentItemId { get; set; }
+        public double Quantity { get; set; }
     }
 
     public class OrderDetailContentItemIndexProvider : IndexProvider<ContentItem>
@@ -16,12 +17,13 @@ namespace FuturifyModule.Indexes
         public override void Describe(DescribeContext<ContentItem> context)
         {
             context.For<OrderDetailContentItemIndex>().Map(contentItem => {
-                var orderDetaiContent = contentItem.As<AnotherOrderDetailPart>();
+                var orderDetaiContent = contentItem.As<OrderDetailPart>();
 
                 return orderDetaiContent == null ? null : new OrderDetailContentItemIndex
                 {
                     OrderContentItemId = orderDetaiContent.OrderContentField.ContentItemIds[0],
-                    ProductContentItemId = orderDetaiContent.ProductContentField.ContentItemIds[0]
+                    ProductContentItemId = orderDetaiContent.ProductContentField.ContentItemIds[0],
+                    Quantity = orderDetaiContent.QuantityContentField.Value
                 };
             });
         }

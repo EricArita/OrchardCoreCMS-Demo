@@ -7,6 +7,7 @@ namespace FuturifyModule.Indexes
 {
     public class OrderContentItemIndex : MapIndex
     {
+        public string OrderContentItemId { get; set; }
         public DateTime? Date { get; set; }
     }
 
@@ -16,10 +17,11 @@ namespace FuturifyModule.Indexes
         {
             context.For<OrderContentItemIndex>().Map(contentItem =>
             {
-                var orderContent = contentItem.As<OrderPart>();
+                var orderContent = contentItem.As<OrdersPart>();
 
                 return orderContent == null ? null : new OrderContentItemIndex
                 {
+                    OrderContentItemId = contentItem.ContentItemId,
                     Date = orderContent.OrderDateContentField.Value
                 };
             });
