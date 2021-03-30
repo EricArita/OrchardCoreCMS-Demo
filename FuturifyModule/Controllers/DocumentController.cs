@@ -2,6 +2,7 @@
 using OrchardCore;
 using OrchardCore.ContentManagement;
 using OrchardCore.ContentManagement.Records;
+using OrchardCore.ContentTypes.Services;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using YesSql;
@@ -11,6 +12,7 @@ using FuturifyModule.Models;
 using System;
 using System.Diagnostics;
 using FuturifyModule.Indexes;
+using OrchardCore.ContentManagement.Metadata;
 
 namespace FuturifyModule.Controllers
 {
@@ -22,13 +24,19 @@ namespace FuturifyModule.Controllers
         private readonly ISession _session;
         private readonly IContentManager _contentManager;
         private readonly IOrchardHelper _orchardHelper;
+        private readonly IContentDefinitionService _contentDefinitionService;
+        private readonly IContentDefinitionManager _contentDefinitionManager;
 
-        public DocumentController(IStore store, ISession session, IContentManager contentManager, IOrchardHelper orchardHelper)
+        public DocumentController(IStore store, ISession session, IContentManager contentManager, IOrchardHelper orchardHelper, 
+                                  IContentDefinitionService contentDefinitionService,
+                                  IContentDefinitionManager contentDefinitionManager)
         {
             _store = store;
             _session = session;
             _contentManager = contentManager;
             _orchardHelper = orchardHelper;
+            _contentDefinitionService = contentDefinitionService;
+            _contentDefinitionManager = contentDefinitionManager;
         }
 
         [HttpGet]
@@ -42,6 +50,29 @@ namespace FuturifyModule.Controllers
                                .ListAsync();
             //return View(contentItems);
             return Ok(contentItems);
+        }
+
+        [HttpGet]
+        [Route("content-type/all")]
+        public async Task<IActionResult> GetAllContentType()
+        {
+            //var t = _contentDefinitionService.GetParts(true);
+            //var d = _contentDefinitionManager.LoadPartDefinitions();
+
+            var contentTypes = _contentDefinitionManager.ListTypeDefinitions().Select(x =>
+            {
+                var words = x.DisplayName.Split(' ');
+                var res = words[0].ToLower();
+
+                for (int i = 1; i < words.Length; i++)
+                {
+                    res += char.ToUpper(words[i].First()) + words[i].Substring(1);
+                }
+
+                return res;
+            });
+
+            return Ok(contentTypes);
         }
 
         [HttpGet]
@@ -118,6 +149,13 @@ namespace FuturifyModule.Controllers
 
             //return View(res);
             return Ok(res);
+        }
+    
+        [HttpGet]
+        [Route("toa/move-to-next-level")]
+        public async Task<IActionResult> MoveToNextLevel(string contentItemId)
+        {
+            return null;
         }
     }
 }

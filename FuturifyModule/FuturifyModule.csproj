@@ -21,8 +21,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="OrchardCore.ContentFields" Version="1.0.0-rc2-13450" />
     <PackageReference Include="OrchardCore.ContentManagement" Version="1.0.0-rc2-13450" />
     <PackageReference Include="OrchardCore.Contents" Version="1.0.0-rc2-13450" />
+    <PackageReference Include="OrchardCore.ContentTypes" Version="1.0.0-rc2-13450" />
     <PackageReference Include="OrchardCore.Module.Targets" Version="1.0.0-rc2-13450" />
   </ItemGroup>
 

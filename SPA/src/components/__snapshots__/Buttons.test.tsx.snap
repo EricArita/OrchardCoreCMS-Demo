@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Buttons renders and matches our snapshot 1`] = `
+<div
+  className="row"
+>
+  <div
+    className="col-md-12 text-center"
+    style={
+      Object {
+        "marginTop": "30px",
+      }
+    }
+  >
+    <button
+      className="btn btn-primary btn-login"
+      onClick={[MockFunction]}
+      style={
+        Object {
+          "margin": "10px",
+        }
+      }
+    >
+      Login
+    </button>
+    <button
+      className="btn btn-dark btn-logout"
+      onClick={[MockFunction]}
+      style={
+        Object {
+          "margin": "10px",
+        }
+      }
+    >
+      Logout
+    </button>
+  </div>
+</div>
+`;

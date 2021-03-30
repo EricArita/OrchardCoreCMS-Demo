@@ -44,7 +44,9 @@
         {
           "PartName": "MenuItemsListPart",
           "Name": "MenuItemsListPart",
-          "Settings": {}
+          "Settings": {
+            "ContentTypePartSettings": {}
+          }
         }
       ]
     },
@@ -206,6 +208,9 @@
             "ContentTypePartSettings": {
               "Editor": "Wysiwyg",
               "Position": "2"
+            },
+            "HtmlBodyPartSettings": {
+              "SanitizeHtml": false
             }
           }
         },
@@ -388,6 +393,9 @@
           "Settings": {
             "ContentTypePartSettings": {
               "Position": "2"
+            },
+            "HtmlBodyPartSettings": {
+              "SanitizeHtml": false
             }
           }
         },
@@ -724,9 +732,465 @@
           }
         }
       ]
+    },
+    {
+      "Name": "Form",
+      "DisplayName": "Form",
+      "Settings": {
+        "ContentTypeSettings": {
+          "Stereotype": "Widget"
+        }
+      },
+      "ContentTypePartDefinitionRecords": [
+        {
+          "PartName": "TitlePart",
+          "Name": "TitlePart",
+          "Settings": {
+            "ContentTypePartSettings": {}
+          }
+        },
+        {
+          "PartName": "FormPart",
+          "Name": "FormPart",
+          "Settings": {
+            "ContentTypePartSettings": {}
+          }
+        },
+        {
+          "PartName": "FlowPart",
+          "Name": "FlowPart",
+          "Settings": {
+            "ContentTypePartSettings": {}
+          }
+        }
+      ]
+    },
+    {
+      "Name": "Label",
+      "DisplayName": "Label",
+      "Settings": {
+        "ContentTypeSettings": {
+          "Stereotype": "Widget"
+        }
+      },
+      "ContentTypePartDefinitionRecords": [
+        {
+          "PartName": "TitlePart",
+          "Name": "TitlePart",
+          "Settings": {
+            "ContentTypePartSettings": {}
+          }
+        },
+        {
+          "PartName": "FormElementPart",
+          "Name": "FormElementPart",
+          "Settings": {
+            "ContentTypePartSettings": {}
+          }
+        },
+        {
+          "PartName": "LabelPart",
+          "Name": "LabelPart",
+          "Settings": {
+            "ContentTypePartSettings": {}
+          }
+        }
+      ]
+    },
+    {
+      "Name": "Input",
+      "DisplayName": "Input",
+      "Settings": {
+        "ContentTypeSettings": {
+          "Stereotype": "Widget"
+        }
+      },
+      "ContentTypePartDefinitionRecords": [
+        {
+          "PartName": "FormInputElementPart",
+          "Name": "FormInputElementPart",
+          "Settings": {
+            "ContentTypePartSettings": {}
+          }
+        },
+        {
+          "PartName": "FormElementPart",
+          "Name": "FormElementPart",
+          "Settings": {
+            "ContentTypePartSettings": {}
+          }
+        },
+        {
+          "PartName": "InputPart",
+          "Name": "InputPart",
+          "Settings": {
+            "ContentTypePartSettings": {}
+          }
+        }
+      ]
+    },
+    {
+      "Name": "TextArea",
+      "DisplayName": "Text Area",
+      "Settings": {
+        "ContentTypeSettings": {
+          "Stereotype": "Widget"
+        }
+      },
+      "ContentTypePartDefinitionRecords": [
+        {
+          "PartName": "FormInputElementPart",
+          "Name": "FormInputElementPart",
+          "Settings": {
+            "ContentTypePartSettings": {}
+          }
+        },
+        {
+          "PartName": "FormElementPart",
+          "Name": "FormElementPart",
+          "Settings": {
+            "ContentTypePartSettings": {}
+          }
+        },
+        {
+          "PartName": "TextAreaPart",
+          "Name": "TextAreaPart",
+          "Settings": {
+            "ContentTypePartSettings": {}
+          }
+        }
+      ]
+    },
+    {
+      "Name": "Select",
+      "DisplayName": "Select",
+      "Settings": {
+        "ContentTypeSettings": {
+          "Stereotype": "Widget"
+        }
+      },
+      "ContentTypePartDefinitionRecords": [
+        {
+          "PartName": "FormInputElementPart",
+          "Name": "FormInputElementPart",
+          "Settings": {
+            "ContentTypePartSettings": {}
+          }
+        },
+        {
+          "PartName": "FormElementPart",
+          "Name": "FormElementPart",
+          "Settings": {
+            "ContentTypePartSettings": {}
+          }
+        },
+        {
+          "PartName": "SelectPart",
+          "Name": "SelectPart",
+          "Settings": {
+            "ContentTypePartSettings": {}
+          }
+        }
+      ]
+    },
+    {
+      "Name": "Button",
+      "DisplayName": "Button",
+      "Settings": {
+        "ContentTypeSettings": {
+          "Stereotype": "Widget"
+        }
+      },
+      "ContentTypePartDefinitionRecords": [
+        {
+          "PartName": "FormInputElementPart",
+          "Name": "FormInputElementPart",
+          "Settings": {
+            "ContentTypePartSettings": {}
+          }
+        },
+        {
+          "PartName": "FormElementPart",
+          "Name": "FormElementPart",
+          "Settings": {
+            "ContentTypePartSettings": {}
+          }
+        },
+        {
+          "PartName": "ButtonPart",
+          "Name": "ButtonPart",
+          "Settings": {
+            "ContentTypePartSettings": {}
+          }
+        }
+      ]
+    },
+    {
+      "Name": "ValidationSummary",
+      "DisplayName": "Validation Summary",
+      "Settings": {
+        "ContentTypeSettings": {
+          "Stereotype": "Widget"
+        }
+      },
+      "ContentTypePartDefinitionRecords": [
+        {
+          "PartName": "ValidationSummaryPart",
+          "Name": "ValidationSummaryPart",
+          "Settings": {
+            "ContentTypePartSettings": {}
+          }
+        }
+      ]
+    },
+    {
+      "Name": "Validation",
+      "DisplayName": "Validation",
+      "Settings": {
+        "ContentTypeSettings": {
+          "Stereotype": "Widget"
+        }
+      },
+      "ContentTypePartDefinitionRecords": [
+        {
+          "PartName": "ValidationPart",
+          "Name": "ValidationPart",
+          "Settings": {
+            "ContentTypePartSettings": {}
+          }
+        }
+      ]
+    },
+    {
+      "Name": "ReCaptcha",
+      "DisplayName": "Re Captcha",
+      "Settings": {
+        "ContentTypeSettings": {}
+      },
+      "ContentTypePartDefinitionRecords": [
+        {
+          "PartName": "ReCaptchaPart",
+          "Name": "ReCaptchaPart",
+          "Settings": {
+            "ContentTypePartSettings": {}
+          }
+        }
+      ]
+    },
+    {
+      "Name": "ComingSoon",
+      "DisplayName": "Coming Soon",
+      "Settings": {
+        "ContentTypeSettings": {}
+      },
+      "ContentTypePartDefinitionRecords": [
+        {
+          "PartName": "ComingSoon",
+          "Name": "ComingSoon",
+          "Settings": {
+            "ContentTypePartSettings": {}
+          }
+        },
+        {
+          "PartName": "AutoroutePart",
+          "Name": "AutoroutePart",
+          "Settings": {
+            "ContentTypePartSettings": {},
+            "AutoroutePartSettings": {
+              "AllowCustomPath": false,
+              "Pattern": null,
+              "ShowHomepageOption": true
+            }
+          }
+        },
+        {
+          "PartName": "TitlePart",
+          "Name": "TitlePart",
+          "Settings": {
+            "ContentTypePartSettings": {}
+          }
+        },
+        {
+          "PartName": "BagPart",
+          "Name": "SocialIcons",
+          "Settings": {
+            "ContentTypePartSettings": {},
+            "BagPartSettings": {
+              "ContainedContentTypes": [
+                "SocialIcon"
+              ]
+            }
+          }
+        },
+        {
+          "PartName": "FlowPart",
+          "Name": "FlowPart",
+          "Settings": {
+            "ContentTypePartSettings": {}
+          }
+        },
+        {
+          "PartName": "FormPart",
+          "Name": "FormPart",
+          "Settings": {
+            "ContentTypePartSettings": {}
+          }
+        }
+      ]
+    },
+    {
+      "Name": "SocialIcon",
+      "DisplayName": "Social Icon",
+      "Settings": {
+        "ContentTypeSettings": {}
+      },
+      "ContentTypePartDefinitionRecords": [
+        {
+          "PartName": "SocialIcon",
+          "Name": "SocialIcon",
+          "Settings": {
+            "ContentTypePartSettings": {}
+          }
+        },
+        {
+          "PartName": "TitlePart",
+          "Name": "TitlePart",
+          "Settings": {
+            "ContentTypePartSettings": {}
+          }
+        }
+      ]
+    },
+    {
+      "Name": "Register",
+      "DisplayName": "Register",
+      "Settings": {
+        "ContentTypeSettings": {}
+      },
+      "ContentTypePartDefinitionRecords": [
+        {
+          "PartName": "Register",
+          "Name": "Register",
+          "Settings": {
+            "ContentTypePartSettings": {}
+          }
+        },
+        {
+          "PartName": "HtmlBodyPart",
+          "Name": "HtmlBodyPart",
+          "Settings": {
+            "ContentTypePartSettings": {},
+            "HtmlBodyPartSettings": {
+              "SanitizeHtml": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Name": "Account",
+      "DisplayName": "Account",
+      "Settings": {
+        "ContentTypeSettings": {}
+      },
+      "ContentTypePartDefinitionRecords": [
+        {
+          "PartName": "Account",
+          "Name": "Account",
+          "Settings": {
+            "ContentTypePartSettings": {}
+          }
+        },
+        {
+          "PartName": "TitlePart",
+          "Name": "TitlePart",
+          "Settings": {
+            "ContentTypePartSettings": {}
+          }
+        }
+      ]
+    },
+    {
+      "Name": "User",
+      "DisplayName": "User",
+      "Settings": {
+        "ContentTypeSettings": {
+          "Creatable": true,
+          "Listable": true,
+          "Draftable": true,
+          "Versionable": true,
+          "Securable": true
+        }
+      },
+      "ContentTypePartDefinitionRecords": [
+        {
+          "PartName": "User",
+          "Name": "User",
+          "Settings": {}
+        },
+        {
+          "PartName": "TitlePart",
+          "Name": "TitlePart",
+          "Settings": {}
+        }
+      ]
+    },
+    {
+      "Name": "TOA",
+      "DisplayName": "TOR",
+      "Settings": {
+        "ContentTypeSettings": {
+          "Creatable": true,
+          "Listable": true,
+          "Draftable": true,
+          "Versionable": true,
+          "Securable": true
+        },
+        "FullTextAspectSettings": {}
+      },
+      "ContentTypePartDefinitionRecords": [
+        {
+          "PartName": "TOA",
+          "Name": "TOA",
+          "Settings": {
+            "ContentTypePartSettings": {
+              "Position": "1"
+            }
+          }
+        },
+        {
+          "PartName": "TitlePart",
+          "Name": "TitlePart",
+          "Settings": {
+            "ContentTypePartSettings": {
+              "Position": "0"
+            }
+          }
+        }
+      ]
     }
   ],
   "ContentPartDefinitionRecords": [
+    {
+      "Name": "CommonPart",
+      "Settings": {
+        "ContentPartSettings": {
+          "Attachable": true,
+          "Description": "Provides an editor for the common properties of a content item."
+        }
+      },
+      "ContentPartFieldDefinitionRecords": []
+    },
+    {
+      "Name": "LiquidPart",
+      "Settings": {
+        "ContentPartSettings": {
+          "Attachable": true,
+          "Description": "Provides a Liquid formatted body for your content item."
+        }
+      },
+      "ContentPartFieldDefinitionRecords": []
+    },
     {
       "Name": "AliasPart",
       "Settings": {
@@ -831,12 +1295,16 @@
     },
     {
       "Name": "MenuPart",
-      "Settings": {},
+      "Settings": {
+        "ContentPartSettings": {}
+      },
       "ContentPartFieldDefinitionRecords": []
     },
     {
       "Name": "MenuItemPart",
-      "Settings": {},
+      "Settings": {
+        "ContentPartSettings": {}
+      },
       "ContentPartFieldDefinitionRecords": []
     },
     {
@@ -879,7 +1347,9 @@
     },
     {
       "Name": "Blog",
-      "Settings": {},
+      "Settings": {
+        "ContentPartSettings": {}
+      },
       "ContentPartFieldDefinitionRecords": [
         {
           "FieldName": "MediaField",
@@ -906,7 +1376,9 @@
     },
     {
       "Name": "BlogPost",
-      "Settings": {},
+      "Settings": {
+        "ContentPartSettings": {}
+      },
       "ContentPartFieldDefinitionRecords": [
         {
           "FieldName": "TextField",
@@ -951,7 +1423,7 @@
             },
             "ContentIndexSettings": {},
             "TaxonomyFieldSettings": {
-              "TaxonomyContentItemId": "49h6tcwxywwkrz8d78gzh5kdnj"
+              "TaxonomyContentItemId": "435sjy978qx1d2291ykv4tss4e"
             },
             "TaxonomyFieldTagsEditorSettings": {}
           }
@@ -966,7 +1438,7 @@
             },
             "ContentIndexSettings": {},
             "TaxonomyFieldSettings": {
-              "TaxonomyContentItemId": "4xstaa9hw8av11kkemzse3qxmx",
+              "TaxonomyContentItemId": "4gpsa00jyf00r7pn8n33zhv5m3",
               "Unique": true,
               "LeavesOnly": true
             }
@@ -976,7 +1448,9 @@
     },
     {
       "Name": "Article",
-      "Settings": {},
+      "Settings": {
+        "ContentPartSettings": {}
+      },
       "ContentPartFieldDefinitionRecords": [
         {
           "FieldName": "TextField",
@@ -1005,7 +1479,9 @@
     },
     {
       "Name": "Blockquote",
-      "Settings": {},
+      "Settings": {
+        "ContentPartSettings": {}
+      },
       "ContentPartFieldDefinitionRecords": [
         {
           "FieldName": "TextField",
@@ -1023,7 +1499,10 @@
     {
       "Name": "Image",
       "Settings": {
-        "Attachable": true
+        "Attachable": true,
+        "ContentPartSettings": {
+          "Attachable": true
+        }
       },
       "ContentPartFieldDefinitionRecords": [
         {
@@ -1057,7 +1536,9 @@
     },
     {
       "Name": "Paragraph",
-      "Settings": {},
+      "Settings": {
+        "ContentPartSettings": {}
+      },
       "ContentPartFieldDefinitionRecords": [
         {
           "FieldName": "HtmlField",
@@ -1074,7 +1555,9 @@
     },
     {
       "Name": "RawHtml",
-      "Settings": {},
+      "Settings": {
+        "ContentPartSettings": {}
+      },
       "ContentPartFieldDefinitionRecords": [
         {
           "FieldName": "HtmlField",
@@ -1091,7 +1574,9 @@
     },
     {
       "Name": "Category",
-      "Settings": {},
+      "Settings": {
+        "ContentPartSettings": {}
+      },
       "ContentPartFieldDefinitionRecords": [
         {
           "FieldName": "TextField",
@@ -1109,7 +1594,269 @@
           }
         }
       ]
+    },
+    {
+      "Name": "FormPart",
+      "Settings": {
+        "ContentPartSettings": {
+          "Attachable": true,
+          "Description": "Turns your content item into a form."
+        }
+      },
+      "ContentPartFieldDefinitionRecords": []
+    },
+    {
+      "Name": "FormElementPart",
+      "Settings": {
+        "ContentPartSettings": {
+          "Description": "Provides attributes common to all form elements."
+        }
+      },
+      "ContentPartFieldDefinitionRecords": []
+    },
+    {
+      "Name": "FormInputElementPart",
+      "Settings": {
+        "ContentPartSettings": {
+          "Description": "Provides attributes common to all input form elements."
+        }
+      },
+      "ContentPartFieldDefinitionRecords": []
+    },
+    {
+      "Name": "LabelPart",
+      "Settings": {
+        "ContentPartSettings": {
+          "Description": "Provides label properties."
+        }
+      },
+      "ContentPartFieldDefinitionRecords": []
+    },
+    {
+      "Name": "InputPart",
+      "Settings": {
+        "ContentPartSettings": {
+          "Description": "Provides input field properties."
+        }
+      },
+      "ContentPartFieldDefinitionRecords": []
+    },
+    {
+      "Name": "TextAreaPart",
+      "Settings": {
+        "ContentPartSettings": {
+          "Description": "Provides text area properties."
+        }
+      },
+      "ContentPartFieldDefinitionRecords": []
+    },
+    {
+      "Name": "SelectPart",
+      "Settings": {
+        "ContentPartSettings": {
+          "Description": "Provides select field properties."
+        }
+      },
+      "ContentPartFieldDefinitionRecords": []
+    },
+    {
+      "Name": "ButtonPart",
+      "Settings": {
+        "ContentPartSettings": {
+          "Description": "Provides button properties."
+        }
+      },
+      "ContentPartFieldDefinitionRecords": []
+    },
+    {
+      "Name": "ValidationSummaryPart",
+      "Settings": {
+        "ContentPartSettings": {
+          "Description": "Displays a validation summary."
+        }
+      },
+      "ContentPartFieldDefinitionRecords": []
+    },
+    {
+      "Name": "ValidationPart",
+      "Settings": {
+        "ContentPartSettings": {
+          "Description": "Displays a field validation error."
+        }
+      },
+      "ContentPartFieldDefinitionRecords": []
+    },
+    {
+      "Name": "ReCaptchaPart",
+      "Settings": {
+        "ContentPartSettings": {}
+      },
+      "ContentPartFieldDefinitionRecords": []
+    },
+    {
+      "Name": "SocialIcon",
+      "Settings": {
+        "ContentPartSettings": {}
+      },
+      "ContentPartFieldDefinitionRecords": [
+        {
+          "FieldName": "TextField",
+          "Name": "IconClass",
+          "Settings": {
+            "ContentPartFieldSettings": {},
+            "TextFieldSettings": {
+              "Hint": "Select which icon to use for this social site."
+            }
+          }
+        },
+        {
+          "FieldName": "TextField",
+          "Name": "Url",
+          "Settings": {
+            "ContentPartFieldSettings": {},
+            "TextFieldSettings": {
+              "Hint": "The url where the icon will link to.",
+              "Required": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Name": "Register",
+      "Settings": {
+        "ContentPartSettings": {}
+      },
+      "ContentPartFieldDefinitionRecords": [
+        {
+          "FieldName": "TextField",
+          "Name": "Placeholder",
+          "Settings": {
+            "ContentPartFieldSettings": {},
+            "TextFieldSettings": {
+              "Hint": "The text to display in the input field"
+            }
+          }
+        },
+        {
+          "FieldName": "TextField",
+          "Name": "Button",
+          "Settings": {
+            "ContentPartFieldSettings": {},
+            "TextFieldSettings": {
+              "Hint": "Text to display on submit button"
+            }
+          }
+        },
+        {
+          "FieldName": "TextField",
+          "Name": "InputFieldName",
+          "Settings": {
+            "ContentPartFieldSettings": {},
+            "TextFieldSettings": {
+              "Hint": "The name of the input field"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Name": "Account",
+      "Settings": {
+        "ContentPartSettings": {}
+      },
+      "ContentPartFieldDefinitionRecords": [
+        {
+          "FieldName": "TextField",
+          "Name": "Name",
+          "Settings": {
+            "ContentPartFieldSettings": {}
+          }
+        },
+        {
+          "FieldName": "TextField",
+          "Name": "Email",
+          "Settings": {
+            "ContentPartFieldSettings": {}
+          }
+        }
+      ]
+    },
+    {
+      "Name": "User",
+      "Settings": {},
+      "ContentPartFieldDefinitionRecords": [
+        {
+          "FieldName": "TextField",
+          "Name": "Name",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Name"
+            }
+          }
+        },
+        {
+          "FieldName": "TextField",
+          "Name": "Email",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Email"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Name": "TOA",
+      "Settings": {},
+      "ContentPartFieldDefinitionRecords": [
+        {
+          "FieldName": "TextField",
+          "Name": "Description",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Description",
+              "Position": "0"
+            }
+          }
+        },
+        {
+          "FieldName": "ContentPickerField",
+          "Name": "Assignee",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Assignee",
+              "Position": "2"
+            },
+            "ContentPickerFieldSettings": {
+              "Required": true,
+              "DisplayedContentTypes": [
+                "User"
+              ]
+            },
+            "ContentIndexSettings": {}
+          }
+        },
+        {
+          "FieldName": "TextField",
+          "Name": "Stage",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Stage"
+            }
+          }
+        },
+        {
+          "FieldName": "TextField",
+          "Name": "Status",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Status"
+            }
+          }
+        }
+      ]
     }
   ],
-  "Serial": 49
+  "Serial": 895
 }

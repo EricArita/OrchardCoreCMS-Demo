@@ -18,11 +18,17 @@ namespace FuturifySite
         {
             services.AddOrchardCms();
 
-            services.AddSingleton<IIndexProvider, OrderContentItemIndexProvider>();
-            services.AddSingleton<IIndexProvider, OrderDetailContentItemIndexProvider>();
+            services.AddCors();
 
-            services.AddContentPart<OrdersPart>();
-            services.AddContentPart<OrderDetailPart>();
+            //services.AddMvc().AddNewtonsoftJson(options => 
+            //    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+            //);
+
+            //services.AddSingleton<IIndexProvider, OrderContentItemIndexProvider>();
+            //services.AddSingleton<IIndexProvider, OrderDetailContentItemIndexProvider>();
+
+            //services.AddContentPart<OrdersPart>();
+            //services.AddContentPart<OrderDetailPart>();
 
             #region Use this code only when calling InitialDb method in Configure. Because DI will generate an instance of IStore that will be passed as an argument into Configure to initalize Db
             //@"Server=127.0.0.1;Database=futurify_db;Uid=root;Pwd=futurify@2021"
@@ -42,6 +48,11 @@ namespace FuturifySite
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors(builder => builder.AllowAnyOrigin()
+                                          .AllowAnyMethod()
+                                          .AllowAnyHeader()
+            );
 
             app.UseOrchardCore();
 
