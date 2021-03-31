@@ -44,9 +44,7 @@
         {
           "PartName": "MenuItemsListPart",
           "Name": "MenuItemsListPart",
-          "Settings": {
-            "ContentTypePartSettings": {}
-          }
+          "Settings": {}
         }
       ]
     },
@@ -208,9 +206,6 @@
             "ContentTypePartSettings": {
               "Editor": "Wysiwyg",
               "Position": "2"
-            },
-            "HtmlBodyPartSettings": {
-              "SanitizeHtml": false
             }
           }
         },
@@ -393,9 +388,6 @@
           "Settings": {
             "ContentTypePartSettings": {
               "Position": "2"
-            },
-            "HtmlBodyPartSettings": {
-              "SanitizeHtml": false
             }
           }
         },
@@ -734,6 +726,40 @@
       ]
     },
     {
+      "Name": "TOR",
+      "DisplayName": "TOR",
+      "Settings": {
+        "ContentTypeSettings": {
+          "Creatable": true,
+          "Listable": true,
+          "Draftable": true,
+          "Versionable": true,
+          "Securable": true
+        },
+        "FullTextAspectSettings": {}
+      },
+      "ContentTypePartDefinitionRecords": [
+        {
+          "PartName": "TOR",
+          "Name": "TOR",
+          "Settings": {
+            "ContentTypePartSettings": {
+              "Position": "1"
+            }
+          }
+        },
+        {
+          "PartName": "TitlePart",
+          "Name": "TitlePart",
+          "Settings": {
+            "ContentTypePartSettings": {
+              "Position": "0"
+            }
+          }
+        }
+      ]
+    },
+    {
       "Name": "Form",
       "DisplayName": "Form",
       "Settings": {
@@ -745,23 +771,17 @@
         {
           "PartName": "TitlePart",
           "Name": "TitlePart",
-          "Settings": {
-            "ContentTypePartSettings": {}
-          }
+          "Settings": {}
         },
         {
           "PartName": "FormPart",
           "Name": "FormPart",
-          "Settings": {
-            "ContentTypePartSettings": {}
-          }
+          "Settings": {}
         },
         {
           "PartName": "FlowPart",
           "Name": "FlowPart",
-          "Settings": {
-            "ContentTypePartSettings": {}
-          }
+          "Settings": {}
         }
       ]
     },
@@ -777,23 +797,17 @@
         {
           "PartName": "TitlePart",
           "Name": "TitlePart",
-          "Settings": {
-            "ContentTypePartSettings": {}
-          }
+          "Settings": {}
         },
         {
           "PartName": "FormElementPart",
           "Name": "FormElementPart",
-          "Settings": {
-            "ContentTypePartSettings": {}
-          }
+          "Settings": {}
         },
         {
           "PartName": "LabelPart",
           "Name": "LabelPart",
-          "Settings": {
-            "ContentTypePartSettings": {}
-          }
+          "Settings": {}
         }
       ]
     },
@@ -809,23 +823,17 @@
         {
           "PartName": "FormInputElementPart",
           "Name": "FormInputElementPart",
-          "Settings": {
-            "ContentTypePartSettings": {}
-          }
+          "Settings": {}
         },
         {
           "PartName": "FormElementPart",
           "Name": "FormElementPart",
-          "Settings": {
-            "ContentTypePartSettings": {}
-          }
+          "Settings": {}
         },
         {
           "PartName": "InputPart",
           "Name": "InputPart",
-          "Settings": {
-            "ContentTypePartSettings": {}
-          }
+          "Settings": {}
         }
       ]
     },
@@ -841,23 +849,17 @@
         {
           "PartName": "FormInputElementPart",
           "Name": "FormInputElementPart",
-          "Settings": {
-            "ContentTypePartSettings": {}
-          }
+          "Settings": {}
         },
         {
           "PartName": "FormElementPart",
           "Name": "FormElementPart",
-          "Settings": {
-            "ContentTypePartSettings": {}
-          }
+          "Settings": {}
         },
         {
           "PartName": "TextAreaPart",
           "Name": "TextAreaPart",
-          "Settings": {
-            "ContentTypePartSettings": {}
-          }
+          "Settings": {}
         }
       ]
     },
@@ -873,23 +875,17 @@
         {
           "PartName": "FormInputElementPart",
           "Name": "FormInputElementPart",
-          "Settings": {
-            "ContentTypePartSettings": {}
-          }
+          "Settings": {}
         },
         {
           "PartName": "FormElementPart",
           "Name": "FormElementPart",
-          "Settings": {
-            "ContentTypePartSettings": {}
-          }
+          "Settings": {}
         },
         {
           "PartName": "SelectPart",
           "Name": "SelectPart",
-          "Settings": {
-            "ContentTypePartSettings": {}
-          }
+          "Settings": {}
         }
       ]
     },
@@ -905,23 +901,17 @@
         {
           "PartName": "FormInputElementPart",
           "Name": "FormInputElementPart",
-          "Settings": {
-            "ContentTypePartSettings": {}
-          }
+          "Settings": {}
         },
         {
           "PartName": "FormElementPart",
           "Name": "FormElementPart",
-          "Settings": {
-            "ContentTypePartSettings": {}
-          }
+          "Settings": {}
         },
         {
           "PartName": "ButtonPart",
           "Name": "ButtonPart",
-          "Settings": {
-            "ContentTypePartSettings": {}
-          }
+          "Settings": {}
         }
       ]
     },
@@ -937,9 +927,7 @@
         {
           "PartName": "ValidationSummaryPart",
           "Name": "ValidationSummaryPart",
-          "Settings": {
-            "ContentTypePartSettings": {}
-          }
+          "Settings": {}
         }
       ]
     },
@@ -955,217 +943,7 @@
         {
           "PartName": "ValidationPart",
           "Name": "ValidationPart",
-          "Settings": {
-            "ContentTypePartSettings": {}
-          }
-        }
-      ]
-    },
-    {
-      "Name": "ReCaptcha",
-      "DisplayName": "Re Captcha",
-      "Settings": {
-        "ContentTypeSettings": {}
-      },
-      "ContentTypePartDefinitionRecords": [
-        {
-          "PartName": "ReCaptchaPart",
-          "Name": "ReCaptchaPart",
-          "Settings": {
-            "ContentTypePartSettings": {}
-          }
-        }
-      ]
-    },
-    {
-      "Name": "ComingSoon",
-      "DisplayName": "Coming Soon",
-      "Settings": {
-        "ContentTypeSettings": {}
-      },
-      "ContentTypePartDefinitionRecords": [
-        {
-          "PartName": "ComingSoon",
-          "Name": "ComingSoon",
-          "Settings": {
-            "ContentTypePartSettings": {}
-          }
-        },
-        {
-          "PartName": "AutoroutePart",
-          "Name": "AutoroutePart",
-          "Settings": {
-            "ContentTypePartSettings": {},
-            "AutoroutePartSettings": {
-              "AllowCustomPath": false,
-              "Pattern": null,
-              "ShowHomepageOption": true
-            }
-          }
-        },
-        {
-          "PartName": "TitlePart",
-          "Name": "TitlePart",
-          "Settings": {
-            "ContentTypePartSettings": {}
-          }
-        },
-        {
-          "PartName": "BagPart",
-          "Name": "SocialIcons",
-          "Settings": {
-            "ContentTypePartSettings": {},
-            "BagPartSettings": {
-              "ContainedContentTypes": [
-                "SocialIcon"
-              ]
-            }
-          }
-        },
-        {
-          "PartName": "FlowPart",
-          "Name": "FlowPart",
-          "Settings": {
-            "ContentTypePartSettings": {}
-          }
-        },
-        {
-          "PartName": "FormPart",
-          "Name": "FormPart",
-          "Settings": {
-            "ContentTypePartSettings": {}
-          }
-        }
-      ]
-    },
-    {
-      "Name": "SocialIcon",
-      "DisplayName": "Social Icon",
-      "Settings": {
-        "ContentTypeSettings": {}
-      },
-      "ContentTypePartDefinitionRecords": [
-        {
-          "PartName": "SocialIcon",
-          "Name": "SocialIcon",
-          "Settings": {
-            "ContentTypePartSettings": {}
-          }
-        },
-        {
-          "PartName": "TitlePart",
-          "Name": "TitlePart",
-          "Settings": {
-            "ContentTypePartSettings": {}
-          }
-        }
-      ]
-    },
-    {
-      "Name": "Register",
-      "DisplayName": "Register",
-      "Settings": {
-        "ContentTypeSettings": {}
-      },
-      "ContentTypePartDefinitionRecords": [
-        {
-          "PartName": "Register",
-          "Name": "Register",
-          "Settings": {
-            "ContentTypePartSettings": {}
-          }
-        },
-        {
-          "PartName": "HtmlBodyPart",
-          "Name": "HtmlBodyPart",
-          "Settings": {
-            "ContentTypePartSettings": {},
-            "HtmlBodyPartSettings": {
-              "SanitizeHtml": false
-            }
-          }
-        }
-      ]
-    },
-    {
-      "Name": "Account",
-      "DisplayName": "Account",
-      "Settings": {
-        "ContentTypeSettings": {}
-      },
-      "ContentTypePartDefinitionRecords": [
-        {
-          "PartName": "Account",
-          "Name": "Account",
-          "Settings": {
-            "ContentTypePartSettings": {}
-          }
-        },
-        {
-          "PartName": "TitlePart",
-          "Name": "TitlePart",
-          "Settings": {
-            "ContentTypePartSettings": {}
-          }
-        }
-      ]
-    },
-    {
-      "Name": "User",
-      "DisplayName": "User",
-      "Settings": {
-        "ContentTypeSettings": {
-          "Creatable": true,
-          "Listable": true,
-          "Draftable": true,
-          "Versionable": true,
-          "Securable": true
-        }
-      },
-      "ContentTypePartDefinitionRecords": [
-        {
-          "PartName": "User",
-          "Name": "User",
           "Settings": {}
-        },
-        {
-          "PartName": "TitlePart",
-          "Name": "TitlePart",
-          "Settings": {}
-        }
-      ]
-    },
-    {
-      "Name": "TOA",
-      "DisplayName": "TOR",
-      "Settings": {
-        "ContentTypeSettings": {
-          "Creatable": true,
-          "Listable": true,
-          "Draftable": true,
-          "Versionable": true,
-          "Securable": true
-        },
-        "FullTextAspectSettings": {}
-      },
-      "ContentTypePartDefinitionRecords": [
-        {
-          "PartName": "TOA",
-          "Name": "TOA",
-          "Settings": {
-            "ContentTypePartSettings": {
-              "Position": "1"
-            }
-          }
-        },
-        {
-          "PartName": "TitlePart",
-          "Name": "TitlePart",
-          "Settings": {
-            "ContentTypePartSettings": {
-              "Position": "0"
-            }
-          }
         }
       ]
     }
@@ -1295,16 +1073,12 @@
     },
     {
       "Name": "MenuPart",
-      "Settings": {
-        "ContentPartSettings": {}
-      },
+      "Settings": {},
       "ContentPartFieldDefinitionRecords": []
     },
     {
       "Name": "MenuItemPart",
-      "Settings": {
-        "ContentPartSettings": {}
-      },
+      "Settings": {},
       "ContentPartFieldDefinitionRecords": []
     },
     {
@@ -1347,9 +1121,7 @@
     },
     {
       "Name": "Blog",
-      "Settings": {
-        "ContentPartSettings": {}
-      },
+      "Settings": {},
       "ContentPartFieldDefinitionRecords": [
         {
           "FieldName": "MediaField",
@@ -1376,9 +1148,7 @@
     },
     {
       "Name": "BlogPost",
-      "Settings": {
-        "ContentPartSettings": {}
-      },
+      "Settings": {},
       "ContentPartFieldDefinitionRecords": [
         {
           "FieldName": "TextField",
@@ -1423,7 +1193,7 @@
             },
             "ContentIndexSettings": {},
             "TaxonomyFieldSettings": {
-              "TaxonomyContentItemId": "435sjy978qx1d2291ykv4tss4e"
+              "TaxonomyContentItemId": "4cq88mvpbq2ez2333yr4sqjs40"
             },
             "TaxonomyFieldTagsEditorSettings": {}
           }
@@ -1438,7 +1208,7 @@
             },
             "ContentIndexSettings": {},
             "TaxonomyFieldSettings": {
-              "TaxonomyContentItemId": "4gpsa00jyf00r7pn8n33zhv5m3",
+              "TaxonomyContentItemId": "4pe7rmhwj35qmr9rxbwarxnhx5",
               "Unique": true,
               "LeavesOnly": true
             }
@@ -1448,9 +1218,7 @@
     },
     {
       "Name": "Article",
-      "Settings": {
-        "ContentPartSettings": {}
-      },
+      "Settings": {},
       "ContentPartFieldDefinitionRecords": [
         {
           "FieldName": "TextField",
@@ -1479,9 +1247,7 @@
     },
     {
       "Name": "Blockquote",
-      "Settings": {
-        "ContentPartSettings": {}
-      },
+      "Settings": {},
       "ContentPartFieldDefinitionRecords": [
         {
           "FieldName": "TextField",
@@ -1499,10 +1265,7 @@
     {
       "Name": "Image",
       "Settings": {
-        "Attachable": true,
-        "ContentPartSettings": {
-          "Attachable": true
-        }
+        "Attachable": true
       },
       "ContentPartFieldDefinitionRecords": [
         {
@@ -1536,9 +1299,7 @@
     },
     {
       "Name": "Paragraph",
-      "Settings": {
-        "ContentPartSettings": {}
-      },
+      "Settings": {},
       "ContentPartFieldDefinitionRecords": [
         {
           "FieldName": "HtmlField",
@@ -1555,9 +1316,7 @@
     },
     {
       "Name": "RawHtml",
-      "Settings": {
-        "ContentPartSettings": {}
-      },
+      "Settings": {},
       "ContentPartFieldDefinitionRecords": [
         {
           "FieldName": "HtmlField",
@@ -1574,9 +1333,7 @@
     },
     {
       "Name": "Category",
-      "Settings": {
-        "ContentPartSettings": {}
-      },
+      "Settings": {},
       "ContentPartFieldDefinitionRecords": [
         {
           "FieldName": "TextField",
@@ -1591,6 +1348,42 @@
               "Required": true
             },
             "ContentIndexSettings": {}
+          }
+        }
+      ]
+    },
+    {
+      "Name": "TOR",
+      "Settings": {},
+      "ContentPartFieldDefinitionRecords": [
+        {
+          "FieldName": "TextField",
+          "Name": "Description",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Description",
+              "Position": "0"
+            }
+          }
+        },
+        {
+          "FieldName": "TextField",
+          "Name": "Status",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Status",
+              "Position": "1"
+            }
+          }
+        },
+        {
+          "FieldName": "TextField",
+          "Name": "Stage",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Stage",
+              "Position": "2"
+            }
           }
         }
       ]
@@ -1685,178 +1478,7 @@
         }
       },
       "ContentPartFieldDefinitionRecords": []
-    },
-    {
-      "Name": "ReCaptchaPart",
-      "Settings": {
-        "ContentPartSettings": {}
-      },
-      "ContentPartFieldDefinitionRecords": []
-    },
-    {
-      "Name": "SocialIcon",
-      "Settings": {
-        "ContentPartSettings": {}
-      },
-      "ContentPartFieldDefinitionRecords": [
-        {
-          "FieldName": "TextField",
-          "Name": "IconClass",
-          "Settings": {
-            "ContentPartFieldSettings": {},
-            "TextFieldSettings": {
-              "Hint": "Select which icon to use for this social site."
-            }
-          }
-        },
-        {
-          "FieldName": "TextField",
-          "Name": "Url",
-          "Settings": {
-            "ContentPartFieldSettings": {},
-            "TextFieldSettings": {
-              "Hint": "The url where the icon will link to.",
-              "Required": true
-            }
-          }
-        }
-      ]
-    },
-    {
-      "Name": "Register",
-      "Settings": {
-        "ContentPartSettings": {}
-      },
-      "ContentPartFieldDefinitionRecords": [
-        {
-          "FieldName": "TextField",
-          "Name": "Placeholder",
-          "Settings": {
-            "ContentPartFieldSettings": {},
-            "TextFieldSettings": {
-              "Hint": "The text to display in the input field"
-            }
-          }
-        },
-        {
-          "FieldName": "TextField",
-          "Name": "Button",
-          "Settings": {
-            "ContentPartFieldSettings": {},
-            "TextFieldSettings": {
-              "Hint": "Text to display on submit button"
-            }
-          }
-        },
-        {
-          "FieldName": "TextField",
-          "Name": "InputFieldName",
-          "Settings": {
-            "ContentPartFieldSettings": {},
-            "TextFieldSettings": {
-              "Hint": "The name of the input field"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "Name": "Account",
-      "Settings": {
-        "ContentPartSettings": {}
-      },
-      "ContentPartFieldDefinitionRecords": [
-        {
-          "FieldName": "TextField",
-          "Name": "Name",
-          "Settings": {
-            "ContentPartFieldSettings": {}
-          }
-        },
-        {
-          "FieldName": "TextField",
-          "Name": "Email",
-          "Settings": {
-            "ContentPartFieldSettings": {}
-          }
-        }
-      ]
-    },
-    {
-      "Name": "User",
-      "Settings": {},
-      "ContentPartFieldDefinitionRecords": [
-        {
-          "FieldName": "TextField",
-          "Name": "Name",
-          "Settings": {
-            "ContentPartFieldSettings": {
-              "DisplayName": "Name"
-            }
-          }
-        },
-        {
-          "FieldName": "TextField",
-          "Name": "Email",
-          "Settings": {
-            "ContentPartFieldSettings": {
-              "DisplayName": "Email"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "Name": "TOA",
-      "Settings": {},
-      "ContentPartFieldDefinitionRecords": [
-        {
-          "FieldName": "TextField",
-          "Name": "Description",
-          "Settings": {
-            "ContentPartFieldSettings": {
-              "DisplayName": "Description",
-              "Position": "0"
-            }
-          }
-        },
-        {
-          "FieldName": "ContentPickerField",
-          "Name": "Assignee",
-          "Settings": {
-            "ContentPartFieldSettings": {
-              "DisplayName": "Assignee",
-              "Position": "2"
-            },
-            "ContentPickerFieldSettings": {
-              "Required": true,
-              "DisplayedContentTypes": [
-                "User"
-              ]
-            },
-            "ContentIndexSettings": {}
-          }
-        },
-        {
-          "FieldName": "TextField",
-          "Name": "Stage",
-          "Settings": {
-            "ContentPartFieldSettings": {
-              "DisplayName": "Stage"
-            }
-          }
-        },
-        {
-          "FieldName": "TextField",
-          "Name": "Status",
-          "Settings": {
-            "ContentPartFieldSettings": {
-              "DisplayName": "Status"
-            }
-          }
-        }
-      ]
     }
   ],
-  "Serial": 895
+  "Serial": 132
 }
