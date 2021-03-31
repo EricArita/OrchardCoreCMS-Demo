@@ -275,13 +275,13 @@ export class ApiService {
     };
 
     const body = {
-      ContentType: 'TOA',
+      ContentType: 'TOR',
       Latest: true,
       Published: true,
       Owner: 'admin',
       Author: 'admin',
       DisplayText: title,
-      TOA: {
+      TOR: {
         Description: {
           Text: description
         },
@@ -291,29 +291,16 @@ export class ApiService {
         Stage: {
           Text: stage
         },
-        Assignee: {
-          ContentItemIds: [
-            assignee
-          ]
-        }
+        // Assignee: {
+        //   ContentItemIds: [
+        //     assignee
+        //   ]
+        // }
       },
       TitlePart: {
         Title: title
       }
     }
-
     return axios.post(Constants.apiContent, body, { headers });
-  }
-
-  public callN8N(body: any) {
-    const headers = {
-      Accept: 'application/json',
-      'aav-futuriry-auth': 'futurify',
-      'Access-Control-Allow-Origin': '*',
-    };
-
-    return axios.post(Constants.apiN8N, body, { headers }).then(res => {
-      return res;
-    }); 
   }
 }

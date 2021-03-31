@@ -25,7 +25,7 @@ export default class CreateTOR extends Component {
     this.state = {
       title: '',
       description: '',
-      status: 'pending',
+      status: 'Submitted',
       stage: '',
       contentItemId: '',
       assignee: '',
@@ -77,25 +77,12 @@ export default class CreateTOR extends Component {
     const TORObject = {
       title: this.state.title,
       description: this.state.description,
-      assignee: this.state.assignee,
+      assignee: "",
       stage: this.state.stage,
       status: this.state.status
     };
 
     let res = await this.apiService.createTOR(TORObject.title, TORObject.description, TORObject.assignee, TORObject.status, TORObject.stage);      
-    
-    if (res.status === 200) {
-      //call api api to n8n
-      console.log(res.data.ContentItemId);
-      const body = {
-        contentItemId: res.data.ContentItemId,
-        stage: TORObject.stage,
-        status: TORObject.status
-      }
-
-      res = await this.apiService.callN8N(body);
-      console.log(res);
-    }
 
     this.setState({
       title: '',
@@ -128,7 +115,7 @@ export default class CreateTOR extends Component {
           <Form.Control type="text" value={this.state.stage} onChange={this.onChangeTORStage} />
         </Form.Group>
 
-        <Form.Group controlId="Assignee">
+        {/* <Form.Group controlId="Assignee">
           <Form.Label>Assignee</Form.Label>
           <Form.Control onChange={this.onChangeTORAssignee} defaultValue={this.state.assignee} as="select">
             {
@@ -137,11 +124,11 @@ export default class CreateTOR extends Component {
               ))
             }
           </Form.Control>
-        </Form.Group>
+        </Form.Group> */}
 
         <Form.Group controlId="Status">
           <Form.Label>Status</Form.Label>
-          <Form.Control onChange={this.onChangeTORStatus} as="select">
+          <Form.Control onChange={this.onChangeTORStatus} defaultValue={"Submitted"} as="select">
             <option key={1} value={"Pending"}>Pending</option>
             <option key={2} value={"Submitted"}>Submitted</option> 
             <option key={3} value={"Approved"}>Approved</option>
