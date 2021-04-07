@@ -13,11 +13,21 @@ using System;
 using System.Diagnostics;
 using FuturifyModule.Indexes;
 using OrchardCore.ContentManagement.Metadata;
+using Microsoft.AspNetCore.Authorization;
+using OrchardCore.Roles;
+using OrchardCore.Security.Services;
+using OrchardCore.Roles.ViewModels;
+using OrchardCore.Security;
+using Microsoft.AspNetCore.Identity;
+using Newtonsoft.Json;
+using OrchardCore.Data.Migration;
+using OrchardCore.Security.Permissions;
+using System.Security.Claims;
 
 namespace FuturifyModule.Controllers
 {
-    [Produces("application/json")]
     [Route("api/document")]
+    [Authorize(AuthenticationSchemes = "Api"), IgnoreAntiforgeryToken]
     public class DocumentController : Controller
     {
         private readonly IStore _store;
@@ -26,10 +36,19 @@ namespace FuturifyModule.Controllers
         private readonly IOrchardHelper _orchardHelper;
         private readonly IContentDefinitionService _contentDefinitionService;
         private readonly IContentDefinitionManager _contentDefinitionManager;
+        private readonly IAuthorizationService _authorizationService;
+        private readonly IRoleService _roleService;
+        private readonly RoleManager<IRole> _roleManager;
+        private readonly IEnumerable<IPermissionProvider> _permissionProviders;
+
 
         public DocumentController(IStore store, ISession session, IContentManager contentManager, IOrchardHelper orchardHelper, 
                                   IContentDefinitionService contentDefinitionService,
-                                  IContentDefinitionManager contentDefinitionManager)
+                                  IContentDefinitionManager contentDefinitionManager,
+                                  IRoleService roleService,
+                                  RoleManager<IRole> roleManager,
+                                  IEnumerable<IPermissionProvider> permissionProviders,
+                                  IAuthorizationService authorizationService)
         {
             _store = store;
             _session = session;
@@ -37,6 +56,10 @@ namespace FuturifyModule.Controllers
             _orchardHelper = orchardHelper;
             _contentDefinitionService = contentDefinitionService;
             _contentDefinitionManager = contentDefinitionManager;
+            _authorizationService = authorizationService;
+            _roleService = roleService;
+            _roleManager = roleManager;
+            _permissionProviders = permissionProviders;
         }
 
         [HttpGet]
@@ -150,12 +173,174 @@ namespace FuturifyModule.Controllers
             //return View(res);
             return Ok(res);
         }
-    
+
         [HttpGet]
-        [Route("toa/move-to-next-level")]
-        public async Task<IActionResult> MoveToNextLevel(string contentItemId)
+        [Route("roles/all")]
+        public async Task<IActionResult> Index()
         {
-            return null;
+            var roles = await _roleService.GetRolesAsync();
+            var res = roles.Select(BuildRoleEntry).ToList();
+
+            return Ok(res);
+        }
+
+
+        [HttpPost]
+        [Route("role/create-new-role")]
+        //[IgnoreAntiforgeryToken]
+        public async  Task<IActionResult> CreateNewRole([FromBody] CreateRoleViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                model.RoleName = model.RoleName.Trim();
+
+                if (model.RoleName.Contains('/'))
+                {
+                    return BadRequest("Invalid role name");
+                }
+
+                if (await _roleManager.FindByNameAsync(_roleManager.NormalizeKey(model.RoleName)) != null)
+                {
+                    return BadRequest("The role is already used.");
+                }
+            }
+
+            if (ModelState.IsValid)
+            {
+                var role = new Role { RoleName = model.RoleName, RoleDescription = model.RoleDescription };
+                var result = await _roleManager.CreateAsync(role);
+                if (result.Succeeded)
+                {
+                    return Ok();
+                }
+
+                return BadRequest(result.Errors.Select(e => e.Description));
+            }
+
+            return BadRequest();
+        }
+
+        [HttpGet]
+        [Route("role/get-permissions/{roleName}")]
+        public async Task<IActionResult> GetPermissionsOfRole(string roleName)
+        {
+            if (!await _authorizationService.AuthorizeAsync(User, Permissions.ManageRoles))
+            {
+                return Forbid();
+            }
+
+            //var roleName = User.FindFirst(ClaimTypes.Role).Value;
+            var role = (Role)await _roleManager.FindByNameAsync(_roleManager.NormalizeKey(roleName));
+
+            if (role == null)
+            {
+                return NotFound();
+            }
+
+            var installedPermissions = await GetInstalledPermissionsAsync();
+            var allPermissions = installedPermissions.SelectMany(x => x.Value);
+
+            var model = new EditRoleViewModel
+            {
+                Role = role,
+                Name = role.RoleName,
+                RoleDescription = role.RoleDescription,
+                EffectivePermissions = await GetEffectivePermissions(role, allPermissions),
+                RoleCategoryPermissions = installedPermissions
+            };
+
+            return Ok(model);
+        }
+
+        [HttpPost]
+        [Route("role/update")]
+        [IgnoreAntiforgeryToken]
+        public async Task<IActionResult> SaveEditRolePermissions([FromBody] UpdateRoleViewModel viewModel)
+        {
+            if (!await _authorizationService.AuthorizeAsync(User, Permissions.ManageRoles))
+            {
+                return Forbid();
+            }
+
+            var role = (Role)await _roleManager.FindByNameAsync(_roleManager.NormalizeKey(viewModel.RoleName));
+
+            if (role == null)
+            {
+                return NotFound();
+            }
+
+            role.RoleDescription = viewModel.RoleDescription;
+
+            var rolePermissions = new List<RoleClaim>();
+
+            foreach (string permissionName in viewModel.SelectedPermissions)
+            {
+                rolePermissions.Add(new RoleClaim { ClaimType = Permission.ClaimType, ClaimValue = permissionName });
+            }
+
+            role.RoleClaims.RemoveAll(c => c.ClaimType == Permission.ClaimType);
+            role.RoleClaims.AddRange(rolePermissions);
+
+            await _roleManager.UpdateAsync(role);
+
+            return Ok("Save permissions of role successfully");
+        }
+
+        private async Task<IDictionary<string, IEnumerable<Permission>>> GetInstalledPermissionsAsync()
+        {
+            var installedPermissions = new Dictionary<string, IEnumerable<Permission>>();
+            foreach (var permissionProvider in _permissionProviders)
+            {
+                //var feature = _typeFeatureProvider.GetFeatureForDependency(permissionProvider.GetType());
+                //var featureName = feature.Id;
+
+                var permissions = await permissionProvider.GetPermissionsAsync();
+
+                foreach (var permission in permissions)
+                {
+                    var category = String.IsNullOrWhiteSpace(permission.Category) ? "No name" : permission.Category;
+
+                    if (installedPermissions.ContainsKey(category))
+                    {
+                        installedPermissions[category] = installedPermissions[category].Concat(new[] { permission });
+                    }
+                    else
+                    {
+                        installedPermissions.Add(category, new[] { permission });
+                    }
+                }
+            }
+
+            return installedPermissions;
+        }
+
+        private async Task<IEnumerable<string>> GetEffectivePermissions(Role role, IEnumerable<Permission> allPermissions)
+        {
+            var fakeUser = new ClaimsPrincipal(
+              new ClaimsIdentity(new[] { new Claim(ClaimTypes.Role, role.RoleName) },
+              role.RoleName != "Anonymous" ? "FakeAuthenticationType" : null)
+          );
+            var result = new List<string>();
+
+            foreach (var permission in allPermissions)
+            {
+                if (await _authorizationService.AuthorizeAsync(fakeUser, permission))
+                {
+                    result.Add(permission.Name);
+                }
+            }
+
+            return result;
+        }
+
+        private RoleEntry BuildRoleEntry(IRole role)
+        {
+            return new RoleEntry
+            {
+                Name = role.RoleName,
+                Description = role.RoleDescription,
+                Selected = false
+            };
         }
     }
 }

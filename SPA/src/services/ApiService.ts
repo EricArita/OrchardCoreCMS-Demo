@@ -303,4 +303,129 @@ export class ApiService {
     }
     return axios.post(Constants.apiContent, body, { headers });
   }
+
+  public getAllRoles() {
+    return this.authService.getUser().then(user => {
+      if (user && user.access_token) {
+        return this._getRoles(user.access_token).catch(error => {
+          if (error.response.status === 401) {
+            return this.authService.renewToken().then(renewedUser => {
+              return this._getRoles(renewedUser.access_token);
+            });
+          }
+          throw error;
+        });
+      } else if (user) {
+        return this.authService.renewToken().then(renewedUser => {
+          return this._getRoles(renewedUser.access_token);
+        });
+      } else {
+        throw new Error('user is not logged in');
+      }
+    });
+  }
+
+  private _getRoles(token: string) {
+    const headers = {
+      Accept: 'application/json',
+      Authorization: 'Bearer ' + token
+    };
+
+    return axios.get(`${Constants.apiDocument}/roles/all`, { headers });
+  }
+
+  public createRole(roleName: string, roleDescription: string): Promise<any> {
+    return this.authService.getUser().then(user => {
+      if (user && user.access_token) {
+        return this._createRole(roleName, roleDescription, user.access_token).catch(error => {
+          if (error.response.status === 401) {
+            return this.authService.renewToken().then(renewedUser => {
+              return this._createRole(roleName, roleDescription, renewedUser.access_token);
+            });
+          }
+          throw error;
+        });
+      } else if (user) {
+        return this.authService.renewToken().then(renewedUser => {
+          return this._createRole(roleName, roleDescription, renewedUser.access_token);
+        });
+      } else {
+        throw new Error('user is not logged in');
+      }
+    });
+  }
+
+  private _createRole(roleName: string, roleDescription: string, token: string) {
+    const headers = {
+      Accept: 'application/json',
+      Authorization: 'Bearer ' + token
+    };
+
+    const body = {
+      roleName,
+      roleDescription
+    }
+    return axios.post(Constants.apiDocument + "/roles/create-new-role", body, { headers });
+  }
+
+  public getAllPermissions(roleName: string) {
+    return this.authService.getUser().then(user => {
+      if (user && user.access_token) {
+        return this._getAllPermissions(roleName, user.access_token).catch(error => {
+          if (error.response.status === 401) {
+            return this.authService.renewToken().then(renewedUser => {
+              return this._getAllPermissions(roleName, renewedUser.access_token);
+            });
+          }
+          throw error;
+        });
+      } else if (user) {
+        return this.authService.renewToken().then(renewedUser => {
+          return this._getAllPermissions(roleName, renewedUser.access_token);
+        });
+      } else {
+        throw new Error('user is not logged in');
+      }
+    });
+  }
+
+  private _getAllPermissions(roleName: string, token: string) {
+    const headers = {
+      Accept: 'application/json',
+      Authorization: 'Bearer ' + token
+    };
+
+    return axios.get(`${Constants.apiDocument}/role/get-permissions/${roleName}`, { headers });
+  }
+
+  public updateRole(requestBody: any): Promise<any> {
+    return this.authService.getUser().then(user => {
+      if (user && user.access_token) {
+        return this._updateRole(requestBody, user.access_token).catch(error => {
+          if (error.response.status === 401) {
+            return this.authService.renewToken().then(renewedUser => {
+              return this._updateRole(requestBody, renewedUser.access_token);
+            });
+          }
+          throw error;
+        });
+      } else if (user) {
+        return this.authService.renewToken().then(renewedUser => {
+          return this._updateRole(requestBody, renewedUser.access_token);
+        });
+      } else {
+        throw new Error('user is not logged in');
+      }
+    });
+  }
+
+  private _updateRole(requestBody: any, token: string) {
+    const headers = {
+      Accept: 'application/json',
+      Authorization: 'Bearer ' + token
+    };
+
+    console.log(requestBody);
+    return axios.post(Constants.apiDocument + "/role/update", requestBody, { headers });
+  }
 }

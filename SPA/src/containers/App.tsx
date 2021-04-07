@@ -5,7 +5,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import CreateSubscriber from "../components/create-subscriber.component";
 import EditSubscriber from "../components//edit-subscriber.component";
-import SubscriberList from "../components//subscriber-list.component";
+import ListView from "../components/list-view.component";
 import ReportingData from "../components/reporting-data.component";
 import AppContent from "../components/AppContent";
 import Header from "../components/Header";
@@ -13,6 +13,8 @@ import logo from "../logo.svg";
 import "bootstrap/dist/css/bootstrap.css";
 import "./App.css";
 import { AuthService } from "../services/AuthService";
+import CreateRole from "../components/create-role.component";
+import EditRole from "../components/edit-role.component";
 
 class App extends React.Component {
   public authService: AuthService;
@@ -58,9 +60,10 @@ class App extends React.Component {
               <div className="wrapper">
                 <Switch>
                   <Route exact path='/'  />
-                  <Route path="/create-subscriber" component={CreateSubscriber} />
+                  <Route path="/create-subscriber" component={CreateRole} />
                   <Route path="/edit-subscriber/:id" component={EditSubscriber} />
-                  <Route path="/subscriber-list" component={SubscriberList} />
+                  <Route path="/subscriber-list" render={() => <ListView type={'role'} />} />
+                  <Route path="/edit-role/:roleName" component={EditRole} />
                   <Route path="/reporting-data" component={ReportingData} />
                 </Switch>
               </div>

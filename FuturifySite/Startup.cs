@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using OrchardCore.ContentManagement;
+using OrchardCore.Data.Migration;
+using OrchardCore.Security.Permissions;
 using System;
 using YesSql;
 using YesSql.Indexes;
@@ -17,6 +19,7 @@ namespace FuturifySite
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddOrchardCms();
+            services.AddOrchardCore();
 
             services.AddCors();
 

@@ -515,7 +515,9 @@
       "DisplayName": "Image",
       "Settings": {
         "ContentTypeSettings": {
-          "Versionable": true
+          "Versionable": true,
+          "Securable": true,
+          "Stereotype": "Widget"
         }
       },
       "ContentTypePartDefinitionRecords": [
@@ -946,6 +948,490 @@
           "Settings": {}
         }
       ]
+    },
+    {
+      "Name": "HtmlWidget",
+      "DisplayName": "Html",
+      "Settings": {
+        "ContentTypeSettings": {
+          "Draftable": true,
+          "Versionable": true,
+          "Securable": true,
+          "Stereotype": "Widget"
+        }
+      },
+      "ContentTypePartDefinitionRecords": [
+        {
+          "PartName": "HtmlWidget",
+          "Name": "HtmlWidget",
+          "Settings": {
+            "ContentTypePartSettings": {
+              "Position": "0"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Name": "LandingPage",
+      "DisplayName": "Landing Page",
+      "Settings": {
+        "ContentTypeSettings": {
+          "Creatable": true,
+          "Draftable": true,
+          "Versionable": true,
+          "Listable": true,
+          "Securable": true
+        }
+      },
+      "ContentTypePartDefinitionRecords": [
+        {
+          "PartName": "LandingPage",
+          "Name": "LandingPage",
+          "Settings": {
+            "ContentTypePartSettings": {
+              "Position": "8"
+            }
+          }
+        },
+        {
+          "PartName": "AutoroutePart",
+          "Name": "AutoroutePart",
+          "Settings": {
+            "AutoroutePartSettings": {
+              "AllowCustomPath": true,
+              "Pattern": "{{ Model.ContentItem | display_text | slugify }}",
+              "ShowHomepageOption": true
+            },
+            "ContentTypePartSettings": {
+              "Position": "1"
+            }
+          }
+        },
+        {
+          "PartName": "TitlePart",
+          "Name": "TitlePart",
+          "Settings": {
+            "ContentTypePartSettings": {
+              "Position": "0"
+            }
+          }
+        },
+        {
+          "PartName": "BagPart",
+          "Name": "Services",
+          "Settings": {
+            "ContentTypePartSettings": {
+              "DisplayName": "Services",
+              "Description": "Provides a collection behavior for your content item.",
+              "Position": "3"
+            },
+            "BagPartSettings": {
+              "ContainedContentTypes": [
+                "Service"
+              ]
+            }
+          }
+        },
+        {
+          "PartName": "BagPart",
+          "Name": "Portfolio",
+          "Settings": {
+            "BagPartSettings": {
+              "ContainedContentTypes": [
+                "Project"
+              ]
+            },
+            "ContentTypePartSettings": {
+              "DisplayName": "Portfolio",
+              "Description": "Provides a collection behavior for your content item.",
+              "Position": "4"
+            }
+          }
+        },
+        {
+          "PartName": "BagPart",
+          "Name": "About",
+          "Settings": {
+            "ContentTypePartSettings": {
+              "DisplayName": "About",
+              "Description": "A collection of milestones",
+              "Position": "5"
+            },
+            "BagPartSettings": {
+              "ContainedContentTypes": [
+                "Milestone"
+              ]
+            }
+          }
+        },
+        {
+          "PartName": "BagPart",
+          "Name": "Team",
+          "Settings": {
+            "ContentTypePartSettings": {
+              "DisplayName": "Team",
+              "Description": "Team members",
+              "Position": "6"
+            },
+            "BagPartSettings": {
+              "ContainedContentTypes": [
+                "TeamMember"
+              ]
+            }
+          }
+        },
+        {
+          "PartName": "BagPart",
+          "Name": "Clients",
+          "Settings": {
+            "ContentTypePartSettings": {
+              "DisplayName": "Clients",
+              "Description": "Provides a collection behavior for your content item.",
+              "Position": "7"
+            },
+            "BagPartSettings": {
+              "ContainedContentTypes": [
+                "Client"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Name": "Service",
+      "DisplayName": "Service",
+      "Settings": {},
+      "ContentTypePartDefinitionRecords": [
+        {
+          "PartName": "Service",
+          "Name": "Service",
+          "Settings": {
+            "ContentTypePartSettings": {
+              "Position": "2"
+            }
+          }
+        },
+        {
+          "PartName": "HtmlBodyPart",
+          "Name": "HtmlBodyPart",
+          "Settings": {
+            "ContentTypePartSettings": {
+              "Position": "1"
+            }
+          }
+        },
+        {
+          "PartName": "TitlePart",
+          "Name": "TitlePart",
+          "Settings": {
+            "ContentTypePartSettings": {
+              "Position": "0"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Name": "Project",
+      "DisplayName": "Project",
+      "Settings": {},
+      "ContentTypePartDefinitionRecords": [
+        {
+          "PartName": "Project",
+          "Name": "Project",
+          "Settings": {
+            "ContentTypePartSettings": {
+              "Position": "2"
+            }
+          }
+        },
+        {
+          "PartName": "HtmlBodyPart",
+          "Name": "HtmlBodyPart",
+          "Settings": {
+            "ContentTypePartSettings": {
+              "Position": "1"
+            }
+          }
+        },
+        {
+          "PartName": "TitlePart",
+          "Name": "TitlePart",
+          "Settings": {
+            "ContentTypePartSettings": {
+              "Position": "0"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Name": "Milestone",
+      "DisplayName": "Milestone",
+      "Settings": {},
+      "ContentTypePartDefinitionRecords": [
+        {
+          "PartName": "Milestone",
+          "Name": "Milestone",
+          "Settings": {
+            "ContentTypePartSettings": {
+              "Position": "0"
+            }
+          }
+        },
+        {
+          "PartName": "HtmlBodyPart",
+          "Name": "HtmlBodyPart",
+          "Settings": {
+            "ContentTypePartSettings": {
+              "Position": "2"
+            }
+          }
+        },
+        {
+          "PartName": "TitlePart",
+          "Name": "TitlePart",
+          "Settings": {
+            "ContentTypePartSettings": {
+              "Position": "1"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Name": "TeamMember",
+      "DisplayName": "Team Member",
+      "Settings": {},
+      "ContentTypePartDefinitionRecords": [
+        {
+          "PartName": "TeamMember",
+          "Name": "TeamMember",
+          "Settings": {
+            "ContentTypePartSettings": {
+              "Position": "1"
+            }
+          }
+        },
+        {
+          "PartName": "TitlePart",
+          "Name": "TitlePart",
+          "Settings": {
+            "ContentTypePartSettings": {
+              "Position": "0"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Name": "Client",
+      "DisplayName": "Client",
+      "Settings": {},
+      "ContentTypePartDefinitionRecords": [
+        {
+          "PartName": "Client",
+          "Name": "Client",
+          "Settings": {
+            "ContentTypePartSettings": {
+              "Position": "1"
+            }
+          }
+        },
+        {
+          "PartName": "TitlePart",
+          "Name": "TitlePart",
+          "Settings": {
+            "ContentTypePartSettings": {
+              "Position": "0"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Name": "ReCaptcha",
+      "DisplayName": "Re Captcha",
+      "Settings": {
+        "ContentTypeSettings": {
+          "Stereotype": "Widget"
+        }
+      },
+      "ContentTypePartDefinitionRecords": [
+        {
+          "PartName": "ReCaptchaPart",
+          "Name": "ReCaptchaPart",
+          "Settings": {}
+        }
+      ]
+    },
+    {
+      "Name": "ComingSoon",
+      "DisplayName": "Coming Soon",
+      "Settings": {
+        "ContentTypeSettings": {
+          "Creatable": true,
+          "Draftable": true,
+          "Versionable": true,
+          "Listable": true,
+          "Securable": true
+        }
+      },
+      "ContentTypePartDefinitionRecords": [
+        {
+          "PartName": "ComingSoon",
+          "Name": "ComingSoon",
+          "Settings": {
+            "ContentTypePartSettings": {
+              "Position": "4"
+            }
+          }
+        },
+        {
+          "PartName": "AutoroutePart",
+          "Name": "AutoroutePart",
+          "Settings": {
+            "ContentTypePartSettings": {
+              "Position": "1"
+            },
+            "AutoroutePartSettings": {
+              "AllowCustomPath": false,
+              "Pattern": null,
+              "ShowHomepageOption": true
+            }
+          }
+        },
+        {
+          "PartName": "TitlePart",
+          "Name": "TitlePart",
+          "Settings": {
+            "ContentTypePartSettings": {
+              "Position": "0"
+            }
+          }
+        },
+        {
+          "PartName": "BagPart",
+          "Name": "SocialIcons",
+          "Settings": {
+            "ContentTypePartSettings": {
+              "DisplayName": "Social Icons",
+              "Description": "The list of social icons to display in the Coming Soon page",
+              "Position": "5"
+            },
+            "BagPartSettings": {
+              "ContainedContentTypes": [
+                "SocialIcon"
+              ]
+            }
+          }
+        },
+        {
+          "PartName": "FlowPart",
+          "Name": "FlowPart",
+          "Settings": {
+            "ContentTypePartSettings": {
+              "Position": "3"
+            }
+          }
+        },
+        {
+          "PartName": "FormPart",
+          "Name": "FormPart",
+          "Settings": {
+            "ContentTypePartSettings": {
+              "Position": "2"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Name": "SocialIcon",
+      "DisplayName": "Social Icon",
+      "Settings": {
+        "ContentTypeSettings": {}
+      },
+      "ContentTypePartDefinitionRecords": [
+        {
+          "PartName": "SocialIcon",
+          "Name": "SocialIcon",
+          "Settings": {
+            "ContentTypePartSettings": {
+              "Position": "1"
+            }
+          }
+        },
+        {
+          "PartName": "TitlePart",
+          "Name": "TitlePart",
+          "Settings": {
+            "ContentTypePartSettings": {
+              "Position": "0"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Name": "Register",
+      "DisplayName": "Register",
+      "Settings": {
+        "ContentTypeSettings": {
+          "Stereotype": "Widget"
+        }
+      },
+      "ContentTypePartDefinitionRecords": [
+        {
+          "PartName": "Register",
+          "Name": "Register",
+          "Settings": {
+            "ContentTypePartSettings": {
+              "Position": "1"
+            }
+          }
+        },
+        {
+          "PartName": "HtmlBodyPart",
+          "Name": "HtmlBodyPart",
+          "Settings": {
+            "ContentTypePartSettings": {
+              "Position": "0",
+              "Editor": "Wysiwyg"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Name": "StaffAAV",
+      "DisplayName": "Staff A A V",
+      "Settings": {
+        "ContentTypeSettings": {
+          "Creatable": true,
+          "Draftable": true,
+          "Versionable": true,
+          "Securable": true
+        }
+      },
+      "ContentTypePartDefinitionRecords": [
+        {
+          "PartName": "TitlePart",
+          "Name": "TitlePart",
+          "Settings": {
+            "ContentTypePartSettings": {
+              "Description": "Title of this content type"
+            }
+          }
+        },
+        {
+          "PartName": "StaffAAV",
+          "Name": "StaffAAV",
+          "Settings": {}
+        }
+      ]
     }
   ],
   "ContentPartDefinitionRecords": [
@@ -1265,7 +1751,10 @@
     {
       "Name": "Image",
       "Settings": {
-        "Attachable": true
+        "Attachable": true,
+        "ContentPartSettings": {
+          "Attachable": true
+        }
       },
       "ContentPartFieldDefinitionRecords": [
         {
@@ -1478,7 +1967,345 @@
         }
       },
       "ContentPartFieldDefinitionRecords": []
+    },
+    {
+      "Name": "HtmlWidget",
+      "Settings": {},
+      "ContentPartFieldDefinitionRecords": [
+        {
+          "FieldName": "HtmlField",
+          "Name": "Content",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Content",
+              "Editor": "Multiline",
+              "Position": "0"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Name": "MenuItem",
+      "Settings": {},
+      "ContentPartFieldDefinitionRecords": [
+        {
+          "FieldName": "TextField",
+          "Name": "Link",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Link",
+              "Position": "0"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Name": "Service",
+      "Settings": {},
+      "ContentPartFieldDefinitionRecords": [
+        {
+          "FieldName": "TextField",
+          "Name": "IconClass",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Icon Class",
+              "Position": "0"
+            },
+            "TextFieldSettings": {
+              "Hint": "The icon css class from font-awesome. e.g., fa-laptop, fa-shopping-cart, fa-lock"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Name": "Project",
+      "Settings": {},
+      "ContentPartFieldDefinitionRecords": [
+        {
+          "FieldName": "MediaField",
+          "Name": "Image",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Image",
+              "Position": "1"
+            },
+            "MediaFieldSettings": {
+              "Required": true,
+              "Multiple": false
+            }
+          }
+        },
+        {
+          "FieldName": "TextField",
+          "Name": "Category",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Category",
+              "Position": "0"
+            },
+            "TextFieldSettings": {
+              "Hint": "The category that is displayed below the title"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Name": "Milestone",
+      "Settings": {},
+      "ContentPartFieldDefinitionRecords": [
+        {
+          "FieldName": "TextField",
+          "Name": "Date",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Date",
+              "Position": "0"
+            }
+          }
+        },
+        {
+          "FieldName": "MediaField",
+          "Name": "Image",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Image",
+              "Position": "1"
+            },
+            "MediaFieldSettings": {
+              "Required": true,
+              "Multiple": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Name": "TeamMember",
+      "Settings": {},
+      "ContentPartFieldDefinitionRecords": [
+        {
+          "FieldName": "TextField",
+          "Name": "Occupation",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Occupation",
+              "Position": "0"
+            }
+          }
+        },
+        {
+          "FieldName": "MediaField",
+          "Name": "Picture",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Picture",
+              "Position": "1"
+            },
+            "MediaFieldSettings": {
+              "Required": true,
+              "Multiple": false
+            }
+          }
+        },
+        {
+          "FieldName": "TextField",
+          "Name": "Twitter",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Twitter",
+              "Position": "2"
+            },
+            "TextFieldSettings": {
+              "Hint": "Twitter handle, e.g. @BillGates"
+            }
+          }
+        },
+        {
+          "FieldName": "TextField",
+          "Name": "Facebook",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Facebook",
+              "Position": "3"
+            },
+            "TextFieldSettings": {
+              "Hint": "Facebook handle"
+            }
+          }
+        },
+        {
+          "FieldName": "TextField",
+          "Name": "LinkedIn",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "LinkedIn",
+              "Position": "4"
+            },
+            "TextFieldSettings": {
+              "Hint": "LinkedIn handle"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Name": "Client",
+      "Settings": {},
+      "ContentPartFieldDefinitionRecords": [
+        {
+          "FieldName": "MediaField",
+          "Name": "Logo",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Logo",
+              "Position": "0"
+            },
+            "MediaFieldSettings": {
+              "Required": true,
+              "Multiple": false
+            }
+          }
+        },
+        {
+          "FieldName": "TextField",
+          "Name": "Url",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Url",
+              "Position": "1"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Name": "ReCaptchaPart",
+      "Settings": {
+        "ContentPartSettings": {
+          "Description": "Provides captcha properties."
+        }
+      },
+      "ContentPartFieldDefinitionRecords": []
+    },
+    {
+      "Name": "SocialIcon",
+      "Settings": {},
+      "ContentPartFieldDefinitionRecords": [
+        {
+          "FieldName": "TextField",
+          "Name": "IconClass",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Icon Class",
+              "Editor": "IconPicker",
+              "Position": "0"
+            },
+            "TextFieldSettings": {
+              "Hint": "Select which icon to use for this social site."
+            }
+          }
+        },
+        {
+          "FieldName": "TextField",
+          "Name": "Url",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Social Site Url",
+              "Position": "1"
+            },
+            "TextFieldSettings": {
+              "Hint": "The url where the icon will link to.",
+              "Required": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Name": "Register",
+      "Settings": {},
+      "ContentPartFieldDefinitionRecords": [
+        {
+          "FieldName": "TextField",
+          "Name": "Placeholder",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Placeholder",
+              "Position": "0"
+            },
+            "TextFieldSettings": {
+              "Hint": "The text to display in the input field"
+            }
+          }
+        },
+        {
+          "FieldName": "TextField",
+          "Name": "Button",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Button",
+              "Position": "2"
+            },
+            "TextFieldSettings": {
+              "Hint": "Text to display on submit button"
+            }
+          }
+        },
+        {
+          "FieldName": "TextField",
+          "Name": "InputFieldName",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "InputFieldName",
+              "Position": "1"
+            },
+            "TextFieldSettings": {
+              "Hint": "The name of the input field"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Name": "StaffAAV",
+      "Settings": {},
+      "ContentPartFieldDefinitionRecords": [
+        {
+          "FieldName": "TextField",
+          "Name": "FullName",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Full Name",
+              "Description": "Full name of staff"
+            }
+          }
+        },
+        {
+          "FieldName": "NumericField",
+          "Name": "Age",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Age",
+              "Description": "Age of staff"
+            }
+          }
+        },
+        {
+          "FieldName": "TextField",
+          "Name": "DOB",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Birth day",
+              "Description": "Birth day of staff"
+            }
+          }
+        }
+      ]
     }
   ],
-  "Serial": 132
+  "Serial": 193
 }

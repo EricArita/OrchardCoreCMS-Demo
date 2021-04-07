@@ -115,17 +115,6 @@ export default class CreateTOR extends Component {
           <Form.Control type="text" value={this.state.stage} onChange={this.onChangeTORStage} />
         </Form.Group>
 
-        {/* <Form.Group controlId="Assignee">
-          <Form.Label>Assignee</Form.Label>
-          <Form.Control onChange={this.onChangeTORAssignee} defaultValue={this.state.assignee} as="select">
-            {
-              this.state.users.map(user => (
-                <option key={user.contentItemId} value={user.contentItemId}>{user["displayText"]}</option>
-              ))
-            }
-          </Form.Control>
-        </Form.Group> */}
-
         <Form.Group controlId="Status">
           <Form.Label>Status</Form.Label>
           <Form.Control onChange={this.onChangeTORStatus} defaultValue={"Submitted"} as="select">
