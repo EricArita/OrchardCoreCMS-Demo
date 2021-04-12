@@ -273,6 +273,7 @@ namespace FuturifyModule.Controllers
 
             var rolePermissions = new List<RoleClaim>();
 
+            //Current, permissions of role are updated from a UI, maybe we can setup it inside code instead of using UI
             foreach (string permissionName in viewModel.SelectedPermissions)
             {
                 rolePermissions.Add(new RoleClaim { ClaimType = Permission.ClaimType, ClaimValue = permissionName });
