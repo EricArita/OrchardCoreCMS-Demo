@@ -23,6 +23,7 @@ using Newtonsoft.Json;
 using OrchardCore.Data.Migration;
 using OrchardCore.Security.Permissions;
 using System.Security.Claims;
+using OrchardCore.ContentFields;
 
 namespace FuturifyModule.Controllers
 {
@@ -104,6 +105,7 @@ namespace FuturifyModule.Controllers
         {
             var res = new ReportModel();
             var sw = new Stopwatch();
+
 
             #region Report product category that has the most products
             //sw.Start();

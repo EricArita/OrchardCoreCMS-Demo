@@ -1,9 +1,13 @@
-﻿using OrchardCore.ContentManagement.Metadata;
+﻿using AAVModule.Constants;
+using AAVModule.Migrations;
+using AAVModule.Models;
+using OrchardCore.ContentFields.Settings;
+using OrchardCore.ContentManagement.Metadata;
 using OrchardCore.ContentManagement.Metadata.Settings;
 using OrchardCore.Data.Migration;
 using System;
+using System.Collections.Generic;
 using YesSql;
-using YesSql.Sql;
 
 public class Migrations : DataMigration
 {
@@ -19,138 +23,76 @@ public class Migrations : DataMigration
     public int Create()
     {
         //This code will be run when the feature is enabled
-       _contentDefinitionManager.AlterTypeDefinition("StaffAAV", type => type
-               // content items of this type can have drafts
-               .Draftable()
-               // content items versions of this type have saved
-               .Versionable()
-               // this content type appears in the New menu section
-               .Creatable()
-               // permissions can be applied specifically to instances of this type
-               .Securable()
-               .WithPart("TitlePart", part => part.WithDescription("Title of this content type"))
-               .WithPart("StaffAAV")
-       );
-
-        _contentDefinitionManager.AlterPartDefinition("StaffAAV", part => part
-                .WithField("FullName", field => field
-                    .OfType("TextField")
-                    .WithDisplayName("Full Name")
-                    .WithDescription("Full name of staff")
-                )
-                .WithField("Age", field => field
-                    .OfType("NumericField")
-                    .WithDisplayName("Age")
-                    .WithDescription("Age of staff")
-                )
-        );
+        DefineContents(ContentConfig.ContentTypes);
 
         Console.WriteLine("Migration run successfully !!!");
 
         return 1;
     }
 
-    public int UpdateFrom2()
+    private void DefineContents(List<ContentTypeDefinition> typeDefinitions)
     {
-        _contentDefinitionManager.AlterPartDefinition("StaffAAV", part => part
-               .WithField("DOB", field => field
-                   .OfType("DateField")
-                   .WithDisplayName("Birth day")
-                   .WithDescription("Birth day of staff")
-               )
-        );
-
-        return 3;
-    }
-
-    public int UpdateFrom3()
-    {
-        _contentDefinitionManager.AlterPartDefinition("StaffAAV", part => part
-               .WithField("DOB", field => field
-                   .OfType("TextField")
-                   .WithDisplayName("Birth day")
-                   .WithDescription("Birth day of staff")
-               )
-        );
-
-        return 4;
-    }
-
-    public int UpdateFrom4()
-    {
-        _contentDefinitionManager.AlterPartDefinition("StaffAAV", part => part
-               .WithField("DOB", field => field
-                   .OfType("TextField")
-                   .WithDisplayName("Birth day")
-                   .WithDescription("Birth day of staff")
-               )
-        );
-
-        return 5;
-    }
-
-    public int UpdateFrom5()
-    {
-        _contentDefinitionManager.AlterPartDefinition("StaffAAV", part => part
-               .WithField("DOB", field => field
-                   .OfType("TextField")
-                   .WithDisplayName("Birth day")
-                   .WithDescription("Birth day of staff")
-               )
-        );
-
-        return 6;
-    }
-
-    public int UpdateFrom6()
-    {
-
-        _contentDefinitionManager.AlterPartDefinition("StaffAAV", part => part
-               .RemoveField("DOB")
-               .WithField("DOB", field => field
-                   .OfType("TextField")
-                   .WithDisplayName("Birth day")
-                   .WithDescription("Birth day of staff")
-               )
-        );
-
-        return 7;
-    }
-
-    public int UpdateFrom7()
-    {
-        SchemaBuilder.CreateMapIndexTable("StaffAAVIndex", table => table
-                           .Column<DateTime>("DOB")
-                           .Column<string>("FullName")
-                           .Column<int>("Age")
-                      )
-                      .CreateMapIndexTable("StaffAAVIndex_1", table => table
-                           .Column<DateTime>("DOB")
-                           .Column<string>("FullName")
-                           .Column<int>("Age")
-                      );
-
-        return 8;
-    }
-
-    public int UpdateFrom8()
-    {
-        SchemaBuilder.CreateTable("TEST_TABLE", table => table
-                          .Column<DateTime>("DOB")
-                          .Column<string>("FullName")
-                          .Column<int>("AgeEEEEE")
-                     );
-
-        return 9;
-    }
-
-    public int UpdateFrom9()
-    {
-        SchemaBuilder.AlterTable("TEST_TABLE", table =>
+        foreach (var typeDefinition in typeDefinitions)
         {
-            table.AddColumn<string>("HelloWord");
-        });
+            //define a content type with its content parts
+            _contentDefinitionManager.AlterTypeDefinition(typeDefinition.Name, type =>
+            {
+                type = type.Draftable(typeDefinition.Draftable)
+                           .Versionable(typeDefinition.Versionable)
+                           .Creatable(typeDefinition.Creatable)
+                           .Securable(typeDefinition.Securable)
+                           .Listable(typeDefinition.Listable);
 
-        return 10;
+                foreach (var contentPart in typeDefinition.ContentParts)
+                {
+                    type.WithPart(contentPart.Name);
+                }
+            });
+
+            //define content fields for each content parts of the defined content type above
+            foreach (var contentPart in typeDefinition.ContentParts)
+            {
+                _contentDefinitionManager.AlterPartDefinition(contentPart.Name, part =>
+                {
+                    foreach (var fieldDefinition in contentPart.ContentFields)
+                    {
+                        part = part.WithField(fieldDefinition.Name, field =>
+                        {
+                            field.OfType(fieldDefinition.Type);
+
+                            if (!String.IsNullOrEmpty(fieldDefinition.DisplayName))
+                            {
+                                field = field.WithDisplayName(fieldDefinition.DisplayName);
+                            }
+
+                            if (!String.IsNullOrEmpty(fieldDefinition.Description))
+                            {
+                                field = field.WithDescription(fieldDefinition.Description);
+                            }
+
+                            if (!Object.ReferenceEquals(null, fieldDefinition.Settings))
+                            {
+                                if (fieldDefinition.Type == ContentFieldTypes.TextField)
+                                {
+                                    field = field.WithSettings((TextFieldSettings)fieldDefinition.Settings);
+                                }
+                                else if (fieldDefinition.Type == ContentFieldTypes.DateField)
+                                {
+                                    field = field.WithSettings((DateFieldSettings)fieldDefinition.Settings);
+                                }
+                                else if (fieldDefinition.Type == ContentFieldTypes.DateTimeField)
+                                {
+                                    field = field.WithSettings((DateTimeFieldSettings)fieldDefinition.Settings);
+                                }
+                                else if (fieldDefinition.Type == ContentFieldTypes.ContentPickerField)
+                                {
+                                    field = field.WithSettings((ContentPickerFieldSettings)fieldDefinition.Settings);
+                                }
+                            }
+                        });
+                    }
+                });
+            }
+        }
     }
 }

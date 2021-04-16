@@ -1,4 +1,5 @@
-﻿using OrchardCore.ContentManagement;
+﻿using OrchardCore.ContentFields.Fields;
+using OrchardCore.ContentManagement;
 using System;
 using System.Collections.Generic;
 using System.Text;
