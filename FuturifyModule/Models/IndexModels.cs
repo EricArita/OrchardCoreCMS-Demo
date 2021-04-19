@@ -9,13 +9,21 @@ namespace FuturifyModule.Models
     {
         public string ContentItemId { get; set; }
         public string Position { get; set; }
-        public string Description { get; set; }
         public string EmployeeId { get; set; }
         public string DepartmentId { get; set; }
         public string PreviousAssignee { get; set; }
         public string CurrentAssignee { get; set; }
-        public DateTime? ApproveDate { get; set; }
-        public DateTime? RejectDate { get; set; }
+        public DateTime ApproveDate { get; set; }
+        public DateTime RejectDate { get; set; }
         public string Comment { get; set; }
+    }
+
+    public class TaskIndex : MapIndex
+    {
+        public string ContentItemId { get; set; }
+        public string Title { get; set; }
+        public string Assignee { get; set; }
+        public string ParentContentItemId { get; set; }
+        public string ParentContentType { get; set; }
     }
 }

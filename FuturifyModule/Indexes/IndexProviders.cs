@@ -7,25 +7,63 @@ using YesSql.Indexes;
 
 namespace FuturifyModule.Indexes
 {
+
     public class RecruitmentRequestIndexProvider : IndexProvider<ContentItem>
     {
         public override void Describe(DescribeContext<ContentItem> context)
         {
             context.For<RecruitmentRequestIndex>().Map(contentItem =>
             {
-                var content = contentItem.As<RecruitmentRequestPart>();
 
-                return content == null ? null : new RecruitmentRequestIndex
+                var recruitmentrequestPartContent = contentItem.As<RecruitmentRequest>();
+
+                var workflowPartContent = contentItem.As<WorkflowPart>();
+
+                return recruitmentrequestPartContent == null || workflowPartContent == null ? null : new RecruitmentRequestIndex
                 {
                     ContentItemId = contentItem.ContentItemId,
 
-                    Position = content.Position.Text,
+                    Position = recruitmentrequestPartContent.Position.Text,
 
-                    Description = content.Description.Text,
+                    EmployeeId = recruitmentrequestPartContent.EmployeeId.ContentItemIds[0],
 
-                    EmployeeId = content.EmployeeId.ContentItemIds[0],
+                    DepartmentId = recruitmentrequestPartContent.DepartmentId.ContentItemIds[0],
 
-                    DepartmentId = content.DepartmentId.ContentItemIds[0],
+                    PreviousAssignee = workflowPartContent.PreviousAssignee.ContentItemIds[0],
+
+                    CurrentAssignee = workflowPartContent.CurrentAssignee.ContentItemIds[0],
+
+                    ApproveDate = workflowPartContent.ApproveDate.Value.Value,
+
+                    RejectDate = workflowPartContent.RejectDate.Value.Value,
+
+                    Comment = workflowPartContent.Comment.Text,
+
+                };
+            });
+        }
+    }
+
+    public class TaskIndexProvider : IndexProvider<ContentItem>
+    {
+        public override void Describe(DescribeContext<ContentItem> context)
+        {
+            context.For<TaskIndex>().Map(contentItem =>
+            {
+
+                var taskPartContent = contentItem.As<Task>();
+
+                return taskPartContent == null ? null : new TaskIndex
+                {
+                    ContentItemId = contentItem.ContentItemId,
+
+                    Title = taskPartContent.Title.Text,
+
+                    Assignee = taskPartContent.Assignee.ContentItemIds[0],
+
+                    ParentContentItemId = taskPartContent.ParentContentItemId.Text,
+
+                    ParentContentType = taskPartContent.ParentContentType.Text,
 
                 };
             });

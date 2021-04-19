@@ -6,7 +6,7 @@ using System.Text;
 
 namespace FuturifyModule.Models
 {
-    public class RecruitmentRequestPart : ContentPart
+    public class RecruitmentRequest : ContentPart
     {
         public TextField Position { get; set; }
         public TextField Description { get; set; }
@@ -14,13 +14,13 @@ namespace FuturifyModule.Models
         public ContentPickerField DepartmentId { get; set; }
     }
 
-    public class TaskPart : ContentPart
+    public class Task : ContentPart
     {
         public TextField Title { get; set; }
         public TextField Description { get; set; }
         public ContentPickerField Assignee { get; set; }
-        public TextField ContentItemId { get; set; }
-        public TextField ContentType { get; set; }
+        public TextField ParentContentItemId { get; set; }
+        public TextField ParentContentType { get; set; }
     }
 
     public class WorkflowPart : ContentPart

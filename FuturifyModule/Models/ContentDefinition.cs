@@ -14,7 +14,7 @@ namespace AAVModule.Models
         public bool Creatable { get; set; } = true;
         public bool Securable { get; set; } = true;
         public bool Listable { get; set; } = true;
-        public List<ContentPartDefinition> ContentParts { get; set; }
+        public ContentPartDefinition DefaultContentPart { get; set; }
     }
 
     public class ContentPartDefinition

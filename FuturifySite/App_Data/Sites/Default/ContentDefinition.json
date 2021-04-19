@@ -108,46 +108,6 @@
       ]
     },
     {
-      "Name": "Staff",
-      "DisplayName": "Staff",
-      "Settings": {
-        "ContentTypeSettings": {
-          "Creatable": true,
-          "Listable": true,
-          "Draftable": true,
-          "Versionable": true,
-          "Securable": true
-        },
-        "FullTextAspectSettings": {}
-      },
-      "ContentTypePartDefinitionRecords": [
-        {
-          "PartName": "TitlePart",
-          "Name": "TitlePart",
-          "Settings": {
-            "ContentTypePartSettings": {
-              "Description": "Title of this content type",
-              "Position": "0"
-            }
-          }
-        },
-        {
-          "PartName": "Staff",
-          "Name": "Staff",
-          "Settings": {
-            "ContentTypePartSettings": {
-              "Position": "1"
-            }
-          }
-        },
-        {
-          "PartName": "WorkflowPart",
-          "Name": "WorkflowPart",
-          "Settings": {}
-        }
-      ]
-    },
-    {
       "Name": "RecruitmentRequest",
       "DisplayName": "Recruitment Request",
       "Settings": {
@@ -345,23 +305,6 @@
       ]
     },
     {
-      "Name": "Staff",
-      "Settings": {},
-      "ContentPartFieldDefinitionRecords": [
-        {
-          "FieldName": "TextField",
-          "Name": "SomeText",
-          "Settings": {
-            "ContentPartFieldSettings": {
-              "DisplayName": "Some Text",
-              "Description": "Full name of staff",
-              "Position": "0"
-            }
-          }
-        }
-      ]
-    },
-    {
       "Name": "RecruitmentRequest",
       "Settings": {},
       "ContentPartFieldDefinitionRecords": [
@@ -392,11 +335,8 @@
             },
             "ContentPickerFieldSettings": {
               "Required": true,
-              "DisplayedContentTypes": [
-                "Staff"
-              ]
-            },
-            "ContentIndexSettings": {}
+              "DisplayedContentTypes": []
+            }
           }
         },
         {
@@ -408,88 +348,8 @@
             },
             "ContentPickerFieldSettings": {
               "Required": true,
-              "DisplayedContentTypes": [
-                "Staff"
-              ]
-            },
-            "ContentIndexSettings": {}
-          }
-        }
-      ]
-    },
-    {
-      "Name": "WorkflowPart",
-      "Settings": {
-        "ContentPartSettings": {
-          "Attachable": true
-        }
-      },
-      "ContentPartFieldDefinitionRecords": [
-        {
-          "FieldName": "ContentPickerField",
-          "Name": "PreviousAssignee",
-          "Settings": {
-            "ContentPartFieldSettings": {
-              "DisplayName": "Previous Assignee",
-              "Position": "0"
-            },
-            "ContentPickerFieldSettings": {
-              "Required": true,
-              "DisplayedContentTypes": [
-                "Staff"
-              ]
-            },
-            "ContentIndexSettings": {}
-          }
-        },
-        {
-          "FieldName": "ContentPickerField",
-          "Name": "CurrentAssignee",
-          "Settings": {
-            "ContentPartFieldSettings": {
-              "DisplayName": "Current Assignee",
-              "Position": "1"
-            },
-            "ContentPickerFieldSettings": {
-              "Required": true,
-              "DisplayedContentTypes": [
-                "Staff"
-              ]
-            },
-            "ContentIndexSettings": {}
-          }
-        },
-        {
-          "FieldName": "DateField",
-          "Name": "ApproveDate",
-          "Settings": {
-            "ContentPartFieldSettings": {
-              "DisplayName": "Approve Date",
-              "Position": "2"
-            },
-            "DateFieldSettings": {}
-          }
-        },
-        {
-          "FieldName": "DateField",
-          "Name": "RejectDate",
-          "Settings": {
-            "ContentPartFieldSettings": {
-              "DisplayName": "Reject Date",
-              "Position": "3"
-            },
-            "DateFieldSettings": {}
-          }
-        },
-        {
-          "FieldName": "TextField",
-          "Name": "Comment",
-          "Settings": {
-            "ContentPartFieldSettings": {
-              "DisplayName": "Comment",
-              "Position": "4"
-            },
-            "TextFieldSettings": {}
+              "DisplayedContentTypes": []
+            }
           }
         }
       ]
@@ -535,10 +395,10 @@
         },
         {
           "FieldName": "TextField",
-          "Name": "ContentItemId",
+          "Name": "ParentContentItemId",
           "Settings": {
             "ContentPartFieldSettings": {
-              "DisplayName": "ContentItemId"
+              "DisplayName": "ParentContentItemId"
             },
             "TextFieldSettings": {
               "Required": true
@@ -547,10 +407,10 @@
         },
         {
           "FieldName": "TextField",
-          "Name": "ContentType",
+          "Name": "ParentContentType",
           "Settings": {
             "ContentPartFieldSettings": {
-              "DisplayName": "ContentType"
+              "DisplayName": "ParentContentType"
             },
             "TextFieldSettings": {
               "Required": true
@@ -558,7 +418,69 @@
           }
         }
       ]
+    },
+    {
+      "Name": "WorkflowPart",
+      "Settings": {},
+      "ContentPartFieldDefinitionRecords": [
+        {
+          "FieldName": "ContentPickerField",
+          "Name": "PreviousAssignee",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Previous Assignee"
+            },
+            "ContentPickerFieldSettings": {
+              "Required": true,
+              "DisplayedContentTypes": []
+            }
+          }
+        },
+        {
+          "FieldName": "ContentPickerField",
+          "Name": "CurrentAssignee",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Current Assignee"
+            },
+            "ContentPickerFieldSettings": {
+              "Required": true,
+              "DisplayedContentTypes": []
+            }
+          }
+        },
+        {
+          "FieldName": "DateField",
+          "Name": "ApproveDate",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Approve Date"
+            },
+            "DateFieldSettings": {}
+          }
+        },
+        {
+          "FieldName": "DateField",
+          "Name": "RejectDate",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Reject Date"
+            },
+            "DateFieldSettings": {}
+          }
+        },
+        {
+          "FieldName": "TextField",
+          "Name": "Comment",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Comment"
+            },
+            "TextFieldSettings": {}
+          }
+        }
+      ]
     }
   ],
-  "Serial": 85
+  "Serial": 57
 }

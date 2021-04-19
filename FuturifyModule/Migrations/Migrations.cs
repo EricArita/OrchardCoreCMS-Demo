@@ -1,6 +1,7 @@
 ﻿using AAVModule.Constants;
 using AAVModule.Migrations;
 using AAVModule.Models;
+using FuturifyModule.Models;
 using OrchardCore.ContentFields.Settings;
 using OrchardCore.ContentManagement.Metadata;
 using OrchardCore.ContentManagement.Metadata.Settings;
@@ -23,76 +24,89 @@ public class Migrations : DataMigration
     public int Create()
     {
         //This code will be run when the feature is enabled
-        DefineContents(ContentConfig.ContentTypes);
-
+        DefineContents(ContentConfig.ContentTypes, ContentConfig.ContentParts, ContentConfig.ContentPartRegisters);
         Console.WriteLine("Migration run successfully !!!");
 
         return 1;
     }
 
-    private void DefineContents(List<ContentTypeDefinition> typeDefinitions)
+    private void DefineContents(IEnumerable<ContentTypeDefinition> typeDefinitions,
+                                IEnumerable<ContentPartDefinition> partDefinitions,
+                                IEnumerable<ContentPartRegisterModel> contentPartRegisters)
     {
+        //Define all content types with their default content part
         foreach (var typeDefinition in typeDefinitions)
         {
             //define a content type with its content parts
             _contentDefinitionManager.AlterTypeDefinition(typeDefinition.Name, type =>
             {
-                type = type.Draftable(typeDefinition.Draftable)
-                           .Versionable(typeDefinition.Versionable)
-                           .Creatable(typeDefinition.Creatable)
-                           .Securable(typeDefinition.Securable)
-                           .Listable(typeDefinition.Listable);
+                type.Draftable(typeDefinition.Draftable)
+                    .Versionable(typeDefinition.Versionable)
+                    .Creatable(typeDefinition.Creatable)
+                    .Securable(typeDefinition.Securable)
+                    .Listable(typeDefinition.Listable)
+                    .WithPart(typeDefinition.DefaultContentPart.Name);
 
-                foreach (var contentPart in typeDefinition.ContentParts)
+                foreach (var register in contentPartRegisters)
                 {
-                    type.WithPart(contentPart.Name);
-                }
-            });
-
-            //define content fields for each content parts of the defined content type above
-            foreach (var contentPart in typeDefinition.ContentParts)
-            {
-                _contentDefinitionManager.AlterPartDefinition(contentPart.Name, part =>
-                {
-                    foreach (var fieldDefinition in contentPart.ContentFields)
+                    if (register.ContentType == typeDefinition.Name)
                     {
-                        part = part.WithField(fieldDefinition.Name, field =>
+                        type.WithPart($"{register.ContentPart}Part");
+                    }
+                }
+
+                DefineContentPart(typeDefinition.DefaultContentPart);
+            });
+        }
+
+        //Define all content parts
+        foreach (var partDefinition in partDefinitions)
+        {
+            DefineContentPart(partDefinition, false);
+        }
+    }
+
+    private void DefineContentPart(ContentPartDefinition partDefinition, bool isDefaultPart = true)
+    {
+        _contentDefinitionManager.AlterPartDefinition($"{partDefinition.Name}{(isDefaultPart ? "" : "Part")}", part =>
+        {
+            foreach (var fieldDefinition in partDefinition.ContentFields)
+            {
+                part.WithField(fieldDefinition.Name, field =>
+                {
+                    field.OfType(fieldDefinition.Type);
+
+                    if (!String.IsNullOrEmpty(fieldDefinition.DisplayName))
+                    {
+                        field.WithDisplayName(fieldDefinition.DisplayName);
+                    }
+
+                    if (!String.IsNullOrEmpty(fieldDefinition.Description))
+                    {
+                        field.WithDescription(fieldDefinition.Description);
+                    }
+
+                    if (!Object.ReferenceEquals(null, fieldDefinition.Settings))
+                    {
+                        if (fieldDefinition.Type == ContentFieldTypes.TextField)
                         {
-                            field.OfType(fieldDefinition.Type);
-
-                            if (!String.IsNullOrEmpty(fieldDefinition.DisplayName))
-                            {
-                                field = field.WithDisplayName(fieldDefinition.DisplayName);
-                            }
-
-                            if (!String.IsNullOrEmpty(fieldDefinition.Description))
-                            {
-                                field = field.WithDescription(fieldDefinition.Description);
-                            }
-
-                            if (!Object.ReferenceEquals(null, fieldDefinition.Settings))
-                            {
-                                if (fieldDefinition.Type == ContentFieldTypes.TextField)
-                                {
-                                    field = field.WithSettings((TextFieldSettings)fieldDefinition.Settings);
-                                }
-                                else if (fieldDefinition.Type == ContentFieldTypes.DateField)
-                                {
-                                    field = field.WithSettings((DateFieldSettings)fieldDefinition.Settings);
-                                }
-                                else if (fieldDefinition.Type == ContentFieldTypes.DateTimeField)
-                                {
-                                    field = field.WithSettings((DateTimeFieldSettings)fieldDefinition.Settings);
-                                }
-                                else if (fieldDefinition.Type == ContentFieldTypes.ContentPickerField)
-                                {
-                                    field = field.WithSettings((ContentPickerFieldSettings)fieldDefinition.Settings);
-                                }
-                            }
-                        });
+                            field.WithSettings((TextFieldSettings)fieldDefinition.Settings);
+                        }
+                        else if (fieldDefinition.Type == ContentFieldTypes.DateField)
+                        {
+                            field.WithSettings((DateFieldSettings)fieldDefinition.Settings);
+                        }
+                        else if (fieldDefinition.Type == ContentFieldTypes.DateTimeField)
+                        {
+                            field.WithSettings((DateTimeFieldSettings)fieldDefinition.Settings);
+                        }
+                        else if (fieldDefinition.Type == ContentFieldTypes.ContentPickerField)
+                        {
+                            field.WithSettings((ContentPickerFieldSettings)fieldDefinition.Settings);
+                        }
                     }
                 });
             }
-        }
+        });
     }
 }

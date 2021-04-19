@@ -24,10 +24,11 @@ namespace FuturifyModule
             services.AddScoped<IDataMigration, Migrations>();
             services.AddScoped<IPermissionProvider, AAVPermissionProvider>();
             services.AddScoped<IContentHandler, AAVHandler>();
-            services.AddContentPart<RecruitmentRequestPart>();
+            services.AddContentPart<RecruitmentRequest>();
+            services.AddContentPart<Task>();
             services.AddContentPart<WorkflowPart>();
-            services.AddContentPart<TaskPart>();
-            services.AddSingleton<IIndexProvider, RecruitmentRequestIndexProvider>();
+            //services.AddSingleton<IIndexProvider, RecruitmentRequestIndexProvider>();
+            //services.AddSingleton<IIndexProvider, TaskIndexProvider>();
         }
 
         public override void Configure(IApplicationBuilder app, IEndpointRouteBuilder routes, IServiceProvider serviceProvider)
