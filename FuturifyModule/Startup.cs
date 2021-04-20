@@ -1,11 +1,13 @@
 using System;
 using FuturifyModule.Drivers;
+using FuturifyModule.GraphQL;
 using FuturifyModule.Handlers;
 using FuturifyModule.Indexes;
 using FuturifyModule.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.DependencyInjection;
+using OrchardCore.Apis;
 using OrchardCore.ContentManagement;
 using OrchardCore.ContentManagement.Display.ContentDisplay;
 using OrchardCore.ContentManagement.Handlers;
@@ -27,6 +29,8 @@ namespace FuturifyModule
             services.AddContentPart<RecruitmentRequest>();
             services.AddContentPart<Task>();
             services.AddContentPart<WorkflowPart>();
+            services.AddContentPart<ProductPart>();
+            services.AddObjectGraphType<ProductPart, ProductQueryObjectType>();
             //services.AddSingleton<IIndexProvider, RecruitmentRequestIndexProvider>();
             //services.AddSingleton<IIndexProvider, TaskIndexProvider>();
         }

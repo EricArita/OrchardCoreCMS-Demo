@@ -33,6 +33,8 @@ namespace FuturifyModule.Handlers
             var recruitmentRequestContent = context.ContentItem.As<RecruitmentRequest>();
             var workflowContent = context.ContentItem.As<WorkflowPart>();
 
+            if (workflowContent == null || recruitmentRequestContent == null) return;
+
             if (workflowContent.CurrentAssignee.ContentItemIds.Length == 0 || workflowContent.PreviousAssignee.ContentItemIds.Length == 0)
             {
                 return;

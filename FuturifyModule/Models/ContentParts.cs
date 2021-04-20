@@ -31,4 +31,10 @@ namespace FuturifyModule.Models
         public DateField RejectDate { get; set; }
         public TextField Comment { get; set; }
     }
+
+    public class ProductPart : ContentPart
+    {
+        public TextField Name { get; set; }
+        public ContentPickerField CategoryId { get; set; }
+    }
 }
