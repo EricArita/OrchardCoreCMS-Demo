@@ -30,6 +30,8 @@ namespace FuturifyModule.Handlers
 
         public override async System.Threading.Tasks.Task PublishedAsync(PublishContentContext context)
         {
+            if (context.ContentItem.ContentType == "Task") return;
+
             var recruitmentRequestContent = context.ContentItem.As<RecruitmentRequest>();
             var workflowContent = context.ContentItem.As<WorkflowPart>();
 
