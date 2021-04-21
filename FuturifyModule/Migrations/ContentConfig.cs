@@ -81,7 +81,7 @@ namespace AAVModule.Migrations
                                     Name = "Assignee",
                                     Type = ContentFieldTypes.ContentPickerField,
                                     DisplayName = "Assignee",
-                                    Settings = new ContentPickerFieldSettings{ Required = true, Multiple = false }
+                                    Settings = new ContentPickerFieldSettings{ Required = true, Multiple = false, DisplayedContentTypes = new string[] { "Employee" }  }
                                 },
                                 new ContentFieldDefinition
                                 {
