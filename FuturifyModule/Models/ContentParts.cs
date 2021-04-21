@@ -32,7 +32,7 @@ namespace FuturifyModule.Models
         public TextField Comment { get; set; }
     }
 
-    public class ProductPart : ContentPart
+    public class Product : ContentPart
     {
         public TextField Name { get; set; }
         public ContentPickerField CategoryId { get; set; }

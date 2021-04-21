@@ -26,4 +26,11 @@ namespace FuturifyModule.Models
         public string ParentContentItemId { get; set; }
         public string ParentContentType { get; set; }
     }
+
+    public class ProductIndex : MapIndex
+    {
+        public string ContentItemId { get; set; }
+        public string Name { get; set; }
+        public string CategoryId { get; set; }
+    }
 }

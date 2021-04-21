@@ -69,4 +69,25 @@ namespace FuturifyModule.Indexes
             });
         }
     }
+
+    public class ProductIndexProvider : IndexProvider<ContentItem>
+    {
+        public override void Describe(DescribeContext<ContentItem> context)
+        {
+            context.For<ProductIndex>().Map(contentItem =>
+            {
+
+                var productPartContent = contentItem.As<Product>();
+
+                return productPartContent == null ? null : new ProductIndex
+                {
+                    ContentItemId = contentItem.ContentItemId,
+
+                    Name = productPartContent.Name.Text,
+
+                    CategoryId = productPartContent.CategoryId.ContentItemIds[0],
+                };
+            });
+        }
+    }
 }
