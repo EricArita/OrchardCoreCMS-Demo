@@ -85,7 +85,26 @@ namespace FuturifyModule.Indexes
 
                     Name = productPartContent.Name.Text,
 
-                    CategoryId = productPartContent.CategoryId.ContentItemIds[0],
+                    CategoryId = productPartContent.CategoryID.ContentItemIds[0],
+                };
+            });
+        }
+    }
+
+    public class CategoryIndexProvider : IndexProvider<ContentItem>
+    {
+        public override void Describe(DescribeContext<ContentItem> context)
+        {
+            context.For<CategoryIndex>().Map(contentItem =>
+            {
+
+                var categoryPartContent = contentItem.As<Category>();
+
+                return categoryPartContent == null ? null : new CategoryIndex
+                {
+                    ContentItemId = contentItem.ContentItemId,
+
+                    Name = categoryPartContent.Name.Text,
                 };
             });
         }

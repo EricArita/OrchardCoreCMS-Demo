@@ -17,15 +17,15 @@ namespace FuturifySite
 {
     public class Program
     {
-        public static Task Main(string[] args)
+        public static void Main(string[] args)
         {
-            //Console.WriteLine(outputFile);
-            //AutoGenerateIndexModelCode();
-            //AutoGeneratePartModelCode();
-            //AutoGenerateRegisterCode();
-            //();
+            Console.WriteLine(outputFile);
+            AutoGenerateIndexModelCode();
+            AutoGeneratePartModelCode();
+            AutoGenerateRegisterCode();
+            AutoGenerateIndexProviderCode();
 
-            return BuildHost(args).RunAsync();
+            //return BuildHost(args).RunAsync();
         }
 
         public static IHost BuildHost(string[] args)

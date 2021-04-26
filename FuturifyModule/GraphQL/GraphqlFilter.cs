@@ -2,6 +2,7 @@
 using GraphQL.Types;
 using OrchardCore.ContentManagement;
 using OrchardCore.ContentManagement.GraphQL.Queries;
+using OrchardCore.ContentManagement.Records;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,31 +13,30 @@ using Task = System.Threading.Tasks.Task;
 
 namespace FuturifyModule.GraphQL
 {
-    public class AutoroutePartGraphQLFilter : GraphQLFilter<ContentItem>
+    public class CategoryGraphQLFilter : GraphQLFilter<ContentItem>
     {
         public override Task<IQuery<ContentItem>> PreQueryAsync(IQuery<ContentItem> query, ResolveFieldContext context)
         {
-            if (!context.HasArgument("productPart"))
+            if (!context.HasArgument("category"))
             {
                 return Task.FromResult(query);
             }
 
-            var part = context.GetArgument<Product>("productPart");
+            var filterInput = context.GetArgument<CategoryFilterModel>("category");
 
-            if (part == null)
+            if (filterInput == null)
             {
                 return Task.FromResult(query);
             }
 
             var productQuery = query.With<ProductIndex>();
 
-            if (part.CategoryId.ContentItemIds.Length != 0)
+            if (!String.IsNullOrEmpty(filterInput.CategoryId))
             {
-                return Task.FromResult(productQuery.Where(index => index.CategoryId == part.CategoryId.ContentItemIds[0])..ListAsync().Result);
+                return Task.FromResult((IQuery<ContentItem>)productQuery.Where(index => index.CategoryId == filterInput.CategoryId));
             }
 
             return Task.FromResult(query);
         }
     }
-}
 }

@@ -33,4 +33,9 @@ namespace FuturifyModule.Models
         public string Name { get; set; }
         public string CategoryId { get; set; }
     }
+    public class CategoryIndex : MapIndex
+    {
+        public string ContentItemId { get; set; }
+        public string Name { get; set; }
+    }
 }

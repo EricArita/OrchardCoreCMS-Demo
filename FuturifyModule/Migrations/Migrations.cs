@@ -30,6 +30,43 @@ public class Migrations : DataMigration
         return 1;
     }
 
+    public int UpdateFrom1()
+    {
+        SchemaBuilder.CreateMapIndexTable("ProductIndex", table => table
+                            .Column<string>("Name")
+                            .Column<string>("CategoryId")
+                      );
+
+        return 2;
+    }
+
+    public int UpdateFrom2()
+    {
+        SchemaBuilder.AlterTable("ProductIndex", table => table
+                            .AddColumn<string>("ContentItemId")
+                      );
+
+        return 3;
+    }
+
+    public int UpdateFrom3()
+    {
+        SchemaBuilder.CreateMapIndexTable("CategoryIndex", table => table
+                           .Column<string>("Name")
+                     );
+
+        return 4;
+    }
+
+    public int UpdateFrom4()
+    {
+        SchemaBuilder.AlterTable("CategoryIndex", table => table
+                            .AddColumn<string>("ContentItemId")
+                      );
+
+        return 5;
+    }
+
     private void DefineContents(IEnumerable<ContentTypeDefinition> typeDefinitions,
                                 IEnumerable<ContentPartDefinition> partDefinitions,
                                 IEnumerable<ContentPartRegisterModel> contentPartRegisters)

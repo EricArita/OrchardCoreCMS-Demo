@@ -6,13 +6,14 @@ using System.Text;
 
 namespace FuturifyModule.GraphQL
 {
-    public class ProductInputObjectType : InputObjectGraphType<Product>
+    public class CategoryInputObjectGraphType : InputObjectGraphType<CategoryFilterModel>
     {
-        public ProductInputObjectType()
+        public CategoryInputObjectGraphType()
         {
-            Name = "ProductPartInput";
+            Name = "ProductInput";
 
-            Field(x => x.CategoryId.ContentItemIds, type: typeof(ListGraphType<StringGraphType>), nullable: false).Description("the categoryId of the content item to filter");
+            Field(x => x.Name, type: typeof(StringGraphType), nullable: true).Description("the name of category to filter");
+            Field(x => x.CategoryId, type: typeof(StringGraphType), nullable: true).Description("the categoryId to filter");
         }
     }
 }
