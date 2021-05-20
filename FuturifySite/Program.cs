@@ -12,20 +12,20 @@ using OrchardCore.ContentFields.Fields;
 using System.Collections.Generic;
 using AAVModule.Models;
 using System.Linq;
+using OrchardCore.ContentFields.Settings;
 
 namespace FuturifySite
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static Task Main(string[] args)
         {
-            Console.WriteLine(outputFile);
-            AutoGenerateIndexModelCode();
-            AutoGeneratePartModelCode();
-            AutoGenerateRegisterCode();
-            AutoGenerateIndexProviderCode();
+            //AutoGenerateIndexModelCode();
+            //AutoGeneratePartModelCode();
+            //AutoGenerateRegisterCode();
+            //AutoGenerateIndexProviderCode();
 
-            //return BuildHost(args).RunAsync();
+            return BuildHost(args).RunAsync();
         }
 
         public static IHost BuildHost(string[] args)
@@ -40,51 +40,57 @@ namespace FuturifySite
         {
             foreach (var contentType in ContentConfig.ContentTypes)
             {
-                string fieldsTemplate = @$"
+                if (!contentType.InBagPart)
+                {
+                    string fieldsTemplate = @$"
                             public string ContentItemId {{ get; set; }}";
 
-                foreach (var contentField in contentType.DefaultContentPart.ContentFields)
-                {
-                    if (contentField.Name == "Description") continue;
+                    foreach (var contentField in contentType.DefaultContentPart.ContentFields)
+                    {
+                        if (contentField.Name == "Description") continue;
 
-                    string type = "string";
-                    if (contentField.Type == ContentFieldTypes.TextField) type = "string";
-                    else if (contentField.Type == ContentFieldTypes.DateField || contentField.Type == ContentFieldTypes.DateTimeField) type = "DateTime";
-                    else if (contentField.Type == ContentFieldTypes.BooleanField) type = "bool";
-                    else if (contentField.Type == ContentFieldTypes.NumericField) type = "int";
-                    else if (contentField.Type == ContentFieldTypes.ContentPickerField) type = "string";
+                        string type = "string";
+                        if (contentField.Type == ContentFieldTypes.TextField) type = "string";
+                        else if (contentField.Type == ContentFieldTypes.DateField || contentField.Type == ContentFieldTypes.DateTimeField) type = "DateTime";
+                        else if (contentField.Type == ContentFieldTypes.BooleanField) type = "bool";
+                        else if (contentField.Type == ContentFieldTypes.NumericField) type = "int";
+                        else if (contentField.Type == ContentFieldTypes.ContentPickerField) type = "string";
 
-                    fieldsTemplate += @$"
+                        fieldsTemplate += @$"
                             public {type} {contentField.Name} {{ get; set; }}";
-                }
+                    }
 
-                foreach(var reg in ContentConfig.ContentPartRegisters)
-                {
-                    if (reg.ContentType == contentType.Name) {
-                        var contentPart = ContentConfig.ContentParts.FirstOrDefault(x => x.Name == reg.ContentPart);
-
-                        foreach (var contentField in contentPart.ContentFields)
+                    foreach (var reg in ContentConfig.ContentPartRegisters)
+                    {
+                        if (reg.ContentType == contentType.Name)
                         {
-                            if (contentField.Name == "Description") continue;
+                            var contentPart = ContentConfig.ContentParts.FirstOrDefault(x => x.Name == reg.ContentPart);
 
-                            string type = "string";
-                            if (contentField.Type == ContentFieldTypes.TextField) type = "string";
-                            else if (contentField.Type == ContentFieldTypes.DateField || contentField.Type == ContentFieldTypes.DateTimeField) type = "DateTime";
-                            else if (contentField.Type == ContentFieldTypes.BooleanField) type = "bool";
-                            else if (contentField.Type == ContentFieldTypes.NumericField) type = "int";
-                            else if (contentField.Type == ContentFieldTypes.ContentPickerField) type = "string";
+                            if (contentPart == null) continue;
 
-                            fieldsTemplate += @$"
+                            foreach (var contentField in contentPart.ContentFields)
+                            {
+                                if (contentField.Name == "Description") continue;
+
+                                string type = "string";
+                                if (contentField.Type == ContentFieldTypes.TextField) type = "string";
+                                else if (contentField.Type == ContentFieldTypes.DateField || contentField.Type == ContentFieldTypes.DateTimeField) type = "DateTime";
+                                else if (contentField.Type == ContentFieldTypes.BooleanField) type = "bool";
+                                else if (contentField.Type == ContentFieldTypes.NumericField) type = "int";
+                                else if (contentField.Type == ContentFieldTypes.ContentPickerField) type = "string";                              
+
+                                fieldsTemplate += @$"
                             public {type} {contentField.Name} {{ get; set; }}";
+                            }
                         }
                     }
-                }
-              
-                var template = @$"
+
+                    var template = @$"
                         public class {contentType.Name}Index : MapIndex {{" + fieldsTemplate + @"
                         }" + Environment.NewLine;
 
-                File.AppendAllText(outputFile, template);
+                    File.AppendAllText(outputFile, template);
+                }              
             }
 
             File.AppendAllText(outputFile, "---------------------------------------------------------" + Environment.NewLine);
@@ -163,9 +169,12 @@ namespace FuturifySite
 
             foreach (var contentType in ContentConfig.ContentTypes)
             {
-                var template = $"services.AddSingleton<IIndexProvider, {contentType.Name}IndexProvider>();" + Environment.NewLine;
+                if (!contentType.InBagPart)
+                {
+                    var template = $"services.AddSingleton<IIndexProvider, {contentType.Name}IndexProvider>();" + Environment.NewLine;
 
-                File.AppendAllText(outputFile, template);
+                    File.AppendAllText(outputFile, template);
+                }          
             }
 
             File.AppendAllText(outputFile, "---------------------------------------------------------" + Environment.NewLine);
@@ -175,55 +184,65 @@ namespace FuturifySite
         {
             foreach (var contentType in ContentConfig.ContentTypes)
             {
-                var fieldsTemplate = "";
-                var asPartContent = @$"
+                if (!contentType.InBagPart)
+                {
+                    var fieldsTemplate = "";
+                    var asPartContent = @$"
                                var {contentType.DefaultContentPart.Name.ToLower()}PartContent = contentItem.As<{contentType.DefaultContentPart.Name}>();" + Environment.NewLine;
-                var nullContentCondition = $@"{contentType.DefaultContentPart.Name.ToLower()}PartContent == null";
+                    var nullContentCondition = $@"{contentType.DefaultContentPart.Name.ToLower()}PartContent == null";
 
-                foreach (var contentField in contentType.DefaultContentPart.ContentFields)
-                {
-                    if (contentField.Name == "Description") continue;
-                   
-                    string type = "Text";
-                    if (contentField.Type == ContentFieldTypes.TextField) type = "Text";
-                    else if (contentField.Type == ContentFieldTypes.DateField || contentField.Type == ContentFieldTypes.DateTimeField) type = "Value.Value";
-                    else if (contentField.Type == ContentFieldTypes.BooleanField) type = "Value";
-                    else if (contentField.Type == ContentFieldTypes.NumericField) type = "Value.Value";
-                    else if (contentField.Type == ContentFieldTypes.ContentPickerField) type = "ContentItemIds";
-
-                    fieldsTemplate += @$"
-                                    {contentField.Name} = " + (contentField.Type == ContentFieldTypes.NumericField ? "(int)" : "") 
-                                      + $"{contentType.DefaultContentPart.Name.ToLower()}PartContent.{contentField.Name}.{type}" + (contentField.Type == ContentFieldTypes.ContentPickerField ? "[0]," : ",") + Environment.NewLine;
-                }
-
-                foreach (var reg in ContentConfig.ContentPartRegisters)
-                {
-                    if (reg.ContentType == contentType.Name)
+                    foreach (var contentField in contentType.DefaultContentPart.ContentFields)
                     {
-                        var contentPart = ContentConfig.ContentParts.FirstOrDefault(x => x.Name == reg.ContentPart);
-                        asPartContent += @$"
-                               var {contentPart.Name.ToLower()}PartContent = contentItem.As<{contentPart.Name}Part>();" + Environment.NewLine;
-                        nullContentCondition += $" || {contentPart.Name.ToLower()}PartContent == null";
+                        if (contentField.Name == "Description") continue;
 
-                        foreach (var contentField in contentPart.ContentFields)
+                        string type = "Text";
+                        if (contentField.Type == ContentFieldTypes.TextField) type = "Text";
+                        else if (contentField.Type == ContentFieldTypes.DateField || contentField.Type == ContentFieldTypes.DateTimeField) type = "Value.Value";
+                        else if (contentField.Type == ContentFieldTypes.BooleanField) type = "Value";
+                        else if (contentField.Type == ContentFieldTypes.NumericField) type = "Value.Value";
+                        else if (contentField.Type == ContentFieldTypes.ContentPickerField) type = "ContentItemIds";
+
+                        fieldsTemplate += @$"
+                                    {contentField.Name} = "
+                                        + (contentField.Type == ContentFieldTypes.NumericField ? "(int)" : "")
+                                        + (type == "ContentItemIds" && ((ContentPickerFieldSettings)contentField.Settings).Multiple ? $"string.Join(\".\", {contentType.DefaultContentPart.Name.ToLower()}PartContent.{contentField.Name}.{type})"
+                                                                                                                                    : $"{contentType.DefaultContentPart.Name.ToLower()}PartContent.{contentField.Name}.{type}")
+                                        + (type != "ContentItemIds" || ((ContentPickerFieldSettings)contentField.Settings).Multiple ? "," : "[0],") 
+                                        + Environment.NewLine;
+                    }
+
+                    foreach (var reg in ContentConfig.ContentPartRegisters)
+                    {
+                        if (reg.ContentType == contentType.Name)
                         {
-                            if (contentField.Name == "Description") continue;
+                            var contentPart = ContentConfig.ContentParts.FirstOrDefault(x => x.Name == reg.ContentPart);
 
-                            string type = "Text";
-                            if (contentField.Type == ContentFieldTypes.TextField) type = "Text";
-                            else if (contentField.Type == ContentFieldTypes.DateField || contentField.Type == ContentFieldTypes.DateTimeField) type = "Value.Value";
-                            else if (contentField.Type == ContentFieldTypes.BooleanField) type = "Value";
-                            else if (contentField.Type == ContentFieldTypes.NumericField) type = "Value.Value";
-                            else if (contentField.Type == ContentFieldTypes.ContentPickerField) type = "ContentItemIds";
+                            if (contentPart == null) continue;
 
-                            fieldsTemplate += @$"
+                            asPartContent += @$"
+                               var {contentPart.Name.ToLower()}PartContent = contentItem.As<{contentPart.Name}Part>();" + Environment.NewLine;
+                            nullContentCondition += $" || {contentPart.Name.ToLower()}PartContent == null";
+
+                            foreach (var contentField in contentPart.ContentFields)
+                            {
+                                if (contentField.Name == "Description") continue;
+
+                                string type = "Text";
+                                if (contentField.Type == ContentFieldTypes.TextField) type = "Text";
+                                else if (contentField.Type == ContentFieldTypes.DateField || contentField.Type == ContentFieldTypes.DateTimeField) type = "Value.Value";
+                                else if (contentField.Type == ContentFieldTypes.BooleanField) type = "Value";
+                                else if (contentField.Type == ContentFieldTypes.NumericField) type = "Value.Value";
+                                else if (contentField.Type == ContentFieldTypes.ContentPickerField) type = "ContentItemIds";
+
+                                fieldsTemplate += @$"
                                     {contentField.Name} = " + (contentField.Type == ContentFieldTypes.NumericField ? "(int)" : "")
-                                     + $"{contentPart.Name.ToLower()}PartContent.{contentField.Name}.{type}" + (contentField.Type == ContentFieldTypes.ContentPickerField ? "[0]," : ",") + Environment.NewLine;
+                                         + $"{contentPart.Name.ToLower()}PartContent.{contentField.Name}.{type}" 
+                                         + (type != "ContentItemIds" || (type == "ContentItemIds" && ((ContentPickerFieldSettings)contentField.Settings).Multiple) ? "," : "[0],") + Environment.NewLine;
+                            }
                         }
                     }
-                }
 
-                var template = @$"
+                    var template = @$"
                     public class {contentType.Name}IndexProvider : IndexProvider<ContentItem> {{
                         public override void Describe(DescribeContext<ContentItem> context)
                         {{
@@ -240,7 +259,8 @@ namespace FuturifySite
                     }}" + Environment.NewLine;
 
 
-                File.AppendAllText(outputFile, template);
+                    File.AppendAllText(outputFile, template);
+                }           
             }
 
             File.AppendAllText(outputFile, "---------------------------------------------------------" + Environment.NewLine);

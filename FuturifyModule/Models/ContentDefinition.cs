@@ -14,6 +14,7 @@ namespace AAVModule.Models
         public bool Creatable { get; set; } = true;
         public bool Securable { get; set; } = true;
         public bool Listable { get; set; } = true;
+        public bool InBagPart { get; set; } = false;
         public ContentPartDefinition DefaultContentPart { get; set; }
     }
 

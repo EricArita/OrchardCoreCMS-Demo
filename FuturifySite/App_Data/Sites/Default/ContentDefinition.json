@@ -108,6 +108,171 @@
       ]
     },
     {
+      "Name": "Assest",
+      "DisplayName": "Assest",
+      "Settings": {
+        "ContentTypeSettings": {
+          "Creatable": true,
+          "Listable": true,
+          "Draftable": true,
+          "Versionable": true,
+          "Securable": true
+        }
+      },
+      "ContentTypePartDefinitionRecords": [
+        {
+          "PartName": "Assest",
+          "Name": "Assest",
+          "Settings": {}
+        }
+      ]
+    },
+    {
+      "Name": "AssessmentCriteria",
+      "DisplayName": "Assessment Criteria",
+      "Settings": {
+        "ContentTypeSettings": {
+          "Creatable": true,
+          "Listable": true,
+          "Draftable": true,
+          "Versionable": true,
+          "Securable": true
+        }
+      },
+      "ContentTypePartDefinitionRecords": [
+        {
+          "PartName": "AssessmentCriteria",
+          "Name": "AssessmentCriteria",
+          "Settings": {}
+        }
+      ]
+    },
+    {
+      "Name": "AssessmentCriteriaTemplate",
+      "DisplayName": "Assessment Criteria Template",
+      "Settings": {
+        "ContentTypeSettings": {
+          "Creatable": true,
+          "Listable": true,
+          "Draftable": true,
+          "Versionable": true,
+          "Securable": true
+        }
+      },
+      "ContentTypePartDefinitionRecords": [
+        {
+          "PartName": "AssessmentCriteriaTemplate",
+          "Name": "AssessmentCriteriaTemplate",
+          "Settings": {}
+        }
+      ]
+    },
+    {
+      "Name": "Candidate",
+      "DisplayName": "Candidate",
+      "Settings": {
+        "ContentTypeSettings": {
+          "Creatable": true,
+          "Listable": true,
+          "Draftable": true,
+          "Versionable": true,
+          "Securable": true
+        }
+      },
+      "ContentTypePartDefinitionRecords": [
+        {
+          "PartName": "Candidate",
+          "Name": "Candidate",
+          "Settings": {}
+        },
+        {
+          "PartName": "BagPart",
+          "Name": "BagPart",
+          "Settings": {}
+        }
+      ]
+    },
+    {
+      "Name": "ComputerProficiency",
+      "DisplayName": "Computer Proficiency",
+      "Settings": {
+        "ContentTypeSettings": {
+          "Creatable": true,
+          "Listable": true,
+          "Draftable": true,
+          "Versionable": true,
+          "Securable": true
+        }
+      },
+      "ContentTypePartDefinitionRecords": [
+        {
+          "PartName": "ComputerProficiency",
+          "Name": "ComputerProficiency",
+          "Settings": {}
+        }
+      ]
+    },
+    {
+      "Name": "Comment",
+      "DisplayName": "Comment",
+      "Settings": {
+        "ContentTypeSettings": {
+          "Creatable": true,
+          "Listable": true,
+          "Draftable": true,
+          "Versionable": true,
+          "Securable": true
+        }
+      },
+      "ContentTypePartDefinitionRecords": [
+        {
+          "PartName": "Comment",
+          "Name": "Comment",
+          "Settings": {}
+        }
+      ]
+    },
+    {
+      "Name": "Department",
+      "DisplayName": "Department",
+      "Settings": {
+        "ContentTypeSettings": {
+          "Creatable": true,
+          "Listable": true,
+          "Draftable": true,
+          "Versionable": true,
+          "Securable": true
+        }
+      },
+      "ContentTypePartDefinitionRecords": [
+        {
+          "PartName": "Department",
+          "Name": "Department",
+          "Settings": {}
+        }
+      ]
+    },
+    {
+      "Name": "Education",
+      "DisplayName": "Education",
+      "Settings": {
+        "ContentTypeSettings": {
+          "Creatable": true,
+          "Listable": true,
+          "Draftable": true,
+          "Versionable": true,
+          "Securable": true
+        }
+      },
+      "ContentTypePartDefinitionRecords": [
+        {
+          "PartName": "Education",
+          "Name": "Education",
+          "Settings": {}
+        }
+      ]
+    },
+    {
       "Name": "Employee",
       "DisplayName": "Employee",
       "Settings": {
@@ -117,24 +282,19 @@
           "Draftable": true,
           "Versionable": true,
           "Securable": true
-        },
-        "FullTextAspectSettings": {}
+        }
       },
       "ContentTypePartDefinitionRecords": [
         {
           "PartName": "Employee",
           "Name": "Employee",
-          "Settings": {
-            "ContentTypePartSettings": {
-              "Position": "0"
-            }
-          }
+          "Settings": {}
         }
       ]
     },
     {
-      "Name": "RecruitmentRequest",
-      "DisplayName": "Recruitment Request",
+      "Name": "EmploymentRecord",
+      "DisplayName": "Employment Record",
       "Settings": {
         "ContentTypeSettings": {
           "Creatable": true,
@@ -146,13 +306,263 @@
       },
       "ContentTypePartDefinitionRecords": [
         {
-          "PartName": "RecruitmentRequest",
-          "Name": "RecruitmentRequest",
+          "PartName": "EmploymentRecord",
+          "Name": "EmploymentRecord",
+          "Settings": {}
+        }
+      ]
+    },
+    {
+      "Name": "Family",
+      "DisplayName": "Family",
+      "Settings": {
+        "ContentTypeSettings": {
+          "Creatable": true,
+          "Listable": true,
+          "Draftable": true,
+          "Versionable": true,
+          "Securable": true
+        }
+      },
+      "ContentTypePartDefinitionRecords": [
+        {
+          "PartName": "Family",
+          "Name": "Family",
+          "Settings": {}
+        }
+      ]
+    },
+    {
+      "Name": "InterviewAssessment",
+      "DisplayName": "Interview Assessment",
+      "Settings": {
+        "ContentTypeSettings": {
+          "Creatable": true,
+          "Listable": true,
+          "Draftable": true,
+          "Versionable": true,
+          "Securable": true
+        }
+      },
+      "ContentTypePartDefinitionRecords": [
+        {
+          "PartName": "InterviewAssessment",
+          "Name": "InterviewAssessment",
           "Settings": {}
         },
         {
-          "PartName": "WorkflowPart",
-          "Name": "WorkflowPart",
+          "PartName": "BagPart",
+          "Name": "BagPart",
+          "Settings": {}
+        }
+      ]
+    },
+    {
+      "Name": "JobDescription",
+      "DisplayName": "Job Description",
+      "Settings": {
+        "ContentTypeSettings": {
+          "Creatable": true,
+          "Listable": true,
+          "Draftable": true,
+          "Versionable": true,
+          "Securable": true
+        }
+      },
+      "ContentTypePartDefinitionRecords": [
+        {
+          "PartName": "JobDescription",
+          "Name": "JobDescription",
+          "Settings": {}
+        }
+      ]
+    },
+    {
+      "Name": "Language",
+      "DisplayName": "Language",
+      "Settings": {
+        "ContentTypeSettings": {
+          "Creatable": true,
+          "Listable": true,
+          "Draftable": true,
+          "Versionable": true,
+          "Securable": true
+        }
+      },
+      "ContentTypePartDefinitionRecords": [
+        {
+          "PartName": "Language",
+          "Name": "Language",
+          "Settings": {}
+        }
+      ]
+    },
+    {
+      "Name": "Media",
+      "DisplayName": "Media",
+      "Settings": {
+        "ContentTypeSettings": {
+          "Creatable": true,
+          "Listable": true,
+          "Draftable": true,
+          "Versionable": true,
+          "Securable": true
+        }
+      },
+      "ContentTypePartDefinitionRecords": [
+        {
+          "PartName": "Media",
+          "Name": "Media",
+          "Settings": {}
+        }
+      ]
+    },
+    {
+      "Name": "Recruitment",
+      "DisplayName": "Recruitment",
+      "Settings": {
+        "ContentTypeSettings": {
+          "Creatable": true,
+          "Listable": true,
+          "Draftable": true,
+          "Versionable": true,
+          "Securable": true
+        }
+      },
+      "ContentTypePartDefinitionRecords": [
+        {
+          "PartName": "Recruitment",
+          "Name": "Recruitment",
+          "Settings": {}
+        },
+        {
+          "PartName": "BagPart",
+          "Name": "BagPart",
+          "Settings": {}
+        }
+      ]
+    },
+    {
+      "Name": "RecruitmentCheckList",
+      "DisplayName": "Recruitment Check List",
+      "Settings": {
+        "ContentTypeSettings": {
+          "Creatable": true,
+          "Listable": true,
+          "Draftable": true,
+          "Versionable": true,
+          "Securable": true
+        }
+      },
+      "ContentTypePartDefinitionRecords": [
+        {
+          "PartName": "RecruitmentCheckList",
+          "Name": "RecruitmentCheckList",
+          "Settings": {}
+        }
+      ]
+    },
+    {
+      "Name": "RecruitmentCheckListTemplate",
+      "DisplayName": "Recruitment Check List Template",
+      "Settings": {
+        "ContentTypeSettings": {
+          "Creatable": true,
+          "Listable": true,
+          "Draftable": true,
+          "Versionable": true,
+          "Securable": true
+        }
+      },
+      "ContentTypePartDefinitionRecords": [
+        {
+          "PartName": "RecruitmentCheckListTemplate",
+          "Name": "RecruitmentCheckListTemplate",
+          "Settings": {}
+        }
+      ]
+    },
+    {
+      "Name": "References",
+      "DisplayName": "References",
+      "Settings": {
+        "ContentTypeSettings": {
+          "Creatable": true,
+          "Listable": true,
+          "Draftable": true,
+          "Versionable": true,
+          "Securable": true
+        }
+      },
+      "ContentTypePartDefinitionRecords": [
+        {
+          "PartName": "References",
+          "Name": "References",
+          "Settings": {}
+        }
+      ]
+    },
+    {
+      "Name": "ReferenceCheck",
+      "DisplayName": "Reference Check",
+      "Settings": {
+        "ContentTypeSettings": {
+          "Creatable": true,
+          "Listable": true,
+          "Draftable": true,
+          "Versionable": true,
+          "Securable": true
+        }
+      },
+      "ContentTypePartDefinitionRecords": [
+        {
+          "PartName": "ReferenceCheck",
+          "Name": "ReferenceCheck",
+          "Settings": {}
+        }
+      ]
+    },
+    {
+      "Name": "Review",
+      "DisplayName": "Review",
+      "Settings": {
+        "ContentTypeSettings": {
+          "Creatable": true,
+          "Listable": true,
+          "Draftable": true,
+          "Versionable": true,
+          "Securable": true
+        }
+      },
+      "ContentTypePartDefinitionRecords": [
+        {
+          "PartName": "Review",
+          "Name": "Review",
+          "Settings": {}
+        },
+        {
+          "PartName": "BagPart",
+          "Name": "BagPart",
+          "Settings": {}
+        }
+      ]
+    },
+    {
+      "Name": "ReviewApproverHistory",
+      "DisplayName": "Review Approver History",
+      "Settings": {
+        "ContentTypeSettings": {
+          "Creatable": true,
+          "Listable": true,
+          "Draftable": true,
+          "Versionable": true,
+          "Securable": true
+        }
+      },
+      "ContentTypePartDefinitionRecords": [
+        {
+          "PartName": "ReviewApproverHistory",
+          "Name": "ReviewApproverHistory",
           "Settings": {}
         }
       ]
@@ -174,70 +584,6 @@
           "PartName": "Task",
           "Name": "Task",
           "Settings": {}
-        }
-      ]
-    },
-    {
-      "Name": "Category",
-      "DisplayName": "Category",
-      "Settings": {
-        "ContentTypeSettings": {
-          "Creatable": true,
-          "Listable": true,
-          "Draftable": true,
-          "Versionable": true,
-          "Securable": true
-        }
-      },
-      "ContentTypePartDefinitionRecords": [
-        {
-          "PartName": "Category",
-          "Name": "Category",
-          "Settings": {}
-        },
-        {
-          "PartName": "TitlePart",
-          "Name": "TitlePart",
-          "Settings": {}
-        }
-      ]
-    },
-    {
-      "Name": "Product",
-      "DisplayName": "Product",
-      "Settings": {
-        "ContentTypeSettings": {
-          "Creatable": true,
-          "Listable": true,
-          "Draftable": true,
-          "Versionable": true,
-          "Securable": true
-        },
-        "FullTextAspectSettings": {}
-      },
-      "ContentTypePartDefinitionRecords": [
-        {
-          "PartName": "Product",
-          "Name": "Product",
-          "Settings": {
-            "ContentTypePartSettings": {
-              "Position": "1"
-            }
-          }
-        },
-        {
-          "PartName": "TitlePart",
-          "Name": "TitlePart",
-          "Settings": {
-            "ContentTypePartSettings": {
-              "Position": "0"
-            },
-            "GraphQLContentTypePartSettings": {
-              "Collapse": true
-            },
-            "ContentIndexSettings": {},
-            "TitlePartSettings": {}
-          }
         }
       ]
     }
@@ -394,63 +740,487 @@
       ]
     },
     {
-      "Name": "WorkflowPart",
+      "Name": "Assest",
       "Settings": {},
       "ContentPartFieldDefinitionRecords": [
         {
-          "FieldName": "ContentPickerField",
-          "Name": "PreviousAssignee",
+          "FieldName": "TextField",
+          "Name": "Name",
           "Settings": {
             "ContentPartFieldSettings": {
-              "DisplayName": "Previous Assignee"
+              "DisplayName": "Content"
             },
-            "ContentPickerFieldSettings": {
-              "Required": true,
-              "DisplayedContentTypes": []
+            "TextFieldSettings": {
+              "Required": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Name": "AssessmentCriteria",
+      "Settings": {},
+      "ContentPartFieldDefinitionRecords": [
+        {
+          "FieldName": "TextField",
+          "Name": "Note",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Note"
+            },
+            "TextFieldSettings": {}
+          }
+        },
+        {
+          "FieldName": "NumericField",
+          "Name": "Point",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Point"
             }
           }
         },
         {
           "FieldName": "ContentPickerField",
-          "Name": "CurrentAssignee",
+          "Name": "AssessmentCriteriaTemplate",
           "Settings": {
             "ContentPartFieldSettings": {
-              "DisplayName": "Current Assignee"
+              "DisplayName": "AssessmentCriteriaTemplate"
             },
             "ContentPickerFieldSettings": {
-              "Required": true,
-              "DisplayedContentTypes": []
+              "Multiple": true,
+              "DisplayedContentTypes": [
+                "AssessmentCriteriaTemplate"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Name": "AssessmentCriteriaTemplate",
+      "Settings": {},
+      "ContentPartFieldDefinitionRecords": [
+        {
+          "FieldName": "TextField",
+          "Name": "Name",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Name"
+            },
+            "TextFieldSettings": {}
+          }
+        },
+        {
+          "FieldName": "NumericField",
+          "Name": "MaxPoint",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "MaxPoint"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Name": "Candidate",
+      "Settings": {},
+      "ContentPartFieldDefinitionRecords": [
+        {
+          "FieldName": "NumericField",
+          "Name": "Status",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Status"
             }
           }
         },
         {
           "FieldName": "DateField",
-          "Name": "ApproveDate",
+          "Name": "ApplyDate",
           "Settings": {
             "ContentPartFieldSettings": {
-              "DisplayName": "Approve Date"
+              "DisplayName": "Apply Date"
             },
-            "DateFieldSettings": {}
+            "DateFieldSettings": {
+              "Required": true
+            }
           }
         },
         {
           "FieldName": "DateField",
-          "Name": "RejectDate",
+          "Name": "AvailableDate",
           "Settings": {
             "ContentPartFieldSettings": {
-              "DisplayName": "Reject Date"
+              "DisplayName": "Available Date"
             },
-            "DateFieldSettings": {}
+            "DateFieldSettings": {
+              "Required": true
+            }
           }
         },
         {
           "FieldName": "TextField",
-          "Name": "Comment",
+          "Name": "FullName",
           "Settings": {
             "ContentPartFieldSettings": {
-              "DisplayName": "Comment"
+              "DisplayName": "Full Name"
+            },
+            "TextFieldSettings": {
+              "Required": true
+            }
+          }
+        },
+        {
+          "FieldName": "NumericField",
+          "Name": "Sex",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Sex"
+            }
+          }
+        },
+        {
+          "FieldName": "DateField",
+          "Name": "Dob",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Date of Birthday"
+            },
+            "DateFieldSettings": {
+              "Required": true
+            }
+          }
+        },
+        {
+          "FieldName": "TextField",
+          "Name": "PlaceOfBirth",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Place Of Birth"
+            },
+            "TextFieldSettings": {
+              "Required": true
+            }
+          }
+        },
+        {
+          "FieldName": "TextField",
+          "Name": "Nationality",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Nationality"
+            },
+            "TextFieldSettings": {
+              "Required": true
+            }
+          }
+        },
+        {
+          "FieldName": "TextField",
+          "Name": "Ethnic",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Ethnic"
+            },
+            "TextFieldSettings": {
+              "Required": true
+            }
+          }
+        },
+        {
+          "FieldName": "TextField",
+          "Name": "Religion",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Religion"
+            },
+            "TextFieldSettings": {
+              "Required": true
+            }
+          }
+        },
+        {
+          "FieldName": "NumericField",
+          "Name": "MaritalStatus",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Marital Status"
+            }
+          }
+        },
+        {
+          "FieldName": "TextField",
+          "Name": "PermanentAddress",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Permanent Address"
+            },
+            "TextFieldSettings": {
+              "Required": true
+            }
+          }
+        },
+        {
+          "FieldName": "TextField",
+          "Name": "PresentAddress",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Present Address"
+            },
+            "TextFieldSettings": {
+              "Required": true
+            }
+          }
+        },
+        {
+          "FieldName": "TextField",
+          "Name": "PhoneNumber",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Phone Number"
+            },
+            "TextFieldSettings": {
+              "Required": true
+            }
+          }
+        },
+        {
+          "FieldName": "TextField",
+          "Name": "Email",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Email"
+            },
+            "TextFieldSettings": {
+              "Required": true
+            }
+          }
+        },
+        {
+          "FieldName": "TextField",
+          "Name": "IDNo",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "IDNo"
+            },
+            "TextFieldSettings": {
+              "Required": true
+            }
+          }
+        },
+        {
+          "FieldName": "DateField",
+          "Name": "DateOfIssue",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Date Of Issue"
+            },
+            "DateFieldSettings": {
+              "Required": true
+            }
+          }
+        },
+        {
+          "FieldName": "TextField",
+          "Name": "PlaceOfIssue",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Place Of Issue"
+            },
+            "TextFieldSettings": {
+              "Required": true
+            }
+          }
+        },
+        {
+          "FieldName": "TextField",
+          "Name": "AreYouWillingToGoOnBusinessTrips",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Are You Willing To Go On Business Trips"
+            },
+            "TextFieldSettings": {
+              "Required": true
+            }
+          }
+        },
+        {
+          "FieldName": "TextField",
+          "Name": "ListExtraCurriculaAcivities",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "List Extra Curricula Acivities"
+            },
+            "TextFieldSettings": {
+              "Required": true
+            }
+          }
+        },
+        {
+          "FieldName": "TextField",
+          "Name": "HaveYouEverCommittedToAnyDisciplinaryAction",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Have You Ever Committed To Any Disciplinary Action"
+            },
+            "TextFieldSettings": {
+              "Required": true
+            }
+          }
+        },
+        {
+          "FieldName": "TextField",
+          "Name": "HasCriminalRecord",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Has Criminal Record"
+            },
+            "TextFieldSettings": {
+              "Required": true
+            }
+          }
+        },
+        {
+          "FieldName": "ContentPickerField",
+          "Name": "CandidateInterviewAssessment",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "CandidateInterviewAssessment"
+            },
+            "ContentPickerFieldSettings": {
+              "Multiple": true,
+              "DisplayedContentTypes": [
+                "InterviewAssessment"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Name": "ComputerProficiency",
+      "Settings": {},
+      "ContentPartFieldDefinitionRecords": [
+        {
+          "FieldName": "TextField",
+          "Name": "SoftwareName",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Software Name"
+            },
+            "TextFieldSettings": {
+              "Required": true
+            }
+          }
+        },
+        {
+          "FieldName": "NumericField",
+          "Name": "Rate",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Rate"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Name": "Comment",
+      "Settings": {},
+      "ContentPartFieldDefinitionRecords": [
+        {
+          "FieldName": "TextField",
+          "Name": "Content",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Content"
+            },
+            "TextFieldSettings": {
+              "Required": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Name": "Department",
+      "Settings": {},
+      "ContentPartFieldDefinitionRecords": [
+        {
+          "FieldName": "TextField",
+          "Name": "Name",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Name"
             },
             "TextFieldSettings": {}
+          }
+        }
+      ]
+    },
+    {
+      "Name": "Education",
+      "Settings": {},
+      "ContentPartFieldDefinitionRecords": [
+        {
+          "FieldName": "TextField",
+          "Name": "MainCourseOfStudy",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Main Course Of Study"
+            },
+            "TextFieldSettings": {
+              "Required": true
+            }
+          }
+        },
+        {
+          "FieldName": "DateField",
+          "Name": "AttendedFrom",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Attended From"
+            },
+            "DateFieldSettings": {
+              "Required": true
+            }
+          }
+        },
+        {
+          "FieldName": "DateField",
+          "Name": "AttendedTo",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Attended To"
+            },
+            "DateFieldSettings": {
+              "Required": true
+            }
+          }
+        },
+        {
+          "FieldName": "TextField",
+          "Name": "University",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "University"
+            },
+            "TextFieldSettings": {
+              "Required": true
+            }
+          }
+        },
+        {
+          "FieldName": "TextField",
+          "Name": "Place",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Place"
+            },
+            "TextFieldSettings": {
+              "Required": true
+            }
           }
         }
       ]
@@ -460,45 +1230,11 @@
       "Settings": {},
       "ContentPartFieldDefinitionRecords": [
         {
-          "FieldName": "TextField",
-          "Name": "Name",
-          "Settings": {
-            "ContentPartFieldSettings": {
-              "DisplayName": "Name",
-              "Position": "0"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "Name": "RecruitmentRequest",
-      "Settings": {},
-      "ContentPartFieldDefinitionRecords": [
-        {
-          "FieldName": "TextField",
-          "Name": "Position",
-          "Settings": {
-            "ContentPartFieldSettings": {
-              "DisplayName": "Position"
-            }
-          }
-        },
-        {
-          "FieldName": "TextField",
-          "Name": "Description",
-          "Settings": {
-            "ContentPartFieldSettings": {
-              "DisplayName": "Description"
-            }
-          }
-        },
-        {
           "FieldName": "ContentPickerField",
-          "Name": "EmployeeId",
+          "Name": "AccountId",
           "Settings": {
             "ContentPartFieldSettings": {
-              "DisplayName": "EmployeeId"
+              "DisplayName": "AccountId"
             },
             "ContentPickerFieldSettings": {
               "Required": true,
@@ -515,25 +1251,75 @@
             },
             "ContentPickerFieldSettings": {
               "Required": true,
-              "DisplayedContentTypes": []
+              "DisplayedContentTypes": [
+                "Department"
+              ]
+            }
+          }
+        },
+        {
+          "FieldName": "ContentPickerField",
+          "Name": "Assests",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Assests"
+            },
+            "ContentPickerFieldSettings": {
+              "Multiple": true,
+              "DisplayedContentTypes": [
+                "Assest"
+              ]
             }
           }
         }
       ]
     },
     {
-      "Name": "Task",
+      "Name": "EmploymentRecord",
       "Settings": {},
       "ContentPartFieldDefinitionRecords": [
         {
           "FieldName": "TextField",
-          "Name": "Title",
+          "Name": "Company",
           "Settings": {
             "ContentPartFieldSettings": {
-              "DisplayName": "Title"
+              "DisplayName": "Company"
             },
             "TextFieldSettings": {
               "Required": true
+            }
+          }
+        },
+        {
+          "FieldName": "TextField",
+          "Name": "Position",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Position"
+            },
+            "TextFieldSettings": {
+              "Required": true
+            }
+          }
+        },
+        {
+          "FieldName": "TextField",
+          "Name": "TypeOfBusiness",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "TypeOfBusiness"
+            },
+            "TextFieldSettings": {
+              "Required": true
+            }
+          }
+        },
+        {
+          "FieldName": "NumericField",
+          "Name": "Salary",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Salary"
             }
           }
         },
@@ -544,7 +1330,890 @@
             "ContentPartFieldSettings": {
               "DisplayName": "Description"
             },
+            "TextFieldSettings": {
+              "Required": true
+            }
+          }
+        },
+        {
+          "FieldName": "DateField",
+          "Name": "From",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "From"
+            },
+            "DateFieldSettings": {
+              "Required": true
+            }
+          }
+        },
+        {
+          "FieldName": "DateField",
+          "Name": "To",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "To"
+            },
+            "DateFieldSettings": {
+              "Required": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Name": "Family",
+      "Settings": {},
+      "ContentPartFieldDefinitionRecords": [
+        {
+          "FieldName": "TextField",
+          "Name": "Name",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Name"
+            },
+            "TextFieldSettings": {
+              "Required": true
+            }
+          }
+        },
+        {
+          "FieldName": "TextField",
+          "Name": "Occupation",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Occupation"
+            },
+            "TextFieldSettings": {
+              "Required": true
+            }
+          }
+        },
+        {
+          "FieldName": "DateField",
+          "Name": "DateOfBirth",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Date Of Birth"
+            },
+            "DateFieldSettings": {
+              "Required": true
+            }
+          }
+        },
+        {
+          "FieldName": "NumericField",
+          "Name": "Relationship",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Relationship"
+            }
+          }
+        },
+        {
+          "FieldName": "NumericField",
+          "Name": "Dependant",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Dependant"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Name": "InterviewAssessment",
+      "Settings": {},
+      "ContentPartFieldDefinitionRecords": [
+        {
+          "FieldName": "ContentPickerField",
+          "Name": "RecruitmentId",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "RecruitmentId"
+            },
+            "ContentPickerFieldSettings": {
+              "DisplayedContentTypes": [
+                "Recruitment"
+              ]
+            }
+          }
+        },
+        {
+          "FieldName": "ContentPickerField",
+          "Name": "InterviewerId",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "InterviewerId"
+            },
+            "ContentPickerFieldSettings": {
+              "DisplayedContentTypes": []
+            }
+          }
+        },
+        {
+          "FieldName": "TextField",
+          "Name": "Comment",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Comment"
+            },
             "TextFieldSettings": {}
+          }
+        },
+        {
+          "FieldName": "NumericField",
+          "Name": "IsPass",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "IsPass"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Name": "JobDescription",
+      "Settings": {},
+      "ContentPartFieldDefinitionRecords": [
+        {
+          "FieldName": "TextField",
+          "Name": "Content",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Content"
+            },
+            "TextFieldSettings": {}
+          }
+        },
+        {
+          "FieldName": "NumericField",
+          "Name": "IsApprove",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "IsApprove"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Name": "Language",
+      "Settings": {},
+      "ContentPartFieldDefinitionRecords": [
+        {
+          "FieldName": "TextField",
+          "Name": "Name",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Name"
+            },
+            "TextFieldSettings": {
+              "Required": true
+            }
+          }
+        },
+        {
+          "FieldName": "NumericField",
+          "Name": "Reading",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Reading"
+            }
+          }
+        },
+        {
+          "FieldName": "NumericField",
+          "Name": "Writing",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Writing"
+            }
+          }
+        },
+        {
+          "FieldName": "NumericField",
+          "Name": "Listening",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Listening"
+            }
+          }
+        },
+        {
+          "FieldName": "NumericField",
+          "Name": "Speaking",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Speaking"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Name": "Media",
+      "Settings": {},
+      "ContentPartFieldDefinitionRecords": [
+        {
+          "FieldName": "TextField",
+          "Name": "Name",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Name"
+            },
+            "TextFieldSettings": {
+              "Required": true
+            }
+          }
+        },
+        {
+          "FieldName": "TextField",
+          "Name": "Path",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Path"
+            },
+            "TextFieldSettings": {
+              "Required": true
+            }
+          }
+        },
+        {
+          "FieldName": "NumericField",
+          "Name": "Type",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Type"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Name": "Recruitment",
+      "Settings": {},
+      "ContentPartFieldDefinitionRecords": [
+        {
+          "FieldName": "TextField",
+          "Name": "Position",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Position"
+            },
+            "TextFieldSettings": {}
+          }
+        },
+        {
+          "FieldName": "TextField",
+          "Name": "Reason",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Reason"
+            },
+            "TextFieldSettings": {}
+          }
+        },
+        {
+          "FieldName": "NumericField",
+          "Name": "SalaryMin",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "SalaryMin"
+            }
+          }
+        },
+        {
+          "FieldName": "NumericField",
+          "Name": "SalaryMax",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "SalaryMax"
+            }
+          }
+        },
+        {
+          "FieldName": "DateField",
+          "Name": "DueDate",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "DueDate"
+            },
+            "DateFieldSettings": {}
+          }
+        },
+        {
+          "FieldName": "ContentPickerField",
+          "Name": "MediaId",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "MediaId"
+            },
+            "ContentPickerFieldSettings": {
+              "Required": true,
+              "DisplayedContentTypes": [
+                "Media"
+              ]
+            }
+          }
+        },
+        {
+          "FieldName": "ContentPickerField",
+          "Name": "DepartmentId",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "DepartmentId"
+            },
+            "ContentPickerFieldSettings": {
+              "Required": true,
+              "DisplayedContentTypes": []
+            }
+          }
+        },
+        {
+          "FieldName": "ContentPickerField",
+          "Name": "ReviewId",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "ReviewId"
+            },
+            "ContentPickerFieldSettings": {
+              "Required": true,
+              "DisplayedContentTypes": []
+            }
+          }
+        },
+        {
+          "FieldName": "ContentPickerField",
+          "Name": "ChecklistReferenceId",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "ChecklistReferenceId"
+            },
+            "ContentPickerFieldSettings": {
+              "DisplayedContentTypes": []
+            }
+          }
+        },
+        {
+          "FieldName": "ContentPickerField",
+          "Name": "JobDescriptionReferenceId",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "JobDescriptionReferenceId"
+            },
+            "ContentPickerFieldSettings": {
+              "DisplayedContentTypes": []
+            }
+          }
+        },
+        {
+          "FieldName": "ContentPickerField",
+          "Name": "WritingTest",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "WritingTest"
+            },
+            "ContentPickerFieldSettings": {
+              "Multiple": true,
+              "DisplayedContentTypes": [
+                "Media"
+              ]
+            }
+          }
+        },
+        {
+          "FieldName": "ContentPickerField",
+          "Name": "RecruitmentCandidate",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "RecruitmentCandidate"
+            },
+            "ContentPickerFieldSettings": {
+              "Multiple": true,
+              "DisplayedContentTypes": [
+                "Candidate"
+              ]
+            }
+          }
+        },
+        {
+          "FieldName": "ContentPickerField",
+          "Name": "RecruitmentBudgetLineId",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "RecruitmentBudgetLineId"
+            },
+            "ContentPickerFieldSettings": {
+              "Required": true,
+              "DisplayedContentTypes": [
+                "BudgetLine"
+              ]
+            }
+          }
+        },
+        {
+          "FieldName": "ContentPickerField",
+          "Name": "RecruitmentTask",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "RecruitmentTask"
+            },
+            "ContentPickerFieldSettings": {
+              "Multiple": true,
+              "DisplayedContentTypes": [
+                "Task"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Name": "RecruitmentCheckList",
+      "Settings": {},
+      "ContentPartFieldDefinitionRecords": [
+        {
+          "FieldName": "TextField",
+          "Name": "Details",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Details"
+            },
+            "TextFieldSettings": {}
+          }
+        },
+        {
+          "FieldName": "TextField",
+          "Name": "Remark",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Remark"
+            },
+            "TextFieldSettings": {}
+          }
+        },
+        {
+          "FieldName": "ContentPickerField",
+          "Name": "RecruitmentChecklistTemplate",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "RecruitmentChecklistTemplate"
+            },
+            "ContentPickerFieldSettings": {
+              "Multiple": true,
+              "DisplayedContentTypes": [
+                "RecruitmentCheckListTemplate"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Name": "RecruitmentCheckListTemplate",
+      "Settings": {},
+      "ContentPartFieldDefinitionRecords": [
+        {
+          "FieldName": "TextField",
+          "Name": "Name",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Name"
+            },
+            "TextFieldSettings": {}
+          }
+        }
+      ]
+    },
+    {
+      "Name": "References",
+      "Settings": {},
+      "ContentPartFieldDefinitionRecords": [
+        {
+          "FieldName": "TextField",
+          "Name": "Fullname",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Fullname"
+            },
+            "TextFieldSettings": {
+              "Required": true
+            }
+          }
+        },
+        {
+          "FieldName": "TextField",
+          "Name": "Position",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Position"
+            },
+            "TextFieldSettings": {
+              "Required": true
+            }
+          }
+        },
+        {
+          "FieldName": "TextField",
+          "Name": "PhoneNumber",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "PhoneNumber"
+            },
+            "TextFieldSettings": {
+              "Required": true
+            }
+          }
+        },
+        {
+          "FieldName": "TextField",
+          "Name": "Email",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Email"
+            },
+            "TextFieldSettings": {
+              "Required": true
+            }
+          }
+        },
+        {
+          "FieldName": "BooleanField",
+          "Name": "IsLineManager",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "IsLineManager"
+            },
+            "BooleanFieldSettings": {}
+          }
+        }
+      ]
+    },
+    {
+      "Name": "ReferenceCheck",
+      "Settings": {},
+      "ContentPartFieldDefinitionRecords": [
+        {
+          "FieldName": "TextField",
+          "Name": "Referrer",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Referrer"
+            },
+            "TextFieldSettings": {}
+          }
+        },
+        {
+          "FieldName": "TextField",
+          "Name": "JobTitleOfReferrer",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Job Title Of Referrer"
+            },
+            "TextFieldSettings": {}
+          }
+        },
+        {
+          "FieldName": "TextField",
+          "Name": "HowLongWereHeLeftYourInstitution",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "How Long Were He Left Your Institution"
+            },
+            "TextFieldSettings": {}
+          }
+        },
+        {
+          "FieldName": "TextField",
+          "Name": "PositionAtTheTimeHeLeftInstitution",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Position At The Time He Left Institution"
+            },
+            "TextFieldSettings": {}
+          }
+        },
+        {
+          "FieldName": "TextField",
+          "Name": "ReasonGivenForLeaving",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Reason Given For Leaving"
+            },
+            "TextFieldSettings": {}
+          }
+        },
+        {
+          "FieldName": "NumericField",
+          "Name": "WorkingCapacity",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Working Capacity"
+            }
+          }
+        },
+        {
+          "FieldName": "TextField",
+          "Name": "PleaseGiveSpecificEvidenceForYourStatements",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Please Give Specific Evidence For Your Statements"
+            },
+            "TextFieldSettings": {}
+          }
+        },
+        {
+          "FieldName": "TextField",
+          "Name": "Strength",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Strength"
+            },
+            "TextFieldSettings": {}
+          }
+        },
+        {
+          "FieldName": "TextField",
+          "Name": "Weakness",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Weakness"
+            },
+            "TextFieldSettings": {}
+          }
+        },
+        {
+          "FieldName": "TextField",
+          "Name": "Personality",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Personality"
+            },
+            "TextFieldSettings": {}
+          }
+        },
+        {
+          "FieldName": "TextField",
+          "Name": "DidHeCommitToAnyDisciplinaryAction",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Did HeCommit To Any Disciplinary Action"
+            },
+            "TextFieldSettings": {}
+          }
+        },
+        {
+          "FieldName": "TextField",
+          "Name": "DidHeCommitToAnyAbuseOrSexualHarassmentAction",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Did He Commit To Any Abuse Or Sexual Harassment Action"
+            },
+            "TextFieldSettings": {}
+          }
+        },
+        {
+          "FieldName": "NumericField",
+          "Name": "LevelOfProfessional",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Level Of Professional"
+            }
+          }
+        },
+        {
+          "FieldName": "NumericField",
+          "Name": "AbilityToWorkAsAPartTeam",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "AbilityToWorkAsAPartTeam"
+            }
+          }
+        },
+        {
+          "FieldName": "NumericField",
+          "Name": "AbilityToAdjustToNewTask",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "AbilityToAdjustToNewTask"
+            }
+          }
+        },
+        {
+          "FieldName": "NumericField",
+          "Name": "AbilityToAcceptPersonalResponsibility",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Ability To Accept Personal Responsibility"
+            }
+          }
+        },
+        {
+          "FieldName": "NumericField",
+          "Name": "AbilityToLeadAndMotivateOthers",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Ability To Lead And Motivate Others"
+            }
+          }
+        },
+        {
+          "FieldName": "NumericField",
+          "Name": "AbilityToCommunicateEffectively",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Ability To Communicate Effectively"
+            }
+          }
+        },
+        {
+          "FieldName": "NumericField",
+          "Name": "AbilityToNegotiateAndPersuade",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Ability To Negotiate And Persuade"
+            }
+          }
+        },
+        {
+          "FieldName": "NumericField",
+          "Name": "CommitmentEnthusiasmAndPositiveAttitude",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Commitment Enthusiasm And Positive Attitude"
+            }
+          }
+        },
+        {
+          "FieldName": "NumericField",
+          "Name": "ResilienceAndDetermination",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Resilience And Determination"
+            }
+          }
+        },
+        {
+          "FieldName": "NumericField",
+          "Name": "Reliability",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Reliability"
+            }
+          }
+        },
+        {
+          "FieldName": "NumericField",
+          "Name": "WouldYouRehireHim",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Would You Rehire Him"
+            }
+          }
+        },
+        {
+          "FieldName": "TextField",
+          "Name": "PhoneNumber",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Phone Number"
+            },
+            "TextFieldSettings": {}
+          }
+        },
+        {
+          "FieldName": "TextField",
+          "Name": "Email",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Email"
+            },
+            "TextFieldSettings": {}
+          }
+        }
+      ]
+    },
+    {
+      "Name": "Review",
+      "Settings": {},
+      "ContentPartFieldDefinitionRecords": [
+        {
+          "FieldName": "NumericField",
+          "Name": "Status",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Status"
+            }
+          }
+        },
+        {
+          "FieldName": "ContentPickerField",
+          "Name": "InterviewAssessmentReview",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "InterviewAssessmentReview"
+            },
+            "ContentPickerFieldSettings": {
+              "Multiple": true,
+              "DisplayedContentTypes": [
+                "InterviewAssessment"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Name": "ReviewApproverHistory",
+      "Settings": {},
+      "ContentPartFieldDefinitionRecords": [
+        {
+          "FieldName": "NumericField",
+          "Name": "Status",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Status"
+            }
+          }
+        },
+        {
+          "FieldName": "NumericField",
+          "Name": "IsCurrent",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "IsCurrent"
+            }
+          }
+        },
+        {
+          "FieldName": "ContentPickerField",
+          "Name": "EmployeeReviewApproverHistory",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "EmployeeReviewApproverHistory"
+            },
+            "ContentPickerFieldSettings": {
+              "Multiple": true,
+              "DisplayedContentTypes": [
+                "Employee"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Name": "Task",
+      "Settings": {},
+      "ContentPartFieldDefinitionRecords": [
+        {
+          "FieldName": "NumericField",
+          "Name": "Status",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Status"
+            }
           }
         },
         {
@@ -556,87 +2225,37 @@
             },
             "ContentPickerFieldSettings": {
               "Required": true,
-              "DisplayedContentTypes": [
-                "Employee"
-              ]
-            }
-          }
-        },
-        {
-          "FieldName": "TextField",
-          "Name": "ParentContentItemId",
-          "Settings": {
-            "ContentPartFieldSettings": {
-              "DisplayName": "ParentContentItemId"
-            },
-            "TextFieldSettings": {
-              "Required": true
-            }
-          }
-        },
-        {
-          "FieldName": "TextField",
-          "Name": "ParentContentType",
-          "Settings": {
-            "ContentPartFieldSettings": {
-              "DisplayName": "ParentContentType"
-            },
-            "TextFieldSettings": {
-              "Required": true
-            }
-          }
-        }
-      ]
-    },
-    {
-      "Name": "Category",
-      "Settings": {},
-      "ContentPartFieldDefinitionRecords": [
-        {
-          "FieldName": "TextField",
-          "Name": "Name",
-          "Settings": {
-            "ContentPartFieldSettings": {
-              "DisplayName": "Name"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "Name": "Product",
-      "Settings": {},
-      "ContentPartFieldDefinitionRecords": [
-        {
-          "FieldName": "TextField",
-          "Name": "Name",
-          "Settings": {
-            "ContentPartFieldSettings": {
-              "DisplayName": "Name",
-              "Position": "0"
+              "DisplayedContentTypes": []
             }
           }
         },
         {
           "FieldName": "ContentPickerField",
-          "Name": "CategoryID",
+          "Name": "RelatedContentItemId",
           "Settings": {
             "ContentPartFieldSettings": {
-              "DisplayName": "CategoryID",
-              "Position": "1"
+              "DisplayName": "RelatedContentItemId"
             },
             "ContentPickerFieldSettings": {
               "Required": true,
-              "Multiple": true,
               "DisplayedContentTypes": [
-                "Category"
+                "Task"
               ]
+            }
+          }
+        },
+        {
+          "FieldName": "TextField",
+          "Name": "RelatedContentType",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "RelatedContentType"
             },
-            "ContentIndexSettings": {}
+            "TextFieldSettings": {}
           }
         }
       ]
     }
   ],
-  "Serial": 109
+  "Serial": 236
 }

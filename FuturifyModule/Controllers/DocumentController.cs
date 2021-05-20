@@ -205,10 +205,7 @@ namespace FuturifyModule.Controllers
                 {
                     return BadRequest("The role is already used.");
                 }
-            }
 
-            if (ModelState.IsValid)
-            {
                 var role = new Role { RoleName = model.RoleName, RoleDescription = model.RoleDescription };
                 var result = await _roleManager.CreateAsync(role);
                 if (result.Succeeded)

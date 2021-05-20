@@ -1,5 +1,4 @@
 using FuturifyModule.Drivers;
-using FuturifyModule.Handlers;
 using FuturifyModule.Indexes;
 using FuturifyModule.Models;
 using Microsoft.AspNetCore.Builder;

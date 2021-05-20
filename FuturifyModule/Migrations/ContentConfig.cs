@@ -13,233 +13,88 @@ namespace AAVModule.Migrations
         {
             ContentTypes = new List<ContentTypeDefinition>
             {
-                #region RecruitmentRequest
+                #region Assest
                 new ContentTypeDefinition
                 {
-                    Name = "RecruitmentRequest",
-                    DefaultContentPart =  new ContentPartDefinition
-                    {
-                         Name = "RecruitmentRequest",
-                         ContentFields = new List<ContentFieldDefinition> {
-                                new ContentFieldDefinition
-                                {
-                                    Name = "Position",
-                                    Type = ContentFieldTypes.TextField,
-                                    DisplayName = "Position",
-                                    Settings = null
-                                },
-                                new ContentFieldDefinition
-                                {
-                                    Name = "Description",
-                                    Type = ContentFieldTypes.TextField,
-                                    DisplayName = "Description",
-                                    Settings = null
-                                },
-                                new ContentFieldDefinition
-                                {
-                                    Name = "EmployeeId",
-                                    Type = ContentFieldTypes.ContentPickerField,
-                                    DisplayName = "EmployeeId",
-                                    Settings = new ContentPickerFieldSettings { Required = true, Multiple = false }
-                                },
-                                new ContentFieldDefinition
-                                {
-                                    Name = "DepartmentId",
-                                    Type = ContentFieldTypes.ContentPickerField,
-                                    DisplayName = "DepartmentId",
-                                    Settings = new ContentPickerFieldSettings { Required = true, Multiple = false }
-                                },
-                         }
-                    },
-                },
-                #endregion
-
-                #region Employee
-                new ContentTypeDefinition
-                {
-                    Name = "Employee",
+                    Name = "Assest",
                     DefaultContentPart = new ContentPartDefinition
                     {
-                        Name = "Employee",
+                        Name = "Assest",
                         ContentFields = new List<ContentFieldDefinition> {
                                 new ContentFieldDefinition
                                 {
-                                    Name = "AccountId",
-                                    Type = ContentFieldTypes.ContentPickerField,
-                                    DisplayName = "AccountId",
-                                    Settings = new ContentPickerFieldSettings{ Required = true, Multiple = false }
-                                },
-                                new ContentFieldDefinition
-                                {
-                                    Name = "DepartmentId",
-                                    Type = ContentFieldTypes.ContentPickerField,
-                                    DisplayName = "DepartmentId",
-                                    Settings = new ContentPickerFieldSettings{ Required = true, Multiple = false }
-                                },
-                            }
-                    },
-                },
-                #endregion
-
-                #region RecruitmentProcedureCheckList
-                new ContentTypeDefinition
-                {
-                    Name = "RecruitmentProcedureCheckList",
-                    DefaultContentPart = new ContentPartDefinition
-                    {
-                        Name = "RecruitmentProcedureCheckList",
-                        ContentFields = new List<ContentFieldDefinition> {
-                            new ContentFieldDefinition
-                                {
-                                    Name = "RecruitmentId",
-                                    Type = ContentFieldTypes.ContentPickerField,
-                                    DisplayName = "RecruitmentId",
-                                    Settings = new ContentPickerFieldSettings{ Required = true, Multiple = false }
-                                },
-                            new ContentFieldDefinition
-                                {
-                                    Name = "PreparedById",
-                                    Type = ContentFieldTypes.ContentPickerField,
-                                    DisplayName = "PreparedById",
-                                    Settings = new ContentPickerFieldSettings{ Required = true, Multiple = false }
-                                },
-                            new ContentFieldDefinition
-                                {
-                                    Name = "ReviewedById",
-                                    Type = ContentFieldTypes.ContentPickerField,
-                                    DisplayName = "ReviewedById",
-                                    Settings = new ContentPickerFieldSettings{ Required = true, Multiple = false }
-                                },
-                            new ContentFieldDefinition
-                                {
-                                    Name = "ApprovedById",
-                                    Type = ContentFieldTypes.ContentPickerField,
-                                    DisplayName = "ApprovedById",
-                                    Settings = new ContentPickerFieldSettings{ Required = true, Multiple = false }
+                                    Name = "Name",
+                                    Type = ContentFieldTypes.TextField,
+                                    DisplayName = "Content",
+                                    Settings = new TextFieldSettings{ Required = true }
                                 },
                         }
                     },
                 },
                 #endregion
 
-                #region RecruitmentCheckList
+                #region AssessmentCriteria
                 new ContentTypeDefinition
                 {
-                    Name = "RecruitmentCheckList",
+                    Name = "AssessmentCriteria",
+                    InBagPart = true,
                     DefaultContentPart = new ContentPartDefinition
-                    {
-                            Name = "RecruitmentCheckList",
+                        {
+                            Name = "AssessmentCriteria",
                             ContentFields = new List<ContentFieldDefinition> {
                                 new ContentFieldDefinition
                                 {
-                                    Name = "Title",
+                                    Name = "Note",
                                     Type = ContentFieldTypes.TextField,
-                                    DisplayName = "Title",
-                                    Settings = new TextFieldSettings{ Required = true }
+                                    DisplayName = "Note",
+                                    Settings = new TextFieldSettings{ Required = false }
                                 },
                                 new ContentFieldDefinition
                                 {
-                                    Name = "Availability",
+                                    Name = "Point",
                                     Type = ContentFieldTypes.NumericField,
-                                    DisplayName = "Availability",
-                                    Settings = new NumericFieldSettings{ Required = true }
+                                    DisplayName = "Point",
+                                    Settings = new NumericFieldSettings{ Required = false }
                                 },
                                 new ContentFieldDefinition
                                 {
-                                    Name = "Detail",
-                                    Type = ContentFieldTypes.TextField,
-                                    DisplayName = "Detail",
-                                    Settings = new TextFieldSettings{ Required = true }
-                                },
-                                new ContentFieldDefinition
-                                {
-                                    Name = "Remark",
-                                    Type = ContentFieldTypes.TextField,
-                                    DisplayName = "Remark",
-                                    Settings = new TextFieldSettings{ Required = true }
+                                    Name = "AssessmentCriteriaTemplate",
+                                    Type = ContentFieldTypes.ContentPickerField,
+                                    DisplayName = "AssessmentCriteriaTemplate",
+                                    Settings = new ContentPickerFieldSettings{ Required = false, Multiple = true, DisplayedContentTypes = new string[] { "AssessmentCriteriaTemplate" } }
                                 },
                             }
-                    },
-
+                        },
                 },
                 #endregion
 
-                #region Recruitment
+                #region AssessmentCriteriaTemplate
                 new ContentTypeDefinition
                 {
-                    Name = "Recruitment",
+                    Name = "AssessmentCriteriaTemplate",
                     DefaultContentPart = new ContentPartDefinition
-                    {
-                            Name = "Recruitment",
+                        {
+                            Name = "AssessmentCriteriaTemplate",
                             ContentFields = new List<ContentFieldDefinition> {
                                 new ContentFieldDefinition
                                 {
-                                    Name = "ApplyLink",
+                                    Name = "Name",
                                     Type = ContentFieldTypes.TextField,
-                                    DisplayName = "Apply Link",
-                                    Settings = new TextFieldSettings{ Required = true }
+                                    DisplayName = "Name",
+                                    Settings = new TextFieldSettings{ Required = false }
                                 },
                                 new ContentFieldDefinition
                                 {
-                                    Name = "RecruitmentRequestId",
-                                    Type = ContentFieldTypes.ContentPickerField,
-                                    DisplayName = "Recruitment Request Id",
-                                    Settings = new ContentPickerFieldSettings{ Required = true, Multiple = false }
-                                },
-                                new ContentFieldDefinition
-                                {
-                                    Name = "JobDescription",
-                                    Type = ContentFieldTypes.TextField,
-                                    DisplayName = "Job Description",
-                                    Settings = new TextFieldSettings{ Required = true }
-                                },
-                                new ContentFieldDefinition
-                                {
-                                    Name = "SkillAndExperience",
-                                    Type = ContentFieldTypes.TextField,
-                                    DisplayName = "Skill And Experience",
-                                    Settings = new TextFieldSettings{ Required = true }
-                                },
-                                new ContentFieldDefinition
-                                {
-                                    Name = "Skills",
-                                    Type = ContentFieldTypes.TextField,
-                                    DisplayName = "Skills",
-                                    Settings = new TextFieldSettings{ Required = true }
-                                },
-                                new ContentFieldDefinition
-                                {
-                                    Name = "WhyYouLoveWorkingHere",
-                                    Type = ContentFieldTypes.TextField,
-                                    DisplayName = "Why You Love Working Here",
-                                    Settings = new TextFieldSettings{ Required = true }
-                                },
-                                new ContentFieldDefinition
-                                {
-                                    Name = "Location",
-                                    Type = ContentFieldTypes.TextField,
-                                    DisplayName = "Location",
-                                    Settings = new TextFieldSettings{ Required = true }
-                                },
-                                new ContentFieldDefinition
-                                {
-                                    Name = "QuestionForCandidate",
-                                    Type = ContentFieldTypes.TextField,
-                                    DisplayName = "Question For Candidate",
-                                    Settings = new TextFieldSettings{ Required = true }
-                                },
-                                new ContentFieldDefinition
-                                {
-                                    Name = "EmailForApplications",
-                                    Type = ContentFieldTypes.TextField,
-                                    DisplayName = "Email For Applications",
-                                    Settings = new TextFieldSettings{ Required = true }
+                                    Name = "MaxPoint",
+                                    Type = ContentFieldTypes.NumericField,
+                                    DisplayName = "MaxPoint",
+                                    Settings = new NumericFieldSettings{ Required = false }
                                 },
                             }
-                    },
+                        },
                 },
                 #endregion
-
+            
                 #region Candidate
                 new ContentTypeDefinition
                 {
@@ -302,6 +157,20 @@ namespace AAVModule.Migrations
                                     Name = "Nationality",
                                     Type = ContentFieldTypes.TextField,
                                     DisplayName = "Nationality",
+                                    Settings = new TextFieldSettings{ Required = true }
+                                },
+                                new ContentFieldDefinition
+                                {
+                                    Name = "Ethnic",
+                                    Type = ContentFieldTypes.TextField,
+                                    DisplayName = "Ethnic",
+                                    Settings = new TextFieldSettings{ Required = true }
+                                },
+                                new ContentFieldDefinition
+                                {
+                                    Name = "Religion",
+                                    Type = ContentFieldTypes.TextField,
+                                    DisplayName = "Religion",
                                     Settings = new TextFieldSettings{ Required = true }
                                 },
                                 new ContentFieldDefinition
@@ -390,19 +259,227 @@ namespace AAVModule.Migrations
                                 },
                                 new ContentFieldDefinition
                                 {
-                                    Name = "EmployeeId",
+                                    Name = "CandidateInterviewAssessment",
                                     Type = ContentFieldTypes.ContentPickerField,
-                                    DisplayName = "EmployeeId",
+                                    DisplayName = "CandidateInterviewAssessment",
+                                    Settings = new ContentPickerFieldSettings{ Required = false, Multiple = true, DisplayedContentTypes = new string[] { "InterviewAssessment" } }
+                                },
+                            }
+                    },
+                },
+                #endregion
+
+                #region ComputerProficiency
+                new ContentTypeDefinition
+                {
+                    Name = "ComputerProficiency",
+                    InBagPart = true,
+                    DefaultContentPart = new ContentPartDefinition
+                        {
+                            Name = "ComputerProficiency",
+                            ContentFields = new List<ContentFieldDefinition> {
+                                new ContentFieldDefinition
+                                {
+                                    Name = "SoftwareName",
+                                    Type = ContentFieldTypes.TextField,
+                                    DisplayName = "Software Name",
+                                    Settings = new TextFieldSettings{ Required = true }
+                                },
+                                new ContentFieldDefinition
+                                {
+                                    Name = "Rate",
+                                    Type = ContentFieldTypes.NumericField,
+                                    DisplayName = "Rate",
+                                    Settings = new NumericFieldSettings{ Required = true }
+                                },
+                            }
+                        },
+                },
+                #endregion            
+
+                #region Comment
+                new ContentTypeDefinition
+                {
+                    Name = "Comment",
+                    InBagPart = true,
+                    DefaultContentPart = new ContentPartDefinition
+                    {
+                        Name = "Comment",
+                        ContentFields = new List<ContentFieldDefinition> {
+                                new ContentFieldDefinition
+                                {
+                                    Name = "Content",
+                                    Type = ContentFieldTypes.TextField,
+                                    DisplayName = "Content",
+                                    Settings = new TextFieldSettings{ Required = true }
+                                },
+                        }
+                    },
+                },
+                #endregion
+
+                #region Department
+                new ContentTypeDefinition
+                {
+                    Name = "Department",
+                    DefaultContentPart = new ContentPartDefinition
+                    {
+                        Name = "Department",
+                        ContentFields = new List<ContentFieldDefinition> {
+                                new ContentFieldDefinition
+                                {
+                                    Name = "Name",
+                                    Type = ContentFieldTypes.TextField,
+                                    DisplayName = "Name",
+                                    Settings = new TextFieldSettings{ Required = false }
+                                },
+                        }
+                    },
+                },
+                #endregion
+
+                #region Education
+                new ContentTypeDefinition
+                {
+                    Name = "Education",
+                    InBagPart = true,
+                    DefaultContentPart = new ContentPartDefinition
+                        {
+                            Name = "Education",
+                            ContentFields = new List<ContentFieldDefinition> {
+                                new ContentFieldDefinition
+                                {
+                                    Name = "MainCourseOfStudy",
+                                    Type = ContentFieldTypes.TextField,
+                                    DisplayName = "Main Course Of Study",
+                                    Settings = new TextFieldSettings{ Required = true }
+                                },
+                                new ContentFieldDefinition
+                                {
+                                    Name = "AttendedFrom",
+                                    Type = ContentFieldTypes.DateField,
+                                    DisplayName = "Attended From",
+                                    Settings = new DateFieldSettings{ Required = true }
+                                },
+                                new ContentFieldDefinition
+                                {
+                                    Name = "AttendedTo",
+                                    Type = ContentFieldTypes.DateField,
+                                    DisplayName = "Attended To",
+                                    Settings = new DateFieldSettings{ Required = true }
+                                },
+                                new ContentFieldDefinition
+                                {
+                                    Name = "University",
+                                    Type = ContentFieldTypes.TextField,
+                                    DisplayName = "University",
+                                    Settings = new TextFieldSettings{ Required = true }
+                                },
+                                new ContentFieldDefinition
+                                {
+                                    Name = "Place",
+                                    Type = ContentFieldTypes.TextField,
+                                    DisplayName = "Place",
+                                    Settings = new TextFieldSettings{ Required = true }
+                                },
+                            }
+                        },
+                },
+                #endregion
+
+                #region Employee
+                new ContentTypeDefinition
+                {
+                    Name = "Employee",
+                    DefaultContentPart = new ContentPartDefinition
+                    {
+                        Name = "Employee",
+                        ContentFields = new List<ContentFieldDefinition> {
+                                new ContentFieldDefinition
+                                {
+                                    Name = "AccountId",
+                                    Type = ContentFieldTypes.ContentPickerField,
+                                    DisplayName = "AccountId",
                                     Settings = new ContentPickerFieldSettings{ Required = true, Multiple = false }
                                 },
                                 new ContentFieldDefinition
                                 {
-                                    Name = "FamilyId",
+                                    Name = "DepartmentId",
                                     Type = ContentFieldTypes.ContentPickerField,
-                                    DisplayName = "FamilyId",
-                                    Settings = new ContentPickerFieldSettings{ Required = true, Multiple = false }
+                                    DisplayName = "DepartmentId",
+                                    Settings = new ContentPickerFieldSettings{ Required = true, Multiple = false, DisplayedContentTypes = new string[] { "Department" } }
                                 },
-                            }
+                                new ContentFieldDefinition
+                                {
+                                    Name = "Assests",
+                                    Type = ContentFieldTypes.ContentPickerField,
+                                    DisplayName = "Assests",
+                                    Settings = new ContentPickerFieldSettings{ Required = false, Multiple = true, DisplayedContentTypes = new string[] { "Assest" } }
+                                },
+                        }
+                    },
+                },
+                #endregion
+
+                #region EmploymentRecord
+                new ContentTypeDefinition
+                {
+                    Name = "EmploymentRecord",
+                    InBagPart = true,
+                    DefaultContentPart = new ContentPartDefinition
+                    {
+                        Name = "EmploymentRecord",
+                        ContentFields = new List<ContentFieldDefinition> {
+                                new ContentFieldDefinition
+                                {
+                                    Name = "Company",
+                                    Type = ContentFieldTypes.TextField,
+                                    DisplayName = "Company",
+                                    Settings = new TextFieldSettings{ Required = true }
+                                },
+                                new ContentFieldDefinition
+                                {
+                                    Name = "Position",
+                                    Type = ContentFieldTypes.TextField,
+                                    DisplayName = "Position",
+                                    Settings = new TextFieldSettings{ Required = true }
+                                },
+                                new ContentFieldDefinition
+                                {
+                                    Name = "TypeOfBusiness",
+                                    Type = ContentFieldTypes.TextField,
+                                    DisplayName = "TypeOfBusiness",
+                                    Settings = new TextFieldSettings{ Required = true }
+                                },
+                                new ContentFieldDefinition
+                                {
+                                    Name = "Salary",
+                                    Type = ContentFieldTypes.NumericField,
+                                    DisplayName = "Salary",
+                                    Settings = new NumericFieldSettings{ Required = true }
+                                },
+                                new ContentFieldDefinition
+                                {
+                                    Name = "Description",
+                                    Type = ContentFieldTypes.TextField,
+                                    DisplayName = "Description",
+                                    Settings = new TextFieldSettings{ Required = true }
+                                },
+                                new ContentFieldDefinition
+                                {
+                                    Name = "From",
+                                    Type = ContentFieldTypes.DateField,
+                                    DisplayName = "From",
+                                    Settings = new DateFieldSettings{ Required = true }
+                                },
+                                new ContentFieldDefinition
+                                {
+                                    Name = "To",
+                                    Type = ContentFieldTypes.DateField,
+                                    DisplayName = "To",
+                                    Settings = new DateFieldSettings{ Required = true }
+                                },
+                        }
                     },
                 },
                 #endregion
@@ -411,6 +488,7 @@ namespace AAVModule.Migrations
                 new ContentTypeDefinition
                 {
                     Name = "Family",
+                    InBagPart = true,
                     DefaultContentPart = new ContentPartDefinition
                         {
                             Name = "Family",
@@ -455,58 +533,72 @@ namespace AAVModule.Migrations
                 },
                 #endregion
 
-                #region Education
+                #region InterviewAssessment
                 new ContentTypeDefinition
                 {
-                    Name = "Education",
+                    Name = "InterviewAssessment",
                     DefaultContentPart = new ContentPartDefinition
                         {
-                            Name = "Education",
+                            Name = "InterviewAssessment",
                             ContentFields = new List<ContentFieldDefinition> {
                                 new ContentFieldDefinition
                                 {
-                                    Name = "MainCourseOfStudy",
-                                    Type = ContentFieldTypes.TextField,
-                                    DisplayName = "Main Course Of Study",
-                                    Settings = new TextFieldSettings{ Required = true }
-                                },
-                                new ContentFieldDefinition
-                                {
-                                    Name = "AttendedFrom",
-                                    Type = ContentFieldTypes.DateField,
-                                    DisplayName = "Attended From",
-                                    Settings = new DateFieldSettings{ Required = true }
-                                },
-                                new ContentFieldDefinition
-                                {
-                                    Name = "AttendedTo",
-                                    Type = ContentFieldTypes.DateField,
-                                    DisplayName = "Attended To",
-                                    Settings = new DateFieldSettings{ Required = true }
-                                },
-                                new ContentFieldDefinition
-                                {
-                                    Name = "University",
-                                    Type = ContentFieldTypes.TextField,
-                                    DisplayName = "University",
-                                    Settings = new TextFieldSettings{ Required = true }
-                                },
-                                new ContentFieldDefinition
-                                {
-                                    Name = "Place",
-                                    Type = ContentFieldTypes.TextField,
-                                    DisplayName = "Place",
-                                    Settings = new TextFieldSettings{ Required = true }
-                                },
-                                new ContentFieldDefinition
-                                {
-                                    Name = "CandidateId",
+                                    Name = "RecruitmentId",
                                     Type = ContentFieldTypes.ContentPickerField,
-                                    DisplayName = "CandidateId",
-                                    Settings = new ContentPickerFieldSettings{ Required = true, Multiple = false }
+                                    DisplayName = "RecruitmentId",
+                                    Settings = new ContentPickerFieldSettings{ Required = false, Multiple = false, DisplayedContentTypes = new string[] { "Recruitment" } }
+                                },
+                                new ContentFieldDefinition
+                                {
+                                    Name = "InterviewerId",
+                                    Type = ContentFieldTypes.ContentPickerField,
+                                    DisplayName = "InterviewerId",
+                                    Settings = new ContentPickerFieldSettings{ Required = false, Multiple = false }
+                                },
+                                new ContentFieldDefinition
+                                {
+                                    Name = "Comment",
+                                    Type = ContentFieldTypes.TextField,
+                                    DisplayName = "Comment",
+                                    Settings = new TextFieldSettings{ Required = false }
+                                },
+                                new ContentFieldDefinition
+                                {
+                                    Name = "IsPass",
+                                    Type = ContentFieldTypes.NumericField,
+                                    DisplayName = "IsPass",
+                                    Settings = new NumericFieldSettings{ Required = false }
                                 },
                             }
                         },
+                },
+                #endregion
+
+                #region JobDescription
+                new ContentTypeDefinition
+                {
+                    Name = "JobDescription",
+                    InBagPart = true,
+                    DefaultContentPart = new ContentPartDefinition
+                    {
+                        Name = "JobDescription",
+                        ContentFields = new List<ContentFieldDefinition> {
+                                new ContentFieldDefinition
+                                {
+                                    Name = "Content",
+                                    Type = ContentFieldTypes.TextField,
+                                    DisplayName = "Content",
+                                    Settings = new TextFieldSettings{ Required = false }
+                                },
+                                new ContentFieldDefinition
+                                {
+                                    Name = "IsApprove",
+                                    Type = ContentFieldTypes.NumericField,
+                                    DisplayName = "IsApprove",
+                                    Settings = new NumericFieldSettings{ Required = false }
+                                },
+                        }
+                    },
                 },
                 #endregion
 
@@ -514,6 +606,7 @@ namespace AAVModule.Migrations
                 new ContentTypeDefinition
                 {
                     Name = "Language",
+                    InBagPart = true,
                     DefaultContentPart = new ContentPartDefinition
                         {
                             Name = "Language",
@@ -553,111 +646,210 @@ namespace AAVModule.Migrations
                                     DisplayName = "Speaking",
                                     Settings = new NumericFieldSettings{ Required = true }
                                 },
-                                new ContentFieldDefinition
-                                {
-                                    Name = "Candidate",
-                                    Type = ContentFieldTypes.ContentPickerField,
-                                    DisplayName = "Candidate",
-                                    Settings = new ContentPickerFieldSettings{ Required = true }
-                                },
                             }
                         },
                 },
                 #endregion
 
-                #region ComputerProficiency
+                #region Media
                 new ContentTypeDefinition
                 {
-                    Name = "ComputerProficiency",
+                    Name = "Media",
                     DefaultContentPart = new ContentPartDefinition
                         {
-                            Name = "ComputerProficiency",
+                            Name = "Media",
                             ContentFields = new List<ContentFieldDefinition> {
                                 new ContentFieldDefinition
                                 {
-                                    Name = "SoftwareName",
+                                    Name = "Name",
                                     Type = ContentFieldTypes.TextField,
-                                    DisplayName = "Software Name",
+                                    DisplayName = "Name",
                                     Settings = new TextFieldSettings{ Required = true }
                                 },
                                 new ContentFieldDefinition
                                 {
-                                    Name = "Rate",
+                                    Name = "Path",
+                                    Type = ContentFieldTypes.TextField,
+                                    DisplayName = "Path",
+                                    Settings = new TextFieldSettings{ Required = true }
+                                },
+                                new ContentFieldDefinition
+                                {
+                                    Name = "Type",
                                     Type = ContentFieldTypes.NumericField,
-                                    DisplayName = "Rate",
+                                    DisplayName = "Type",
                                     Settings = new NumericFieldSettings{ Required = true }
                                 },
-                                new ContentFieldDefinition
-                                {
-                                    Name = "CandidateId",
-                                    Type = ContentFieldTypes.ContentPickerField,
-                                    DisplayName = "CandidateId",
-                                    Settings = new ContentPickerFieldSettings{ Required = true, Multiple = false }
-                                },
                             }
                         },
                 },
                 #endregion
 
-                #region EmploymentRecord
+                #region Recruitment
                 new ContentTypeDefinition
                 {
-                    Name = "EmploymentRecord",
+                    Name = "Recruitment",
                     DefaultContentPart = new ContentPartDefinition
-                        {
-                            Name = "EmploymentRecord",
+                    {
+                            Name = "Recruitment",
                             ContentFields = new List<ContentFieldDefinition> {
-                                new ContentFieldDefinition
-                                {
-                                    Name = "Company",
-                                    Type = ContentFieldTypes.TextField,
-                                    DisplayName = "Company",
-                                    Settings = new TextFieldSettings{ Required = true }
-                                },
                                 new ContentFieldDefinition
                                 {
                                     Name = "Position",
                                     Type = ContentFieldTypes.TextField,
                                     DisplayName = "Position",
-                                    Settings = new TextFieldSettings{ Required = true }
+                                    Settings = new TextFieldSettings{ Required = false }
                                 },
                                 new ContentFieldDefinition
                                 {
-                                    Name = "TypeOfBusiness",
+                                    Name = "Reason",
                                     Type = ContentFieldTypes.TextField,
-                                    DisplayName = "CandidateId",
-                                    Settings = new TextFieldSettings{ Required = true }
+                                    DisplayName = "Reason",
+                                    Settings = new TextFieldSettings{ Required = false }
                                 },
                                 new ContentFieldDefinition
                                 {
-                                    Name = "Description",
-                                    Type = ContentFieldTypes.TextField,
-                                    DisplayName = "Description",
-                                    Settings = new TextFieldSettings{ Required = true }
+                                    Name = "SalaryMin",
+                                    Type = ContentFieldTypes.NumericField,
+                                    DisplayName = "SalaryMin",
+                                    Settings = new NumericFieldSettings{ Required = false }
                                 },
                                 new ContentFieldDefinition
                                 {
-                                    Name = "From",
+                                    Name = "SalaryMax",
+                                    Type = ContentFieldTypes.NumericField,
+                                    DisplayName = "SalaryMax",
+                                    Settings = new NumericFieldSettings{ Required = false }
+                                },
+                                new ContentFieldDefinition
+                                {
+                                    Name = "DueDate",
                                     Type = ContentFieldTypes.DateField,
-                                    DisplayName = "From",
-                                    Settings = new DateFieldSettings{ Required = true }
+                                    DisplayName = "DueDate",
+                                    Settings = new DateFieldSettings{ Required = false }
                                 },
                                 new ContentFieldDefinition
                                 {
-                                    Name = "To",
-                                    Type = ContentFieldTypes.DateField,
-                                    DisplayName = "To",
-                                    Settings = new DateFieldSettings{ Required = true }
-                                },
-                                new ContentFieldDefinition
-                                {
-                                    Name = "CandidateId",
+                                    Name = "MediaId",
                                     Type = ContentFieldTypes.ContentPickerField,
-                                    DisplayName = "CandidateId",
+                                    DisplayName = "MediaId",
+                                    Settings = new ContentPickerFieldSettings{ Required = true, Multiple = false, DisplayedContentTypes = new string[] { "Media" } }
+                                },
+                                new ContentFieldDefinition
+                                {
+                                    Name = "DepartmentId",
+                                    Type = ContentFieldTypes.ContentPickerField,
+                                    DisplayName = "DepartmentId",
                                     Settings = new ContentPickerFieldSettings{ Required = true, Multiple = false }
                                 },
+                                new ContentFieldDefinition
+                                {
+                                    Name = "ReviewId",
+                                    Type = ContentFieldTypes.ContentPickerField,
+                                    DisplayName = "ReviewId",
+                                    Settings = new ContentPickerFieldSettings{ Required = true, Multiple = false }
+                                },
+                                new ContentFieldDefinition
+                                {
+                                    Name = "ChecklistReferenceId",
+                                    Type = ContentFieldTypes.ContentPickerField,
+                                    DisplayName = "ChecklistReferenceId",
+                                    Settings = new ContentPickerFieldSettings{ Required = false, Multiple = false }
+                                },
+                                new ContentFieldDefinition
+                                {
+                                    Name = "JobDescriptionReferenceId",
+                                    Type = ContentFieldTypes.ContentPickerField,
+                                    DisplayName = "JobDescriptionReferenceId",
+                                    Settings = new ContentPickerFieldSettings{ Required = false, Multiple = false }
+                                },
+                                new ContentFieldDefinition
+                                {
+                                    Name = "WritingTest",
+                                    Type = ContentFieldTypes.ContentPickerField,
+                                    DisplayName = "WritingTest",
+                                    Settings = new ContentPickerFieldSettings{ Required = false, Multiple = true, DisplayedContentTypes = new string[] { "Media" } }
+                                },
+                                new ContentFieldDefinition
+                                {
+                                    Name = "RecruitmentCandidate",
+                                    Type = ContentFieldTypes.ContentPickerField,
+                                    DisplayName = "RecruitmentCandidate",
+                                    Settings = new ContentPickerFieldSettings{ Required = false, Multiple = true, DisplayedContentTypes = new string[] { "Candidate" } }
+                                },
+                                new ContentFieldDefinition
+                                {
+                                    Name = "RecruitmentBudgetLineId",
+                                    Type = ContentFieldTypes.ContentPickerField,
+                                    DisplayName = "RecruitmentBudgetLineId",
+                                    Settings = new ContentPickerFieldSettings{ Required = true, Multiple = false, DisplayedContentTypes = new string[] { "BudgetLine" } }
+                                },
+                                new ContentFieldDefinition
+                                {
+                                    Name = "RecruitmentTask",
+                                    Type = ContentFieldTypes.ContentPickerField,
+                                    DisplayName = "RecruitmentTask",
+                                    Settings = new ContentPickerFieldSettings{ Required = false, Multiple = true, DisplayedContentTypes = new string[] { "Task" } }
+                                },
                             }
-                        },
+                    },
+                },
+                #endregion         
+
+                #region RecruitmentCheckList
+                new ContentTypeDefinition
+                {
+                    Name = "RecruitmentCheckList",
+                    InBagPart = true,
+                    DefaultContentPart = new ContentPartDefinition
+                    {
+                            Name = "RecruitmentCheckList",
+                            ContentFields = new List<ContentFieldDefinition> {
+                                new ContentFieldDefinition
+                                {
+                                    Name = "Details",
+                                    Type = ContentFieldTypes.TextField,
+                                    DisplayName = "Details",
+                                    Settings = new TextFieldSettings{ Required = false }
+                                },
+                                new ContentFieldDefinition
+                                {
+                                    Name = "Remark",
+                                    Type = ContentFieldTypes.TextField,
+                                    DisplayName = "Remark",
+                                    Settings = new TextFieldSettings{ Required = false }
+                                },
+                                new ContentFieldDefinition
+                                {
+                                    Name = "RecruitmentChecklistTemplate",
+                                    Type = ContentFieldTypes.ContentPickerField,
+                                    DisplayName = "RecruitmentChecklistTemplate",
+                                    Settings = new ContentPickerFieldSettings{ Required = false, Multiple = true, DisplayedContentTypes = new string[] { "RecruitmentCheckListTemplate" }}
+                                },
+                            }
+                    },
+
+                },
+                #endregion
+
+                #region RecruitmentCheckListTemplate
+                new ContentTypeDefinition
+                {
+                    Name = "RecruitmentCheckListTemplate",
+                    DefaultContentPart = new ContentPartDefinition
+                    {
+                            Name = "RecruitmentCheckListTemplate",
+                            ContentFields = new List<ContentFieldDefinition> {
+                                new ContentFieldDefinition
+                                {
+                                    Name = "Name",
+                                    Type = ContentFieldTypes.TextField,
+                                    DisplayName = "Name",
+                                    Settings = new TextFieldSettings{ Required = false }
+                                },
+                            }
+                    },
+
                 },
                 #endregion
 
@@ -665,6 +857,7 @@ namespace AAVModule.Migrations
                 new ContentTypeDefinition
                 {
                     Name = "References",
+                    InBagPart = true,
                     DefaultContentPart = new ContentPartDefinition
                         {
                             Name = "References",
@@ -699,10 +892,10 @@ namespace AAVModule.Migrations
                                 },
                                 new ContentFieldDefinition
                                 {
-                                    Name = "CandidateId",
-                                    Type = ContentFieldTypes.ContentPickerField,
-                                    DisplayName = "CandidateId",
-                                    Settings = new ContentPickerFieldSettings{ Required = true, Multiple = false }
+                                    Name = "IsLineManager",
+                                    Type = ContentFieldTypes.BooleanField,
+                                    DisplayName = "IsLineManager",
+                                    Settings = new BooleanFieldSettings{ DefaultValue = false }
                                 },
                             }
                         },
@@ -713,6 +906,7 @@ namespace AAVModule.Migrations
                 new ContentTypeDefinition
                 {
                     Name = "ReferenceCheck",
+                    InBagPart = true,
                     DefaultContentPart = new ContentPartDefinition
                         {
                             Name = "ReferenceCheck",
@@ -892,182 +1086,68 @@ namespace AAVModule.Migrations
                                     DisplayName = "Email",
                                     Settings = new TextFieldSettings{ Required = false }
                                 },
+                            }
+                        },
+                },
+                #endregion
+
+                #region Review
+                new ContentTypeDefinition
+                {
+                    Name = "Review",
+                    InBagPart = true,
+                    DefaultContentPart = new ContentPartDefinition
+                        {
+                            Name = "Review",
+                            ContentFields = new List<ContentFieldDefinition> {
                                 new ContentFieldDefinition
                                 {
-                                    Name = "CandidateId",
+                                    Name = "Status",
+                                    Type = ContentFieldTypes.NumericField,
+                                    DisplayName = "Status",
+                                    Settings = new NumericFieldSettings{ Required = true }
+                                },
+                                new ContentFieldDefinition
+                                {
+                                    Name = "InterviewAssessmentReview",
                                     Type = ContentFieldTypes.ContentPickerField,
-                                    DisplayName = "Candidate Id",
-                                    Settings = new ContentPickerFieldSettings{ Required = true, Multiple = false }
+                                    DisplayName = "InterviewAssessmentReview",
+                                    Settings = new ContentPickerFieldSettings{ Required = false, Multiple = true, DisplayedContentTypes = new string[] { "InterviewAssessment" } }
                                 },
                             }
                         },
                 },
                 #endregion
 
-                #region Contract
+                #region ReviewApproverHistory
                 new ContentTypeDefinition
                 {
-                    Name = "Contract",
+                    Name = "ReviewApproverHistory",
+                    InBagPart = true,
                     DefaultContentPart = new ContentPartDefinition
                         {
-                            Name = "Contract",
+                            Name = "ReviewApproverHistory",
                             ContentFields = new List<ContentFieldDefinition> {
                                 new ContentFieldDefinition
                                 {
-                                    Name = "Type",
+                                    Name = "Status",
                                     Type = ContentFieldTypes.NumericField,
-                                    DisplayName = "Type",
-                                    Settings = new NumericFieldSettings{ Required = true }
-                                },
-                                new ContentFieldDefinition
-                                {
-                                    Name = "FileUrl",
-                                    Type = ContentFieldTypes.NumericField,
-                                    DisplayName = "Position",
-                                    Settings = new NumericFieldSettings{ Required = true }
-                                },
-                                new ContentFieldDefinition
-                                {
-                                    Name = "EmployeeId",
-                                    Type = ContentFieldTypes.ContentPickerField,
-                                    DisplayName = "EmployeeId",
-                                    Settings = new ContentPickerFieldSettings{ Required = true, Multiple = false }
-                                },
-                                new ContentFieldDefinition
-                                {
-                                    Name = "TORId",
-                                     Type = ContentFieldTypes.ContentPickerField,
-                                    DisplayName = "TORId",
-                                    Settings = new ContentPickerFieldSettings{ Required = true, Multiple = false }
-                                },
-                                new ContentFieldDefinition
-                                {
-                                    Name = "ContractTemplateId",
-                                    Type = ContentFieldTypes.ContentPickerField,
-                                    DisplayName = "ContractTemplateId",
-                                    Settings = new ContentPickerFieldSettings{ Required = true, Multiple = false }
-                                },
-                            }
-                        },
-                },
-                #endregion
-
-                #region ContractTemplate
-                new ContentTypeDefinition
-                {
-                    Name = "ContractTemplate",
-                    DefaultContentPart = new ContentPartDefinition
-                        {
-                            Name = "ContractTemplate",
-                            ContentFields = new List<ContentFieldDefinition> {
-                                new ContentFieldDefinition
-                                {
-                                    Name = "FileUrl",
-                                    Type = ContentFieldTypes.NumericField,
-                                    DisplayName = "FileUrl",
-                                    Settings = new NumericFieldSettings{ Required = true }
-                                },
-                                new ContentFieldDefinition
-                                {
-                                    Name = "MetadataKeyValue",
-                                    Type = ContentFieldTypes.NumericField,
-                                    DisplayName = "Metadata-key-value",
-                                    Settings = new NumericFieldSettings{ Required = true }
-                                },
-                            }
-                        },
-                },
-                #endregion
-
-                #region Event
-                new ContentTypeDefinition
-                {
-                    Name = "Event",
-                    DefaultContentPart = new ContentPartDefinition
-                        {
-                            Name = "Event",
-                            ContentFields = new List<ContentFieldDefinition> {
-                                new ContentFieldDefinition
-                                {
-                                    Name = "Type",
-                                    Type = ContentFieldTypes.NumericField,
-                                    DisplayName = "Type",
+                                    DisplayName = "Status",
                                     Settings = new NumericFieldSettings{ Required = false }
                                 },
                                 new ContentFieldDefinition
                                 {
-                                    Name = "RecruitmentId",
-                                    Type = ContentFieldTypes.ContentPickerField,
-                                    DisplayName = "Recruitment Id",
-                                    Settings = new ContentPickerFieldSettings{ Required = true, Multiple = false }
+                                    Name = "IsCurrent",
+                                    Type = ContentFieldTypes.NumericField,
+                                    DisplayName = "IsCurrent",
+                                    Settings = new NumericFieldSettings{ Required = false }
                                 },
                                 new ContentFieldDefinition
                                 {
-                                    Name = "CandidateId",
+                                    Name = "EmployeeReviewApproverHistory",
                                     Type = ContentFieldTypes.ContentPickerField,
-                                    DisplayName = "Candidate Id",
-                                    Settings = new ContentPickerFieldSettings{ Required = true, Multiple = false }
-                                },
-                            }
-                        },
-                },
-                #endregion
-
-                #region Room
-                new ContentTypeDefinition
-                {
-                    Name = "Room",
-                    DefaultContentPart = new ContentPartDefinition
-                        {
-                            Name = "Room",
-                            ContentFields = new List<ContentFieldDefinition> {
-                                new ContentFieldDefinition
-                                {
-                                    Name = "Name",
-                                    Type = ContentFieldTypes.TextField,
-                                    DisplayName = "Name",
-                                    Settings = new TextFieldSettings{ Required = true }
-                                },
-                                new ContentFieldDefinition
-                                {
-                                    Name = "EventId",
-                                    Type = ContentFieldTypes.ContentPickerField,
-                                    DisplayName = "Event Id",
-                                    Settings = new ContentPickerFieldSettings{ Required = true, Multiple = false }
-                                },
-                            }
-                        },
-                },
-                #endregion
-
-                #region Associate
-                new ContentTypeDefinition
-                {
-                    Name = "Associate",
-                    DefaultContentPart = new ContentPartDefinition
-                        {
-                            Name = "Associate",
-                            ContentFields = new List<ContentFieldDefinition> {
-                                new ContentFieldDefinition
-                                {
-                                    Name = "EmployeeId",
-                                    Type = ContentFieldTypes.ContentPickerField,
-                                    DisplayName = "EmployeeId",
-                                    Settings = new ContentPickerFieldSettings{ Required = true, Multiple = false }
-                                },
-                                new ContentFieldDefinition
-                                {
-                                    Name = "RecruitmentId",
-                                    Type = ContentFieldTypes.ContentPickerField,
-                                    DisplayName = "Recruitment Id",
-                                    Settings = new ContentPickerFieldSettings{ Required = true, Multiple = false }
-                                },
-                                new ContentFieldDefinition
-                                {
-                                    Name = "EventId",
-                                    Type = ContentFieldTypes.ContentPickerField,
-                                    DisplayName = "Event Id",
-                                    Settings = new ContentPickerFieldSettings{ Required = true, Multiple = false }
+                                    DisplayName = "EmployeeReviewApproverHistory",
+                                    Settings = new ContentPickerFieldSettings{ Required = false, Multiple = true, DisplayedContentTypes = new string[] { "Employee" } }
                                 },
                             }
                         },
@@ -1084,17 +1164,10 @@ namespace AAVModule.Migrations
                             ContentFields = new List<ContentFieldDefinition> {
                                 new ContentFieldDefinition
                                 {
-                                    Name = "Title",
-                                    Type = ContentFieldTypes.TextField,
-                                    DisplayName = "Title",
-                                    Settings = new TextFieldSettings{ Required = true }
-                                },
-                                new ContentFieldDefinition
-                                {
-                                    Name = "Description",
-                                    Type = ContentFieldTypes.TextField,
-                                    DisplayName = "Description",
-                                    Settings = new TextFieldSettings{ Required = false }
+                                    Name = "Status",
+                                    Type = ContentFieldTypes.NumericField,
+                                    DisplayName = "Status",
+                                    Settings = new NumericFieldSettings{ Required = true }
                                 },
                                 new ContentFieldDefinition
                                 {
@@ -1105,17 +1178,17 @@ namespace AAVModule.Migrations
                                 },
                                 new ContentFieldDefinition
                                 {
-                                    Name = "ParentContentItemId",
-                                    Type = ContentFieldTypes.TextField,
-                                    DisplayName = "ParentContentItemId",
-                                    Settings = new TextFieldSettings{ Required = true }
+                                    Name = "RelatedContentItemId",
+                                    Type = ContentFieldTypes.ContentPickerField,
+                                    DisplayName = "RelatedContentItemId",
+                                    Settings = new ContentPickerFieldSettings{ Required = true, Multiple = false, DisplayedContentTypes = new string[]{ "Task" } }
                                 },
                                 new ContentFieldDefinition
                                 {
-                                    Name = "ParentContentType",
+                                    Name = "RelatedContentType",
                                     Type = ContentFieldTypes.TextField,
-                                    DisplayName = "ParentContentType",
-                                    Settings = new TextFieldSettings{ Required = true }
+                                    DisplayName = "RelatedContentType",
+                                    Settings = new TextFieldSettings{ Required = false }
                                 },
                             }
                         },
@@ -1124,54 +1197,15 @@ namespace AAVModule.Migrations
             };
 
             ContentParts = new List<ContentPartDefinition>
-            {
-                 new ContentPartDefinition
-                 {
-                        Name = "Workflow",
-                        ContentFields = new List<ContentFieldDefinition>
-                        {
-                            new ContentFieldDefinition
-                            {
-                                Name = "PreviousAssignee",
-                                Type = ContentFieldTypes.ContentPickerField,
-                                DisplayName = "Previous Assignee",
-                                Settings = new ContentPickerFieldSettings{ Required = true, Multiple = false}
-                            },
-                            new ContentFieldDefinition
-                            {
-                                Name = "CurrentAssignee",
-                                Type = ContentFieldTypes.ContentPickerField,
-                                DisplayName = "Current Assignee",
-                                Settings = new ContentPickerFieldSettings{ Required = true, Multiple = false}
-                            },
-                            new ContentFieldDefinition
-                            {
-                                Name = "ApproveDate",
-                                Type = ContentFieldTypes.DateField,
-                                DisplayName = "Approve Date",
-                                Settings = new DateFieldSettings{ Required = false }
-                            },
-                            new ContentFieldDefinition
-                            {
-                                Name = "RejectDate",
-                                Type = ContentFieldTypes.DateField,
-                                DisplayName = "Reject Date",
-                                Settings = new DateFieldSettings{ Required = false }
-                            },
-                            new ContentFieldDefinition
-                            {
-                                Name = "Comment",
-                                Type = ContentFieldTypes.TextField,
-                                DisplayName = "Comment",
-                                Settings = new TextFieldSettings{ Required = false }
-                            },
-                        },
-                 }
+            {               
             };
 
             ContentPartRegisters = new List<ContentPartRegisterModel>
             {
-               new ContentPartRegisterModel("RecruitmentRequest", "Workflow"),
+               new ContentPartRegisterModel("Candidate", "Bag"),
+               new ContentPartRegisterModel("InterviewAssessment", "Bag"),
+               new ContentPartRegisterModel("Recruitment", "Bag"),
+               new ContentPartRegisterModel("Review", "Bag"),
             };
         }
 
